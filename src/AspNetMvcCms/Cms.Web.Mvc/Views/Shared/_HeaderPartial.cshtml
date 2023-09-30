@@ -1,0 +1,68 @@
+﻿
+<nav class="navbar navbar-expand-lg navigation" id="navbar">
+	<div class="container">
+		<a asp-controller="Home" asp-action="Index" class="navbar-brand">
+			<img src="~/images/logo.png" alt="" class="img-fluid">
+		</a>
+
+		<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain"
+				aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="icofont-navigation-menu"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarmain">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active"><a asp-controller="Home" asp-action="Index" class="nav-link">Home</a></li>
+				<li class="nav-item"><a asp-controller="About" asp-action="Index" class="nav-link">About</a></li>
+				<li class="nav-item"><a asp-controller="Services" asp-action="Index" class="nav-link">Services</a></li>
+
+				<li class="nav-item dropdown">
+					<a asp-controller="Departmants" asp-action="Index" class="nav-link dropdown-toggle" id="dropdown02" data-toggle="dropdown"
+					   aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
+					<ul class="dropdown-menu" aria-labelledby="dropdown02">
+						<li><a asp-controller="Departmants" asp-action="Index" class="dropdown-item">Departments</a></li>
+						<li><a asp-controller="Departmants" asp-action="Detail" class="dropdown-item">Department Single</a></li>
+
+						<li class="dropdown dropdown-submenu dropright">
+							<a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
+
+							<ul class="dropdown-menu" aria-labelledby="dropdown0301">
+								<li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
+								<li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a <a asp-controller="Doctors"  class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown"
+							   aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
+							<ul class="dropdown-menu" aria-labelledby="dropdown03">
+								<li><a asp-controller="Doctors" asp-action="Index" class="dropdown-item" >Doctors</a></li>
+								<li><a asp-controller="Doctors" asp-action="Detail" class="dropdown-item" >Doctor Single</a></li>
+								<li><a asp-controller="Appoinment" asp-action="Index" class="dropdown-item" >Appoinment</a></li>
+
+								<li class="dropdown dropdown-submenu dropleft">
+									<a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0501" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sub Menu</a>
+
+									<ul class="dropdown-menu" aria-labelledby="dropdown0501">
+										<li><a class="dropdown-item" href="index.html">Submenu 01</a></li>
+										<li><a class="dropdown-item" href="index.html">Submenu 02</a></li>
+									</ul>
+								</li>
+							</ul>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a asp-controller="Blog" asp-action="Index" class="nav-link dropdown-toggle" id="dropdown05" data-toggle="dropdown"
+					   aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
+					<ul class="dropdown-menu" aria-labelledby="dropdown05">
+						<li><a asp-controller="Blog" asp-action="Index" class="dropdown-item">Blog with Sidebar</a></li>
+						<li><a asp-controller="Blog" asp-action="Detail" class="dropdown-item">Blog Single</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a asp-controller="Contact" asp-action="Index" class="nav-link">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
