@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace App.Data.Context
 {
-    internal class AppDbContext : DbContext
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
