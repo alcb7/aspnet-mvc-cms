@@ -1,7 +1,20 @@
+using App.Data.Context;
+using Microsoft.EntityFrameworkCore;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var connStr = builder.Configuration.GetConnectionString("Default");
+if (string.IsNullOrWhiteSpace(connStr))
+{
+    throw new InvalidOperationException("Connection string is not found!");
+}
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlServer(connStr);
+});
 
 var app = builder.Build();
 
@@ -23,5 +36,14 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+using (var scope = app.Services.CreateScope())
+{
+    // DbContext'imizi servis saðlayýcýdan istiyoruz
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+    // Uygulamamýzý her çalýþtýrdýðýmýzda db'yi silip tekrar oluþturuyoruz:
+
+    dbContext.Database.EnsureCreated();
+}
 
 app.Run();

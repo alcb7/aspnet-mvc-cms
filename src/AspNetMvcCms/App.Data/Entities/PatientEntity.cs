@@ -36,6 +36,6 @@ namespace App.Data.Entities
 
 
         public string Address { get; set; } = string.Empty;
-        public string Photo { get; set; }
+        public string Photo { get; set; } =  string.Empty;
     }
 }
