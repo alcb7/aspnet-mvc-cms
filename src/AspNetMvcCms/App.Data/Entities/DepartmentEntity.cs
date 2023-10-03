@@ -8,38 +8,18 @@ using System.Threading.Tasks;
 
 namespace App.Data.Entities
 {
-    public class DoctorEntity
+    public class DepartmentEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        public int CategoryId { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Name { get; set; } = string.Empty;
-
-        [Required]
-        [StringLength(50)]
-        public string Surname { get; set; } = string.Empty;
-
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; } = string.Empty;
-
-        [Required]
-        [MinLength(8)]
-        public string Password { get; set; } = string.Empty;
-
-        [Required]
-        [Phone]
-        public string Phone { get; set; } = string.Empty;
        
-        [ForeignKey("CategoryId")]
-        public DoctorCategoryEntity Category { get; set; }
-      
-        public string Address { get; set; } = string.Empty;
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public string Description { get; set; }
+
         //public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
 
         //public string ResimYolu
@@ -53,6 +33,5 @@ namespace App.Data.Entities
         //        return null;
         //    }
         //}
-        public string Cv { get; set; } = string.Empty;
     }
 }

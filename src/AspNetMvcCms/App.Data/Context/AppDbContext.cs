@@ -24,19 +24,28 @@ namespace App.Data.Context
         public DbSet<DoctorCategoryEntity> DoctorCategories { get; set; }
         public DbSet<PopulerPostEntity> PopulerPosts { get; set; }
         public DbSet<NavbarEntity> Navbars { get; set; }
+
+        public DbSet<DepartmentEntity> Department { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DoctorEntity>().HasData(
-               new DoctorEntity
-               {
-                   Id = 1,
-                   Name = "Ali Rıza ",
-                   Surname = "Canbulan",
-                   Email = "alirıza@canbulan.com",
-                   Phone = "05554443322",
-                   Password = "1234"
+               new DoctorEntity { Id = 1, Name = "Ali Rıza ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 1, },
+               new DoctorEntity { Id = 2, Name = "xxx ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 2, },
+               new DoctorEntity { Id = 3, Name = "yyyy ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId =3, },
+               new DoctorEntity { Id = 4, Name = "bbb ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, },
+               new DoctorEntity { Id = 5, Name = "nnnn", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 5, },
+               new DoctorEntity { Id = 6, Name = "yyyy", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 6, },
+               new DoctorEntity { Id = 7, Name = "Ali  ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, }
+               );
 
-               }
+            modelBuilder.Entity<DepartmentEntity>().HasData(
+               new DepartmentEntity { Id = 1, Name = "Opthomology ",Description= "Saepe nulla praesentium eaque omnis perferendis a doloremque." },
+               new DepartmentEntity { Id = 2, Name= "Cardiology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." },
+               new DepartmentEntity { Id = 3, Name= "Dental Care", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." },
+               new DepartmentEntity { Id = 4, Name= "Child Care" ,Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." },
+               new DepartmentEntity { Id = 5, Name  = "Pulmology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." },
+               new DepartmentEntity { Id = 6, Name = "Gynecology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." }
+               
                );
 
             modelBuilder.Entity<PatientEntity>().HasData(
@@ -49,6 +58,8 @@ namespace App.Data.Context
               Phone = "05554443311",
               Password = "12345"
 
+
+
           }
            );
 
@@ -60,7 +71,7 @@ namespace App.Data.Context
                    Surname = "Canbulanxxyy",
                    Email = "alirıza@canbulanxxyy.com",
                    Phone = "05554442211",
-                   Password = "123456"
+                   Password = "1234564343"
 
                }
                 );
@@ -72,6 +83,15 @@ namespace App.Data.Context
             new NavbarEntity() { Id = 5, Name = "Doctors" },
             new NavbarEntity() { Id = 6, Name = "Blog" },
             new NavbarEntity() { Id = 7, Name = "Contact" }
+                 );
+            modelBuilder.Entity<DoctorCategoryEntity>().HasData(
+            new NavbarEntity() { Id = 1, Name = "Cardiology" },
+            new NavbarEntity() { Id = 2, Name = "Dental" },
+            new NavbarEntity() { Id = 3, Name = "Neurology" },
+            new NavbarEntity() { Id = 4, Name = "Medicine" },
+            new NavbarEntity() { Id = 5, Name = "Pediatric" },
+            new NavbarEntity() { Id = 6, Name = "Traumatology" }
+
                  );
 
             base.OnModelCreating(modelBuilder);

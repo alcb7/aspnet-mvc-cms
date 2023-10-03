@@ -42,8 +42,9 @@ using (var scope = app.Services.CreateScope())
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
     // Uygulamamýzý her çalýþtýrdýðýmýzda db'yi silip tekrar oluþturuyoruz:
+   await dbContext.Database.EnsureDeletedAsync();
 
-    dbContext.Database.EnsureCreated();
+    await dbContext.Database.EnsureCreatedAsync();
 }
 
 app.Run();

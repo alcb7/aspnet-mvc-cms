@@ -36,6 +36,18 @@ namespace App.Data.Entities
 
 
         public string Address { get; set; } = string.Empty;
-        public string Photo { get; set; } =  string.Empty;
+        //public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
+
+        //public string ResimYolu
+        //{
+        //    get
+        //    {
+        //        if (!string.IsNullOrEmpty(ResimDosyaAdi))
+        //        {
+        //            return "/images/" + ResimDosyaAdi; // wwwroot klasöründeki images altındaki dosyaya göre yol belirtilir.
+        //        }
+        //        return null;
+        //    }
+        //}
     }
 }
