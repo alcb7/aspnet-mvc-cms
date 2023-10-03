@@ -36,23 +36,24 @@ namespace App.Data.Entities
         [Phone]
         public string Phone { get; set; } = string.Empty;
        
+       
         [ForeignKey("CategoryId")]
         public DoctorCategoryEntity Category { get; set; }
-      
+     
         public string Address { get; set; } = string.Empty;
-        //public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
+        public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
 
-        //public string ResimYolu
-        //{
-        //    get
-        //    {
-        //        if (!string.IsNullOrEmpty(ResimDosyaAdi))
-        //        {
-        //            return "/images/" + ResimDosyaAdi; // wwwroot klasöründeki images altındaki dosyaya göre yol belirtilir.
-        //        }
-        //        return null;
-        //    }
-        //}
+        public string ResimYolu
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(ResimDosyaAdi))
+                {
+                    return "/images/" + ResimDosyaAdi; // wwwroot klasöründeki images altındaki dosyaya göre yol belirtilir.
+                }
+                return null;
+            }
+        }
         public string Cv { get; set; } = string.Empty;
     }
 }
