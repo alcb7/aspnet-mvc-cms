@@ -23,7 +23,7 @@ namespace App.Data.Context
         public DbSet<ContactEntity> Contacts { get; set; }
         public DbSet<DoctorCategoryEntity> DoctorCategories { get; set; }
         public DbSet<PopulerPostEntity> PopulerPosts { get; set; }
-
+        public DbSet<NavbarEntity> Navbars { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DoctorEntity>().HasData(
@@ -64,6 +64,15 @@ namespace App.Data.Context
 
                }
                 );
+            modelBuilder.Entity<NavbarEntity>().HasData(
+            new NavbarEntity() { Id = 1, Name = "Home" },
+            new NavbarEntity() { Id = 2, Name = "About" },
+            new NavbarEntity() { Id = 3, Name = "Services" },
+            new NavbarEntity() { Id = 4, Name = "Departments" },
+            new NavbarEntity() { Id = 5, Name = "Doctors" },
+            new NavbarEntity() { Id = 6, Name = "Blog" },
+            new NavbarEntity() { Id = 7, Name = "Contact" }
+                 );
 
             base.OnModelCreating(modelBuilder);
         }
