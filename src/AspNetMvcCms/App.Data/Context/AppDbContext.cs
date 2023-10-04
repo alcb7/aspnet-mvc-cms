@@ -25,7 +25,9 @@ namespace Cms.Data.Context
         public DbSet<PopulerPostEntity> PopulerPosts { get; set; }
         public DbSet<NavbarEntity> Navbars { get; set; }
 
-        public DbSet<DepartmentEntity> Department { get; set; }
+        public DbSet<DepartmentEntity> Departments { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DoctorEntity>().HasData(
