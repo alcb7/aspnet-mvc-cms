@@ -1,7 +1,9 @@
 using Cms.Web.Api.Configurations;
 using Cms.Web.Api.Swagger;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Cms.Services.Concrete.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 

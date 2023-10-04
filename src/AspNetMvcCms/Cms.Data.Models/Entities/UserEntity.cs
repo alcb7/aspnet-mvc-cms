@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cms.Shared.Data;
 
 namespace Cms.Data.Models.Entities
 {
-    public class UserEntity
+    public  class UserEntity : IAuditableEntity<int>, ICanDisable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -29,5 +30,10 @@ namespace Cms.Data.Models.Entities
         [Required]
         [MinLength(8)]
         public string Password { get; set; } = string.Empty;
+        public bool IsDisabled { get; set; } = false;
+        public int CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int LastModifiedBy { get; set; }
+        public DateTime? LastModifiedDate { get; set; }
     }
 }

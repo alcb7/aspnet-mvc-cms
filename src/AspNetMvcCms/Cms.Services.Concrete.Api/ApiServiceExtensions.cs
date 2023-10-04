@@ -1,4 +1,5 @@
-﻿using Cms.Data.Models.Entities;
+﻿using Cms.Data;
+using Cms.Data.Models.Entities;
 using Cms.Services.Abstract;
 using Microsoft.Extensions.DependencyInjection;
 using System;

@@ -95,6 +95,18 @@ namespace Cms.Data.Context
             new NavbarEntity() { Id = 6, Name = "Traumatology" }
 
                  );
+            modelBuilder.Entity<UserEntity>().HasData(
+          new UserEntity
+          {
+              Id = 1,
+              Name = "Ali Rızaxx ",
+              Surname = "Canbulanxx",
+              Email = "alirıza@canbulanxx.com",
+              Password = "12345"
+
+
+
+          });
 
             base.OnModelCreating(modelBuilder);
         }

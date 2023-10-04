@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Cms.Services.Concrete.Api
 {
-    internal class DataRepository<TEntity> : IDataRepository<TEntity> where TEntity : class, IAuditableEntity<long>, ICanDisable
+    internal class DataRepository<TEntity> : IDataRepository<TEntity> where TEntity : class, IAuditableEntity<int>, ICanDisable
     {
         private readonly DbContext _dbContext;
 
@@ -22,7 +22,7 @@ namespace Cms.Services.Concrete.Api
 
         private IQueryable<TEntity> GetAll(bool includeDisabled) => Set.AsNoTracking().Where(e => !includeDisabled || !e.IsDisabled);
 
-        public async Task<TEntity> AddAsync(TEntity entity, long userId)
+        public async Task<TEntity> AddAsync(TEntity entity, int userId)
         {
             entity.IsDisabled = false;
             entity.Id = default;
@@ -36,7 +36,7 @@ namespace Cms.Services.Concrete.Api
             return entity;
         }
 
-        public async Task<bool> DeleteAsync(long id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var entity = await GetByIdAsync(id);
             if (entity == null)
@@ -51,12 +51,12 @@ namespace Cms.Services.Concrete.Api
 
         public IQueryable<TEntity> GetAll() => GetAll(true);
 
-        public async Task<TEntity?> GetByIdAsync(long id)
+        public async Task<TEntity?> GetByIdAsync(int id)
         {
             return await GetAll(true).SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<TEntity?> UpdateAsync(long id, TEntity entity, long userId)
+        public async Task<TEntity?> UpdateAsync(int id, TEntity entity, int userId)
         {
             var dbEntity = await GetByIdAsync(id);
             if (dbEntity == null)
@@ -73,5 +73,7 @@ namespace Cms.Services.Concrete.Api
             await _dbContext.SaveChangesAsync();
             return entity;
         }
+
+        
     }
 }
