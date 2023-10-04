@@ -13,9 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\App.Data\Cms.Data.csproj" />
-    <ProjectReference Include="..\Cms.Services.Abstract\Cms.Services.Abstract.csproj" />
-    <ProjectReference Include="..\Cms.Services.Concrete.Api\Cms.Services.Concrete.Api.csproj" />
+    <ProjectReference Include="..\Cms.Services\Cms.Services.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Cms.Shared.Data;
+
 
 namespace Cms.Data.Models.Entities
 {
-    public  class UserEntity : IAuditableEntity<int>, ICanDisable
+    public  class UserEntity 
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
