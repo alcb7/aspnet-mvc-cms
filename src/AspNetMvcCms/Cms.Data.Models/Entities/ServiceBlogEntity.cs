@@ -6,13 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Data.Entities
+namespace Cms.Data.Models.Entities
 {
-    public class AppointmentEntity
+    public class ServiceBlogEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public DateTime DateTime { get; set; }
+
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string photo { get; set; }
     }
 }

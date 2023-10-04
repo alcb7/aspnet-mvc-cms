@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Data.Entities
+namespace Cms.Data.Models.Entities
 {
     public class DoctorEntity
     {
@@ -35,11 +35,11 @@ namespace App.Data.Entities
         [Required]
         [Phone]
         public string Phone { get; set; } = string.Empty;
-       
-       
+
+
         [ForeignKey("CategoryId")]
         public DoctorCategoryEntity Category { get; set; }
-     
+
         public string Address { get; set; } = string.Empty;
         public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
 

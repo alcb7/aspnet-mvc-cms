@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cms.Data.Models\Cms.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>

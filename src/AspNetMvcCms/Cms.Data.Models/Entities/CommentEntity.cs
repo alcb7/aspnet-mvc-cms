@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Data.Entities
+namespace Cms.Data.Models.Entities
 {
-    public class NavbarEntity
+    public class CommentEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Text { get; set; }
+
     }
 }

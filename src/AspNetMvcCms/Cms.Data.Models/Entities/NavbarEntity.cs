@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Data.Entities
+namespace Cms.Data.Models.Entities
 {
-    public class DoctorCategoryEntity
+    public class NavbarEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

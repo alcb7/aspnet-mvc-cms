@@ -6,14 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Data.Entities
+namespace Cms.Data.Models.Entities
 {
-    public class CommentEntity
+    public class PopulerPostEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Text { get; set; }
+        public string Title { get; set; }
 
+        public DateTime CreatedDate { get; set; }
     }
 }

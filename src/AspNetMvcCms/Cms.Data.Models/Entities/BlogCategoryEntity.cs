@@ -6,16 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Data.Entities
+namespace Cms.Data.Models.Entities
 {
-    public class ServiceBlogEntity
+    public class BlogCategoryEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
         public string Title { get; set; }
-        public string Description { get; set; }
-        public string photo { get; set; }
+
+        public int TotalNumber { get; set; }
     }
 }

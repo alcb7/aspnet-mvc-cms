@@ -1,5 +1,5 @@
-﻿using App.Data.Context;
-using App.Data.Entities;
+﻿using Cms.Data.Context;
+using Cms.Data.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cms.Web.Mvc.ViewComponents

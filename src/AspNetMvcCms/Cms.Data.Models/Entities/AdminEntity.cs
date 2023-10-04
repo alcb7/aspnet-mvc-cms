@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Data.Entities
+namespace Cms.Data.Models.Entities
 {
-    public class PatientEntity
+    public class AdminEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -32,7 +32,7 @@ namespace App.Data.Entities
 
         [Required]
         [Phone]
-        public string Phone { get; set; }
+        public string Phone { get; set; } = string.Empty;
 
 
         public string Address { get; set; } = string.Empty;

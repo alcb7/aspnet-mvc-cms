@@ -6,36 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Data.Entities
+namespace Cms.Data.Models.Entities
 {
-    public class AdminEntity
+    public class DepartmentEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string Surname { get; set; } = string.Empty;
+        public string Description { get; set; }
 
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; } = string.Empty;
-
-        [Required]
-        [MinLength(8)]
-        public string Password { get; set; } = string.Empty;
-
-        [Required]
-        [Phone]
-        public string Phone { get; set; } = string.Empty;
-
-
-        public string Address { get; set; } = string.Empty;
         //public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
 
         //public string ResimYolu
