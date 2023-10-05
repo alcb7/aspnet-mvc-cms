@@ -48,34 +48,45 @@ namespace Cms.Web.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] DoctorCreateDto dto)
         {
-            var doctor = _mapper.Map<DoctorEntity>(dto);
-            if (doctor == null)
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-         
-            var createdDoctor = await _doctorService.AddAsync(doctor);
-            return CreatedAtAction(nameof(GetByIdAsync), new { id = createdDoctor.Id }, createdDoctor);
+            try
+            {
+                var mapp = _mapper.Map<DoctorEntity>(dto);
+                var doctor =await  _doctorService.AddAsync(mapp);
+                return Ok(doctor);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
         }
 
         // PUT: api/Doctors/5
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(int id, [FromBody] DoctorUpdateDto dto)
         {
-            var doctor = _mapper.Map<DoctorEntity>(dto);
-         
-            if (doctor == null || id != doctor.Id)
+            if (dto.Id != id)
+                return BadRequest();
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-
-            var updatedDoctor = await _doctorService.UpdateAsync(id, doctor);
-            if (updatedDoctor == null)
+            try
             {
-                return NotFound();
+                var mapp = _mapper.Map<DoctorEntity>(dto);
+                var doctor = await _doctorService.UpdateAsync(id,mapp);
+                return Ok(doctor);
             }
+            catch (Exception e)
+            {
 
-            return NoContent();
+                return BadRequest(e.Message);
+            }
         }
 
         // DELETE: api/Doctors/5

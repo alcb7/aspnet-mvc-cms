@@ -41,7 +41,7 @@ namespace Cms.Data.Models.Entities
         public DoctorCategoryEntity Category { get; set; }
 
         public string Address { get; set; } = string.Empty;
-        public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
+        public string? ResimDosyaAdi { get; set; } 
 
         public string ResimYolu
         {
