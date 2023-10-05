@@ -39,12 +39,12 @@ namespace App.Data.Context
                );
 
             modelBuilder.Entity<DepartmentEntity>().HasData(
-               new DepartmentEntity { Id = 1, Name = "Opthomology ",Description= "Saepe nulla praesentium eaque omnis perferendis a doloremque." },
-               new DepartmentEntity { Id = 2, Name= "Cardiology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." },
-               new DepartmentEntity { Id = 3, Name= "Dental Care", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." },
-               new DepartmentEntity { Id = 4, Name= "Child Care" ,Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." },
-               new DepartmentEntity { Id = 5, Name  = "Pulmology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." },
-               new DepartmentEntity { Id = 6, Name = "Gynecology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." }
+               new DepartmentEntity { Id = 1, Name = "Opthomology ",Description= "Saepe nulla praesentium eaque omnis perferendis a doloremque.", ResimDosyaAdi = "service/service-1.jpg" },
+               new DepartmentEntity { Id = 2, Name= "Cardiology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", ResimDosyaAdi = "service/service-3.jpg" },
+               new DepartmentEntity { Id = 3, Name= "Dental Care", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", ResimDosyaAdi = "service/service-4.jpg" },
+               new DepartmentEntity { Id = 4, Name= "Child Care" ,Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", ResimDosyaAdi = "service/service-6.jpg" },
+               new DepartmentEntity { Id = 5, Name  = "Pulmology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", ResimDosyaAdi = "service/service-8.jpg" },
+               new DepartmentEntity { Id = 6, Name = "Gynecology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", ResimDosyaAdi = "service/service-1.jpg" }
                
                );
 

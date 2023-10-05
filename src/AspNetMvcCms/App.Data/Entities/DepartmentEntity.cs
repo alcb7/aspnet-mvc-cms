@@ -13,25 +13,26 @@ namespace App.Data.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-       
+
         [Required]
         public string Name { get; set; }
 
         [Required]
         public string Description { get; set; }
 
-        //public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
+        public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
 
-        //public string ResimYolu
-        //{
-        //    get
-        //    {
-        //        if (!string.IsNullOrEmpty(ResimDosyaAdi))
-        //        {
-        //            return "/images/" + ResimDosyaAdi; // wwwroot klasöründeki images altındaki dosyaya göre yol belirtilir.
-        //        }
-        //        return null;
-        //    }
-        //}
+        public string ResimYolu
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(ResimDosyaAdi))
+                {
+                    return "/images/" + ResimDosyaAdi; // wwwroot klasöründeki images altındaki dosyaya göre yol belirtilir.
+                }
+
+                return null;
+            }
+        }
     }
 }
