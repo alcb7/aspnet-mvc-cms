@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cms.Services.Abstract
 {
-    public interface IDoctorService
+    public interface IDoctorService : IDataRepository<DoctorEntity>
     {
         IQueryable<DoctorEntity> GetAll();
         Task<DoctorEntity?> GetByIdAsync(int id);

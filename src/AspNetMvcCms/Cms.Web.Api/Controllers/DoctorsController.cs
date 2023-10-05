@@ -11,18 +11,18 @@ namespace Cms.Web.Api.Controllers
     [ApiController]
     public class DoctorsController : ControllerBase
     {
-        private readonly IDataRepository<DoctorEntity> _repository;
+        private readonly IDoctorService _doctorService;
 
-        public DoctorsController(IDataRepository<DoctorEntity> repository)
+        public DoctorsController(IDoctorService doctorService)
         {
-            _repository = repository;
+            _doctorService = doctorService;
         }
 
         // GET: api/Doctors
         [HttpGet]
         public IEnumerable<DoctorEntity> GetAll()
         {
-            var doctors = _repository.GetAll();
+            var doctors = _doctorService.GetAll();
             return doctors;
         }
 
@@ -30,7 +30,7 @@ namespace Cms.Web.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync([FromRoute] int id)
         {
-            var doctor = await _repository.GetByIdAsync(id);
+            var doctor = await _doctorService.GetByIdAsync(id);
             if (doctor == null)
             {
                 return NotFound();
@@ -47,7 +47,7 @@ namespace Cms.Web.Api.Controllers
                 return BadRequest();
             }
 
-            var createdDoctor = await _repository.AddAsync(doctor);
+            var createdDoctor = await _doctorService.AddAsync(doctor);
             return CreatedAtAction(nameof(GetByIdAsync), new { id = createdDoctor.Id }, createdDoctor);
         }
 
@@ -60,7 +60,7 @@ namespace Cms.Web.Api.Controllers
                 return BadRequest();
             }
 
-            var updatedDoctor = await _repository.UpdateAsync(id, doctor);
+            var updatedDoctor = await _doctorService.UpdateAsync(id, doctor);
             if (updatedDoctor == null)
             {
                 return NotFound();
@@ -73,7 +73,7 @@ namespace Cms.Web.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var isDeleted = await _repository.DeleteAsync(id);
+            var isDeleted = await _doctorService.DeleteAsync(id);
             if (!isDeleted)
             {
                 return NotFound();
