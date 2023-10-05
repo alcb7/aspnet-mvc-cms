@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\App.Data\Cms.Data.csproj" />
     <ProjectReference Include="..\Cms.Data.Models\Cms.Data.Models.csproj" />
   </ItemGroup>
 

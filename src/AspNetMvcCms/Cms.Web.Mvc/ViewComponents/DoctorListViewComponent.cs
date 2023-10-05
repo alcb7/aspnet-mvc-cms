@@ -1,4 +1,4 @@
-﻿using Cms.Data.Context;
+﻿
 using Cms.Data.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,17 +6,29 @@ namespace Cms.Web.Mvc.ViewComponents
 {
     public class DoctorListViewComponent : ViewComponent
     {
-        private readonly AppDbContext _appDbContext;
+      
+        private readonly HttpClient _httpClient;
 
-        public DoctorListViewComponent(AppDbContext appDbContext)
+        private readonly string _apiUrl = "https://localhost:7188/swagger/index.html";
+        public DoctorListViewComponent(HttpClient httpClient)
         {
-            _appDbContext = appDbContext;
+            _httpClient = httpClient;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            try
+            {
+                // API'den doktor verilerini alın.
+                var doctors = await _httpClient.GetFromJsonAsync<List<DoctorEntity>>(_apiUrl);
 
-            List<DoctorEntity> doctor = _appDbContext.Doctors.ToList();
-            return View(doctor);
+                return View(doctors);
+            }
+            catch (Exception ex)
+            {
+                // Hata yönetimi burada ele alınabilir, örneğin hata mesajını bir loga kaydedebilirsiniz.
+                // Hata durumunda uygun bir hata sayfasına veya mesaja yönlendirme yapılabilir.
+                return Content("Veriler alınamadı: " + ex.Message);
+            }
         }
     }
 }

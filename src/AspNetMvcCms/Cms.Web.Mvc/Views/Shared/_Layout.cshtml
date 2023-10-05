@@ -15,8 +15,10 @@
 
 	<header>
 		<partial name="_TopBarPartial" />
-		@await Component.InvokeAsync("Navbar")
+		<partial name="_HeaderPartial" />
 
+@* 		@await Component.InvokeAsync("Navbar")
+ *@
 	</header>
 	<div class="container">
 		<main role="main" class="pb-3">

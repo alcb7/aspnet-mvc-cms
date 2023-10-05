@@ -1,4 +1,5 @@
-﻿using Cms.Data.Context;
+﻿
+using Cms.Data.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,23 +7,32 @@ namespace Cms.Web.Mvc.Controllers
 {
     public class DoctorsController : Controller
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly HttpClient _httpClient;
 
-        public DoctorsController(AppDbContext appDbContext)
+        private readonly string _apiUrl = "https://localhost:7188/swagger/index.html";
+        public DoctorsController(HttpClient httpClient)
         {
-            _appDbContext = appDbContext;
+            _httpClient = httpClient;
         }
-        public IActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var doctorsWithCategories = _appDbContext.Doctors
-           .Include(d => d.Category)
-           .ToList();
+            var model = await _httpClient.GetFromJsonAsync<List<DoctorEntity>>(_apiUrl);
 
-            return View(doctorsWithCategories);
+            return View(model);
         }
-        public IActionResult Detail()
+
+        public async Task<ActionResult> Detail(int id)
         {
-            return View();
+            // Belirli bir doktorun detaylarını getir.
+            var doctor = await _httpClient.GetFromJsonAsync<DoctorEntity>($"{_apiUrl}/Doctors/{id}");
+
+            if (doctor == null)
+            {
+                // Belirli bir doktor bulunamazsa hata sayfasına yönlendirme yapılabilir.
+                return NotFound();
+            }
+
+            return View(doctor);
         }
     }
 }
