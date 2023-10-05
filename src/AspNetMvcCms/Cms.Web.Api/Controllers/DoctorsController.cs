@@ -1,5 +1,8 @@
-﻿using Cms.Data.Models.Entities;
+﻿using AutoMapper;
+using Azure.Core;
+using Cms.Data.Models.Entities;
 using Cms.Services.Abstract;
+using Cms.Web.Api.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,9 +15,11 @@ namespace Cms.Web.Api.Controllers
     public class DoctorsController : ControllerBase
     {
         private readonly IDoctorService _doctorService;
+        private readonly IMapper _mapper;
 
-        public DoctorsController(IDoctorService doctorService)
+        public DoctorsController(IMapper mapper,IDoctorService doctorService)
         {
+            _mapper = mapper;
             _doctorService = doctorService;
         }
 
@@ -23,6 +28,7 @@ namespace Cms.Web.Api.Controllers
         public IEnumerable<DoctorEntity> GetAll()
         {
             var doctors = _doctorService.GetAll();
+           
             return doctors;
         }
 
@@ -40,21 +46,24 @@ namespace Cms.Web.Api.Controllers
 
         // POST: api/Doctors
         [HttpPost]
-        public async Task<IActionResult> AddAsync([FromBody] DoctorEntity doctor)
+        public async Task<IActionResult> AddAsync([FromBody] DoctorCreateDto dto)
         {
+            var doctor = _mapper.Map<DoctorEntity>(dto);
             if (doctor == null)
             {
                 return BadRequest();
             }
-
+         
             var createdDoctor = await _doctorService.AddAsync(doctor);
             return CreatedAtAction(nameof(GetByIdAsync), new { id = createdDoctor.Id }, createdDoctor);
         }
 
         // PUT: api/Doctors/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, [FromBody] DoctorEntity doctor)
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] DoctorUpdateDto dto)
         {
+            var doctor = _mapper.Map<DoctorEntity>(dto);
+         
             if (doctor == null || id != doctor.Id)
             {
                 return BadRequest();

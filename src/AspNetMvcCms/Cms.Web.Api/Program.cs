@@ -2,6 +2,7 @@ using Cms.Data.Context;
 using Cms.Data.Models.Entities;
 using Cms.Services.Abstract;
 using Cms.Services.Concrete;
+using Cms.Web.Api.MappingProfiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,7 +19,8 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 builder.Services.AddScoped<DbContext, AppDbContext>();
 
 builder.Services.AddScoped<IDataRepository<DoctorEntity>, DataRepository<DoctorEntity>>();
-
+builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 
