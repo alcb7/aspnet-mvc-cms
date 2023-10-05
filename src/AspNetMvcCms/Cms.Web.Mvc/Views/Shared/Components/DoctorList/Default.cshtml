@@ -1,6 +1,4 @@
-﻿@using Cms.Data.Models.Entities;
-
-@model List<DoctorEntity>
+﻿@model List<DoctorEntity>
 <div class="row shuffle-wrapper portfolio-gallery">
     @foreach (var item in Model)
     {
@@ -14,7 +12,7 @@
                 </div>
                 <div class="content mt-3">
                     <h4 class="mb-0"><a href="doctor-single.html">@item.Name</a></h4>
-                    <p>@item.Category.Name</p>
+                    <p>@item?.Category?.Name</p>
                 </div>
             </div>
         </div>

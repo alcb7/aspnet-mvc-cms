@@ -9,7 +9,7 @@ namespace Cms.Web.Mvc.ViewComponents
       
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiUrl = "https://localhost:7188/swagger/index.html";
+        private readonly string _apiUrl = "https://localhost:7188/api/Doctors";
         public DoctorListViewComponent(HttpClient httpClient)
         {
             _httpClient = httpClient;

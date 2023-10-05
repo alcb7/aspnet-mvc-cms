@@ -1,5 +1,6 @@
 ﻿using Cms.Data.Models.Entities;
 using Cms.Services.Abstract;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,6 +37,9 @@ namespace Cms.Services.Concrete
         {
             // Tüm doktorları almak için Repository kullanılır.
             return _repository.GetAll();
+            //return _repository.Include().;
+
+
         }
 
         public async Task<DoctorEntity?> GetByIdAsync(int id)

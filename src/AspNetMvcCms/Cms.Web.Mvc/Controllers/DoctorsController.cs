@@ -9,14 +9,14 @@ namespace Cms.Web.Mvc.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiUrl = "https://localhost:7188/swagger/index.html";
+        private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
         public DoctorsController(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
         public async Task<ActionResult> Index()
         {
-            var model = await _httpClient.GetFromJsonAsync<List<DoctorEntity>>(_apiUrl);
+            var model = await _httpClient.GetFromJsonAsync<List<DoctorEntity>>(_apiDoctor);
 
             return View(model);
         }
@@ -24,7 +24,7 @@ namespace Cms.Web.Mvc.Controllers
         public async Task<ActionResult> Detail(int id)
         {
             // Belirli bir doktorun detaylarını getir.
-            var doctor = await _httpClient.GetFromJsonAsync<DoctorEntity>($"{_apiUrl}/Doctors/{id}");
+            var doctor = await _httpClient.GetFromJsonAsync<DoctorEntity>($"{_apiDoctor}/{id}");
 
             if (doctor == null)
             {
