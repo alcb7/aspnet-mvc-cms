@@ -1,4 +1,5 @@
-﻿using Cms.Data.Models.Entities;
+﻿using Cms.Data.Context;
+using Cms.Data.Models.Entities;
 using Cms.Services.Abstract;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,10 +11,11 @@ namespace Cms.Services.Concrete
     public class DoctorService : IDoctorService
     {
         private readonly IDataRepository<DoctorEntity> _repository;
-
-        public DoctorService(IDataRepository<DoctorEntity> repository)
+        private readonly AppDbContext _appDbContext;
+        public DoctorService(IDataRepository<DoctorEntity> repository, AppDbContext appDbContext)
         {
             _repository = repository;
+            _appDbContext = appDbContext;
         }
 
         public async Task<DoctorEntity> AddAsync(DoctorEntity entity)
@@ -36,8 +38,9 @@ namespace Cms.Services.Concrete
         public IQueryable<DoctorEntity> GetAll()
         {
             // Tüm doktorları almak için Repository kullanılır.
-            return _repository.GetAll();
-            //return _repository.Include().;
+            //return _repository.GetAll();
+            return _appDbContext.Doctors
+                .Include(d => d.Category);
 
 
         }

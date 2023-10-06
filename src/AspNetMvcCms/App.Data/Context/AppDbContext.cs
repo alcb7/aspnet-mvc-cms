@@ -87,12 +87,12 @@ namespace Cms.Data.Context
             new NavbarEntity() { Id = 7, Name = "Contact" }
                  );
             modelBuilder.Entity<DoctorCategoryEntity>().HasData(
-            new NavbarEntity() { Id = 1, Name = "Cardiology" },
-            new NavbarEntity() { Id = 2, Name = "Dental" },
-            new NavbarEntity() { Id = 3, Name = "Neurology" },
-            new NavbarEntity() { Id = 4, Name = "Medicine" },
-            new NavbarEntity() { Id = 5, Name = "Pediatric" },
-            new NavbarEntity() { Id = 6, Name = "Traumatology" }
+            new DoctorCategoryEntity() { Id = 1, Name = "Cardiology" },
+            new DoctorCategoryEntity() { Id = 2, Name = "Dental" },
+            new DoctorCategoryEntity() { Id = 3, Name = "Neurology" },
+            new DoctorCategoryEntity() { Id = 4, Name = "Medicine" },
+            new DoctorCategoryEntity() { Id = 5, Name = "Pediatric" },
+            new DoctorCategoryEntity() { Id = 6, Name = "Traumatology" }
 
                  );
           

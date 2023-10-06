@@ -19,6 +19,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 builder.Services.AddScoped<DbContext, AppDbContext>();
 
 builder.Services.AddScoped<IDataRepository<DoctorEntity>, DataRepository<DoctorEntity>>();
+builder.Services.AddScoped<IDataRepository<NavbarEntity>, DataRepository<NavbarEntity>>();
 builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
