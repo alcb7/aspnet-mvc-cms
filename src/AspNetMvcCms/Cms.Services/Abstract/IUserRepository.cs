@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Cms.Services.Abstract
 {
-    internal interface IUserService
+    public interface IUserRepository<TEntity>
     {
+        Task<TEntity> GetUserByUsername(string username);
     }
 }

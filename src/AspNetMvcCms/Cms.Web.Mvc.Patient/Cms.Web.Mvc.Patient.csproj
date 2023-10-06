@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cms.Data.Models\Cms.Data.Models.csproj" />
+  </ItemGroup>
+
 </Project>
