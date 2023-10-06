@@ -1,4 +1,8 @@
-﻿<div class="header-top-bar">
+﻿@using System.Security.Claims;
+@{
+	var girisyapti = User.Identity.IsAuthenticated;
+}
+<div class="header-top-bar">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-6">
@@ -15,6 +19,22 @@
 					</a>
 				</div>
 			</div>
+			<span>
+				@{
+					if (girisyapti)
+					{
+						<li class="nav-item ms-auto">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+						</li>
+					}
+					else
+					{
+						<li class="nav-item ms-auto">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+						</li>
+					}
+				}
+			</span>
 		</div>
 	</div>
 </div>

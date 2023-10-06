@@ -31,7 +31,7 @@ namespace Cms.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DoctorEntity>().HasData(
-               new DoctorEntity { Id = 1, Name = "Ali Rıza ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 1, ResimDosyaAdi = "team/1.jpg" },
+               new DoctorEntity { Id = 1, Name = "Ali Rıza ", Surname = "Canbulan", Email = "aliriza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 1, ResimDosyaAdi = "team/1.jpg" },
                new DoctorEntity { Id = 2, Name = "xxx ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 2, ResimDosyaAdi = "team/2.jpg" },
                new DoctorEntity { Id = 3, Name = "yyyy ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 3, ResimDosyaAdi = "team/3.jpg" },
                new DoctorEntity { Id = 4, Name = "bbb ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, ResimDosyaAdi = "team/4.jpg" },
