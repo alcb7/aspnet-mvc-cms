@@ -62,6 +62,19 @@ namespace Cms.Data.Context
 
 
 
+          },
+           
+          new PatientEntity
+          {
+              Id = 2,
+              Name = "mehmet ",
+              Surname = "Canbulanxx",
+              Email = "alirıza@canbulanxx.com",
+              Phone = "05554443311",
+              Password = "12345"
+
+
+
           }
            );
 

@@ -87,40 +87,40 @@ namespace Cms.Web.Mvc.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-        //[AllowAnonymous]
-        //[HttpGet("register")]
-        //public IActionResult Register()
-        //{
-        //    return View();
-        //}
+        [AllowAnonymous]
+        [HttpGet("register")]
+        public IActionResult Register()
+        {
+            return View();
+        }
 
-        //[AllowAnonymous]
-        //[HttpPost("register")]
-        //public async Task<IActionResult> Register([FromForm] RegisterViewModel register)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(register);
-        //    }
+        ////[AllowAnonymous]
+        ////[HttpPost("register")]
+        ////public async Task<IActionResult> Register([FromForm] RegisterViewModel register)
+        ////{
+        ////    if (!ModelState.IsValid)
+        ////    {
+        ////        return View(register);
+        ////    }
 
-        //    if (register.Password != register.PasswordVerify)
-        //    {
-        //        ViewBag.Error = "Şifreler uyuşmuyor";
-        //        return View(register);
-        //    }
+        ////    if (register.Password != register.PasswordVerify)
+        ////    {
+        ////        ViewBag.Error = "Şifreler uyuşmuyor";
+        ////        return View(register);
+        ////    }
 
-        //    var user = new UserEntity
-        //    {
-        //        Name = register.Name,
-        //        Surname = register.Surname,
-        //        Email = register.Email,
-        //        Password = register.Password
-        //    };
+        ////    var user = new UserEntity
+        ////    {
+        ////        Name = register.Name,
+        ////        Surname = register.Surname,
+        ////        Email = register.Email,
+        ////        Password = register.Password
+        ////    };
 
-        //    _userRepository.Create(user);
+        ////    _userRepository.Create(user);
 
-        //    ViewBag.Message = "Kullanıcı Başarıyla kaydedildi.";
-        //    return View();
-        //}
+        ////    ViewBag.Message = "Kullanıcı Başarıyla kaydedildi.";
+        ////    return View();
+        ////}
     }
 }
