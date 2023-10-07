@@ -56,7 +56,7 @@ namespace Cms.Data.Context
               Id = 1,
               Name = "Ali Rızaxx ",
               Surname = "Canbulanxx",
-              Email = "alirıza@canbulanxx.com",
+              Email = "aliriza@canbulanxx.com",
               Phone = "05554443311",
               Password = "12345"
 
@@ -84,9 +84,9 @@ namespace Cms.Data.Context
                    Id = 1,
                    Name = "Ali Rızaxxyy ",
                    Surname = "Canbulanxxyy",
-                   Email = "alirıza@canbulanxxyy.com",
+                   Email = "aliriza@canbulanxxyy.com",
                    Phone = "05554442211",
-                   Password = "1234564343"
+                   Password = "12345678"
 
                }
                 );

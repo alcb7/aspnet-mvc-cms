@@ -1,20 +1,16 @@
-﻿using Cms.Data.Models.Entities;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using System.Net.Http.Json;
-using System.Text.Json.Serialization;
-using System.Text;
-using System.Text.Json;
-using Cms.Web.Mvc.Patient.Models;
+using Cms.Web.Mvc.Admin.Models;
+using Cms.Data.Models.Entities;
 
-namespace Cms.Web.Mvc.Controllers
+namespace Cms.Web.Mvc.Admin.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly string _apiUrl = "https://localhost:7188/api/Patients";
+        private readonly string _apiUrl = "https://localhost:7188/api/Admins";
         private readonly HttpClient _httpClient; // Client
 
         public AuthController(HttpClient httpClient) // Dependency injection ile HttpClient ekleyin
@@ -41,7 +37,7 @@ namespace Cms.Web.Mvc.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                List<PatientEntity> model = await _httpClient.GetFromJsonAsync<List<PatientEntity>>(_apiUrl);
+                List<AdminEntity> model = await _httpClient.GetFromJsonAsync<List<AdminEntity>>(_apiUrl);
 
                 var mainModel = model.FirstOrDefault(u => u.Email == login.Email && u.Password == login.Password);
 
@@ -91,47 +87,8 @@ namespace Cms.Web.Mvc.Controllers
             return RedirectToAction(nameof(Login));
         }
 
-        [AllowAnonymous]
-        [HttpGet("register")]
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        [AllowAnonymous]
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromForm] RegisterViewModel register)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(register);
-            }
-
-            if (register.Password != register.PasswordVerify)
-            {
-                ViewBag.Error = "Şifreler uyuşmuyor";
-                return View(register);
-            }
-
-            var user = new PatientEntity
-            {
-                Name = register.Name,
-                Surname = register.Surname,
-                Email = register.Email,
-                Password = register.Password,
-                
-
-
-            };
-
-            var response = await _httpClient.PostAsJsonAsync(_apiUrl, user);
-            if (response.IsSuccessStatusCode)
-            {
-                ViewBag.Message = "Kullanıcı Başarıyla kaydedildi.";
-            }
-
-            return View();
-        }
+        
+       
 
 
     }

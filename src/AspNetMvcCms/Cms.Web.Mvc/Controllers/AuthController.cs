@@ -117,7 +117,10 @@ namespace Cms.Web.Mvc.Controllers
                 Name = register.Name,
                 Surname = register.Surname,
                 Email = register.Email,
-                Password = register.Password
+                Password = register.Password,
+                CategoryId = register.CategoryId,
+                
+
             };
 
             var response = await _httpClient.PostAsJsonAsync(_apiUrl, user);

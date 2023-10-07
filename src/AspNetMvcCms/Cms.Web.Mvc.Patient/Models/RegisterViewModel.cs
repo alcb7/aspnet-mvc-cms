@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cms.Web.Mvc.Models
+namespace Cms.Web.Mvc.Patient.Models
 {
     public class RegisterViewModel
     {
@@ -15,7 +15,6 @@ namespace Cms.Web.Mvc.Models
 
         [Required, MinLength(4), DataType(DataType.Password)]
         public string Password { get; set; } = string.Empty;
-        public int CategoryId { get; set; }
 
         [DataType(DataType.Password)]
         public string? PasswordVerify { get; set; } = string.Empty;

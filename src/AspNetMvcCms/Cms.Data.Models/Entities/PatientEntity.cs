@@ -30,7 +30,7 @@ namespace Cms.Data.Models.Entities
         [MinLength(8)]
         public string Password { get; set; } = string.Empty;
 
-        [Required]
+        
         [Phone]
         public string? Phone { get; set; }
 
