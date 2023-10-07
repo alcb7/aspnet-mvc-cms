@@ -12,14 +12,14 @@ namespace Cms.Web.Api.DTOs
 
         [Required(ErrorMessage = "Soyisim zorunludur.")]
         [StringLength(255, ErrorMessage = "Soyisim en fazla 255 karakter olmalıdır.")]
-<<<<<<< HEAD
+
         public string Surname { get; set; } = string.Empty;
 		[Required]
 		public int CategoryId { get; set; }
 
 	}
-=======
-        public string Surname { get; set; } 
-    }
->>>>>>> origin/ali
-}
+
+       
+ }
+
+
