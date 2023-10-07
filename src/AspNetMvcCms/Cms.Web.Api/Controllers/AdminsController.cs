@@ -9,22 +9,22 @@ namespace Cms.Web.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PatientsController : ControllerBase
+    public class AdminsController : ControllerBase
     {
-        private readonly IPatientService _patientService;
+        private readonly IAdminService _adminService;
         private readonly IMapper _mapper;
 
-        public PatientsController(IMapper mapper, IPatientService patientService)
+        public AdminsController(IMapper mapper, IAdminService adminService)
         {
             _mapper = mapper;
-            _patientService = patientService;
+            _adminService = adminService;
         }
 
         // GET: api/Doctors
         [HttpGet]
-        public IEnumerable<PatientEntity> GetAll()
+        public IEnumerable<AdminEntity> GetAll()
         {
-            var doctors = _patientService.GetAll();
+            var doctors = _adminService.GetAll();
 
             return doctors;
         }
@@ -33,7 +33,7 @@ namespace Cms.Web.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync([FromRoute] int id)
         {
-            var doctor = await _patientService.GetByIdAsync(id);
+            var doctor = await _adminService.GetByIdAsync(id);
             if (doctor == null)
             {
                 return NotFound();
@@ -43,7 +43,7 @@ namespace Cms.Web.Api.Controllers
 
         // POST: api/Doctors
         [HttpPost]
-        public async Task<IActionResult> AddAsync([FromBody] PatientCreateDto dto)
+        public async Task<IActionResult> AddAsync([FromBody] AdminCreateDto dto)
         {
             if (!ModelState.IsValid)
             {
@@ -51,8 +51,8 @@ namespace Cms.Web.Api.Controllers
             }
             try
             {
-                var mapp = _mapper.Map<PatientEntity>(dto);
-                var doctor = await _patientService.AddAsync(mapp);
+                var mapp = _mapper.Map<AdminEntity>(dto);
+                var doctor = await _adminService.AddAsync(mapp);
                 return Ok(doctor);
             }
             catch (Exception e)
@@ -65,7 +65,7 @@ namespace Cms.Web.Api.Controllers
 
         // PUT: api/Doctors/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, [FromBody] PatientUpdateDto dto)
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] AdminUpdateDto dto)
         {
             if (dto.Id != id)
                 return BadRequest();
@@ -75,8 +75,8 @@ namespace Cms.Web.Api.Controllers
             }
             try
             {
-                var mapp = _mapper.Map<PatientEntity>(dto);
-                var doctor = await _patientService.UpdateAsync(id, mapp);
+                var mapp = _mapper.Map<AdminEntity>(dto);
+                var doctor = await _adminService.UpdateAsync(id, mapp);
                 return Ok(doctor);
             }
             catch (Exception e)
@@ -90,7 +90,7 @@ namespace Cms.Web.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var isDeleted = await _patientService.DeleteAsync(id);
+            var isDeleted = await _adminService.DeleteAsync(id);
             if (!isDeleted)
             {
                 return NotFound();

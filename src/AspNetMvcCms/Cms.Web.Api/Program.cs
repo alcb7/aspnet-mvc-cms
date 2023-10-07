@@ -19,13 +19,14 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 builder.Services.AddScoped<DbContext, AppDbContext>();
 
 builder.Services.AddScoped<IDataRepository<DoctorEntity>, DataRepository<DoctorEntity>>();
+builder.Services.AddScoped<IDataRepository<AdminEntity>, DataRepository<AdminEntity>>();
 builder.Services.AddScoped<IDataRepository<PatientEntity>, DataRepository<PatientEntity>>();
 builder.Services.AddScoped<IDataRepository<NavbarEntity>, DataRepository<NavbarEntity>>();
 builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IPatientService, PatientService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
-builder.Services.AddAutoMapper(typeof(PatientMappingProfile));
 
 var app = builder.Build();
 

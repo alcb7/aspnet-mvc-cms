@@ -10,7 +10,12 @@ namespace Cms.Web.Api.MappingProfiles
         {
             CreateMap<DoctorCreateDto, DoctorEntity>().ReverseMap();
             CreateMap<DoctorUpdateDto, DoctorEntity>().ReverseMap();
-            
+            CreateMap<AdminUpdateDto, AdminEntity>().ReverseMap();
+            CreateMap<AdminCreateDto, AdminEntity>().ReverseMap();
+            CreateMap<PatientCreateDto, PatientEntity>().ReverseMap();
+            CreateMap<PatientUpdateDto, PatientEntity>().ReverseMap();
+
+
 
 
 
