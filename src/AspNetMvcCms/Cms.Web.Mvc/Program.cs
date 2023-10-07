@@ -9,11 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 
-var connStr = builder.Configuration.GetConnectionString("Default");
-if (string.IsNullOrWhiteSpace(connStr))
-{
-    throw new InvalidOperationException("Connection string is not found!");
-}
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {

@@ -1,5 +1,46 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model RegisterViewModel
+<h2>Register Form</h2>
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Error
+    </div>
 }
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.Message
+    </div>
+}
+
+<form asp-controller="Auth" asp-action="Register" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">First Name</label>
+        <input asp-for="Name" class="form-control">
+        <span asp-validation-for="Name" class="error-text"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Surname" class="form-label">LastName</label>
+        <input asp-for="Surname" class="form-control">
+        <span asp-validation-for="Surname" class="error-text"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control">
+        <span asp-validation-for="Email" class="error-text"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">Password</label>
+        <input asp-for="Password" class="form-control">
+        <span asp-validation-for="Password" class="error-text"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PasswordVerify" class="form-label">Repeat Password</label>
+        <input asp-for="PasswordVerify" class="form-control">
+        <span asp-validation-for="PasswordVerify" class="error-text"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+    <a asp-action="Login" asp-controller="Auth" class="btn btn-success">Login</a>
+</form>
+
+

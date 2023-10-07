@@ -32,10 +32,10 @@ namespace Cms.Data.Models.Entities
 
         [Required]
         [Phone]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
 
-        public string Address { get; set; } = string.Empty;
+        public string? Address { get; set; } = string.Empty;
         //public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
 
         //public string ResimYolu

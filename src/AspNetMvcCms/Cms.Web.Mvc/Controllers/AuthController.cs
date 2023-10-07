@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Net.Http.Json;
 using Cms.Web.Mvc.Models;
+using System.Text.Json.Serialization;
+using System.Text;
+using System.Text.Json;
 
 namespace Cms.Web.Mvc.Controllers
 {
@@ -94,33 +97,38 @@ namespace Cms.Web.Mvc.Controllers
             return View();
         }
 
-        ////[AllowAnonymous]
-        ////[HttpPost("register")]
-        ////public async Task<IActionResult> Register([FromForm] RegisterViewModel register)
-        ////{
-        ////    if (!ModelState.IsValid)
-        ////    {
-        ////        return View(register);
-        ////    }
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromForm] RegisterViewModel register)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(register);
+            }
 
-        ////    if (register.Password != register.PasswordVerify)
-        ////    {
-        ////        ViewBag.Error = "Şifreler uyuşmuyor";
-        ////        return View(register);
-        ////    }
+            if (register.Password != register.PasswordVerify)
+            {
+                ViewBag.Error = "Şifreler uyuşmuyor";
+                return View(register);
+            }
 
-        ////    var user = new UserEntity
-        ////    {
-        ////        Name = register.Name,
-        ////        Surname = register.Surname,
-        ////        Email = register.Email,
-        ////        Password = register.Password
-        ////    };
+            var user = new DoctorEntity
+            {
+                Name = register.Name,
+                Surname = register.Surname,
+                Email = register.Email,
+                Password = register.Password
+            };
 
-        ////    _userRepository.Create(user);
+            var response = await _httpClient.PostAsJsonAsync(_apiUrl, user);
+            if (response.IsSuccessStatusCode)
+            {
+                ViewBag.Message = "Kullanıcı Başarıyla kaydedildi.";
+            }
+            
+            return View();
+        }
 
-        ////    ViewBag.Message = "Kullanıcı Başarıyla kaydedildi.";
-        ////    return View();
-        ////}
+
     }
 }

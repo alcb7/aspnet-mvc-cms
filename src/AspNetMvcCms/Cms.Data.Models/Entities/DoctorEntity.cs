@@ -14,7 +14,7 @@ namespace Cms.Data.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -32,18 +32,18 @@ namespace Cms.Data.Models.Entities
         [MinLength(8)]
         public string Password { get; set; } = string.Empty;
 
-        [Required]
+        
         [Phone]
-        public string Phone { get; set; } = string.Empty;
+        public string? Phone { get; set; } = string.Empty;
 
 
         [ForeignKey("CategoryId")]
-        public DoctorCategoryEntity Category { get; set; }
+        public DoctorCategoryEntity? Category { get; set; }
 
-        public string Address { get; set; } = string.Empty;
+        public string? Address { get; set; } = string.Empty;
         public string? ResimDosyaAdi { get; set; } 
 
-        public string ResimYolu
+        public string? ResimYolu
         {
             get
             {

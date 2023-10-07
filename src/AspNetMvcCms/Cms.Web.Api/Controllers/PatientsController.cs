@@ -24,26 +24,26 @@ namespace Cms.Web.Api.Controllers
         [HttpGet]
         public IEnumerable<PatientEntity> GetAll()
         {
-            var patients = _patientService.GetAll();
+            var doctors = _patientService.GetAll();
 
-            return patients;
+            return doctors;
         }
 
         // GET: api/Doctors/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync([FromRoute] int id)
         {
-            var patient = await _patientService.GetByIdAsync(id);
-            if (patient == null)
+            var doctor = await _patientService.GetByIdAsync(id);
+            if (doctor == null)
             {
                 return NotFound();
             }
-            return Ok(patient);
+            return Ok(doctor);
         }
 
         // POST: api/Doctors
         [HttpPost]
-        public async Task<IActionResult> AddAsync([FromBody] PatientCreateDto patientdto)
+        public async Task<IActionResult> AddAsync([FromBody] PatientCreateDto dto)
         {
             if (!ModelState.IsValid)
             {
@@ -51,9 +51,9 @@ namespace Cms.Web.Api.Controllers
             }
             try
             {
-                var mapp = _mapper.Map<PatientEntity>(patientdto);
-                var patient = await _patientService.AddAsync(mapp);
-                return Ok(patient);
+                var mapp = _mapper.Map<PatientEntity>(dto);
+                var doctor = await _patientService.AddAsync(mapp);
+                return Ok(doctor);
             }
             catch (Exception e)
             {
@@ -65,9 +65,9 @@ namespace Cms.Web.Api.Controllers
 
         // PUT: api/Doctors/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, [FromBody] PatientUpdateDto patientdto)
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] PatientUpdateDto dto)
         {
-            if (patientdto.Id != id)
+            if (dto.Id != id)
                 return BadRequest();
             if (!ModelState.IsValid)
             {
@@ -75,9 +75,9 @@ namespace Cms.Web.Api.Controllers
             }
             try
             {
-                var patientmapp = _mapper.Map<PatientEntity>(patientdto);
-                var patient = await _patientService.UpdateAsync(id, patientmapp);
-                return Ok(patient);
+                var mapp = _mapper.Map<PatientEntity>(dto);
+                var doctor = await _patientService.UpdateAsync(id, mapp);
+                return Ok(doctor);
             }
             catch (Exception e)
             {
