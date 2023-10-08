@@ -9,7 +9,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
 		private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
 		private readonly string _apiPatient = "https://localhost:7188/api/Patients";
-		public PanelController(HttpClient httpClient)
+        private readonly string _apiBlog = "https://localhost:7188/api/Blogs";
+        public PanelController(HttpClient httpClient)
 		{
 			_httpClient = httpClient;
 		}
@@ -26,5 +27,11 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
 			return View(model);
 		}
-	}
+        public async Task<ActionResult> Blogs()
+        {
+            var model = await _httpClient.GetFromJsonAsync<List<BlogEntity>>(_apiBlog);
+
+            return View(model);
+        }
+    }
 }
