@@ -37,8 +37,10 @@ namespace Cms.Data.Models.Entities
         public string? Phone { get; set; } = string.Empty;
 
 
-        [ForeignKey("CategoryId")]
+        [ForeignKey(nameof(CategoryId))]
         public DoctorCategoryEntity? Category { get; set; }
+
+        public ICollection<AppointmentEntity> Appointments { get; set; }
 
         public string? Address { get; set; } = string.Empty;
         public string? ResimDosyaAdi { get; set; } 
@@ -54,6 +56,6 @@ namespace Cms.Data.Models.Entities
                 return null;
             }
         }
-        public string Cv { get; set; } = string.Empty;
+        public string? Cv { get; set; } = string.Empty;
     }
 }

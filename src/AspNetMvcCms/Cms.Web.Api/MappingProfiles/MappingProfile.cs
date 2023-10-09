@@ -14,7 +14,8 @@ namespace Cms.Web.Api.MappingProfiles
             CreateMap<AdminCreateDto, AdminEntity>().ReverseMap();
             CreateMap<PatientCreateDto, PatientEntity>().ReverseMap();
             CreateMap<PatientUpdateDto, PatientEntity>().ReverseMap();
-
+            CreateMap<BlogCreateDto, BlogEntity>().ReverseMap();
+            CreateMap<BlogUpdateDto, BlogEntity>().ReverseMap();
 
 
 
