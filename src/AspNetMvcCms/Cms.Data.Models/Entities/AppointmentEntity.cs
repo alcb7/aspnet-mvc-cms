@@ -18,10 +18,10 @@ namespace Cms.Data.Models.Entities
         public int? PatientId { get; set; }
         public DateTime DateTime { get; set; }
        
-        //[ForeignKey(nameof(DoctorId))]
+        [ForeignKey(nameof(DoctorId))]
         public DoctorEntity? Doctor { get; set; }
 
-        //[ForeignKey(nameof(PatientId))]
+        [ForeignKey(nameof(PatientId))]
         public PatientEntity? Patient { get; set; }
 
 
