@@ -1,4 +1,5 @@
-﻿using Cms.Services.Abstract;
+﻿using Cms.Data.Context;
+using Cms.Services.Abstract;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -8,9 +9,9 @@ namespace Cms.Services.Concrete
 {
     public class DataRepository<TEntity> : IDataRepository<TEntity> where TEntity : class, new()
     {
-        private readonly DbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public DataRepository(DbContext dbContext)
+        public DataRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
