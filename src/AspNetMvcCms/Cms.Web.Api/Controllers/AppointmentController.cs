@@ -19,7 +19,7 @@ namespace Cms.Web.Api.Controllers
         [HttpGet]
         public IEnumerable<AppointmentEntity> GetAll()
         {
-            var doctors = _appointmentService.GetAll().ToList();
+            var doctors = _appointmentService.GetAll();
 
             return doctors;
         }
