@@ -1,0 +1,28 @@
+﻿@using Cms.Data.Models.Entities;
+@model List<BlogEntity>
+
+<div class="row ml-2 mt-3">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-6 col-lg-4 mb-4">
+            <div class="blog grid-blog">
+                <div class="blog-image">
+                    <img src="~/@item.ResimDosyaAdi" alt="blog-image" class="img-fluid w-100">
+                </div>
+                <div class="blog-content">
+                    <h3 class="blog-title"><a href="blog-details.html">@item.Title</a></h3>
+                    <p>@item.Description</p>
+                    <a href="blog-details.html" class="read-more"><i class="fa fa-long-arrow-right"></i> Read More</a>
+                    <div class="blog-info clearfix">
+                        <div class="post-left">
+                            <ul>
+                                <li><a href="#."><i class="fa fa-calendar"></i> <span>@item?.Category?.Title</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="post-right"><a href="#."><i class="fa fa-heart-o"></i>21</a> <a href="#."><i class="fa fa-eye"></i>8</a> <a href="#."><i class="fa fa-comment-o"></i>17</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

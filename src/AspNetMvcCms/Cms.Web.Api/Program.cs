@@ -23,11 +23,15 @@ builder.Services.AddScoped<IDataRepository<AdminEntity>, DataRepository<AdminEnt
 builder.Services.AddScoped<IDataRepository<PatientEntity>, DataRepository<PatientEntity>>();
 builder.Services.AddScoped<IDataRepository<NavbarEntity>, DataRepository<NavbarEntity>>();
 builder.Services.AddScoped<IDataRepository<BlogEntity>, DataRepository<BlogEntity>>();
+builder.Services.AddScoped<IDataRepository<AppointmentEntity>, DataRepository<AppointmentEntity>>();
+
 
 builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IPatientService, PatientService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

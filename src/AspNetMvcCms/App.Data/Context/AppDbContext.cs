@@ -68,6 +68,23 @@ namespace Cms.Data.Context
            new BlogCategoryEntity { Id = 5, Title = "Lab test " }
 
            );
+            modelBuilder.Entity<AppointmentEntity>().HasData(
+         new AppointmentEntity { Id = 1, PatientId = 1,DoctorId=1,DateTime= DateTime.UtcNow},
+         new AppointmentEntity { Id = 2, PatientId = 2, DoctorId = 2, DateTime = DateTime.UtcNow },
+         new AppointmentEntity { Id = 3, PatientId = 1, DoctorId = 3, DateTime = DateTime.UtcNow },
+          new AppointmentEntity { Id = 4, PatientId = 2, DoctorId = 4, DateTime = DateTime.UtcNow },
+         new AppointmentEntity { Id = 5, PatientId = 1, DoctorId = 5, DateTime = DateTime.UtcNow }
+
+         );
+            modelBuilder.Entity<AppointmentEntity>()
+               .HasOne(a => a.Doctor)
+               .WithMany(d => d.Appointments)
+               .HasForeignKey(a => a.DoctorId);
+
+            modelBuilder.Entity<AppointmentEntity>()
+                .HasOne(a => a.Patient)
+                .WithMany(p => p.Appointments)
+                .HasForeignKey(a => a.PatientId);
 
             modelBuilder.Entity<PatientEntity>().HasData(
           new PatientEntity

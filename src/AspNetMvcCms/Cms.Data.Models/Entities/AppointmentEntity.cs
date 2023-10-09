@@ -13,6 +13,20 @@ namespace Cms.Data.Models.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        public int? DoctorId { get; set; }
+        public int? PatientId { get; set; }
         public DateTime DateTime { get; set; }
+       
+        //[ForeignKey(nameof(DoctorId))]
+        public DoctorEntity? Doctor { get; set; }
+
+        //[ForeignKey(nameof(PatientId))]
+        public PatientEntity? Patient { get; set; }
+
+
+
+
+
     }
 }
