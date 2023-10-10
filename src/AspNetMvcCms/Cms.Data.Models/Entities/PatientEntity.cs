@@ -38,8 +38,6 @@ namespace Cms.Data.Models.Entities
 		[DataType(DataType.PhoneNumber)]
 		public string? Phone { get; set; }
 
-        public ICollection<AppointmentEntity> Appointments { get; set; }
-
 
         public string? Address { get; set; } = string.Empty;
         //public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
