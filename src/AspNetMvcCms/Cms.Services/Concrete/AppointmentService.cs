@@ -29,6 +29,8 @@ namespace Cms.Services.Concrete
 
             // Veritabanına yeni bir doktor eklemek için Repository kullanılır.
             return await _appointmentrepository.AddAsync(entity);
+                //.Include(d => d.Patient)
+                //.Include(d => d.Doctor);
         }
 
         public async Task<bool> DeleteAsync(int id)
@@ -41,9 +43,10 @@ namespace Cms.Services.Concrete
         {
             // Tüm doktorları almak için Repository kullanılır.
             //return _appointmentrepository.GetAll();
-            return _appDbContext.Appointments
+            return _appointmentrepository.GetAll()
                 .Include(d => d.Patient)
-                .Include(d => d.Doctor);
+                .Include(d => d.Doctor)
+                .Include(d => d.Category);
                
 
         }
