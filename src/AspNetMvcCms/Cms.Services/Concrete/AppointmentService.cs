@@ -13,12 +13,12 @@ namespace Cms.Services.Concrete
     
         public class AppointmentService : IAppointmentService
         {
-        private readonly IAppointmentService _appointmentrepository;
+        
         private readonly AppDbContext _appDbContext;
 
-        public AppointmentService(IAppointmentService appointmentrepository, AppDbContext appDbContext)
+        public AppointmentService(AppDbContext appDbContext)
         {
-            _appointmentrepository = appointmentrepository;
+            
             _appDbContext = appDbContext;
         }
 
@@ -30,7 +30,7 @@ namespace Cms.Services.Concrete
             }
 
             // Veritabanına yeni bir doktor eklemek için Repository kullanılır.
-            return    _appointmentrepository.AppointmentAddAsync(entity);
+            return    AppointmentAddAsync(entity);
         }
 
         public Task<bool> AppointmentDeleteAsync(int id)
