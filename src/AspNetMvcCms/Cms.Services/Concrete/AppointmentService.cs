@@ -10,50 +10,62 @@ using System.Threading.Tasks;
 
 namespace Cms.Services.Concrete
 {
-    
-        public class AppointmentService : IAppointmentService
-        {
-        
+    public class AppointmentService : IAppointmentService
+    {
+        private readonly IDataRepository<AppointmentEntity> _appointmentrepository;
         private readonly AppDbContext _appDbContext;
-
-        public AppointmentService(AppDbContext appDbContext)
+        public AppointmentService(IDataRepository<AppointmentEntity> appointmentrepository, AppDbContext appDbContext)
         {
-            
+            _appointmentrepository = appointmentrepository;
             _appDbContext = appDbContext;
         }
 
-        public  Task AppointmentAddAsync(AppointmentEntity entity)
-            {
+        public async Task<AppointmentEntity> AddAsync(AppointmentEntity entity)
+        {
             if (entity == null)
             {
                 throw new ArgumentNullException(nameof(entity));
             }
 
             // Veritabanına yeni bir doktor eklemek için Repository kullanılır.
-            return    AppointmentAddAsync(entity);
+            return await _appointmentrepository.AddAsync(entity);
+                //.Include(d => d.Patient)
+                //.Include(d => d.Doctor);
         }
 
-        public Task<bool> AppointmentDeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            // Veritabanından doktoru ID'ye göre silmek için Repository kullanılır.
+            return await _appointmentrepository.DeleteAsync(id);
         }
 
-        public IQueryable AppointmentGetAll()
-            {
-            return _appDbContext.Appointments
-                    .Include(d => d.Patient)
-                    .Include(d => d.Doctor);
-            }
+        public IQueryable<AppointmentEntity> GetAll()
+        {
+            // Tüm doktorları almak için Repository kullanılır.
+            //return _appointmentrepository.GetAll();
+            return _appointmentrepository.GetAll()
+                .Include(d => d.Patient)
+                .Include(d => d.Doctor)
+                .Include(d => d.Category);
+               
 
-            public Task AppointmentGetByIdAsync(int id)
-            {
-                throw new NotImplementedException();
-            }
-
-            public Task AppointmentUpdateAsync(int id, AppointmentEntity entity)
-            {
-                throw new NotImplementedException();
-            }
         }
-    
+
+        public async Task<AppointmentEntity?> GetByIdAsync(int id)
+        {
+            // Veritabanından doktoru ID'ye göre almak için Repository kullanılır.
+            return await _appointmentrepository.GetByIdAsync(id);
+        }
+
+        public async Task<AppointmentEntity?> UpdateAsync(int id, AppointmentEntity entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+
+            // Veritabanında doktoru güncellemek için Repository kullanılır.
+            return await _appointmentrepository.UpdateAsync(id, entity);
+        }
+    }
 }

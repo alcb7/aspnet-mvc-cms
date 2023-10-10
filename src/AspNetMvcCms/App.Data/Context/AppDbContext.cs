@@ -21,7 +21,7 @@ namespace Cms.Data.Context
         public DbSet<DoctorCommentEntity> DoctorComments { get; set; }
         public DbSet<BlogCategoryEntity> BlogCategories { get; set; }
         public DbSet<ServiceBlogEntity> ServiceBlogs { get; set; }
-        
+        public DbSet<AppointmentEntity> Appointments { get; set; }
         public DbSet<ContactEntity> Contacts { get; set; }
         public DbSet<DoctorCategoryEntity> DoctorCategories { get; set; }
         public DbSet<PopulerPostEntity> PopulerPosts { get; set; }
@@ -30,7 +30,6 @@ namespace Cms.Data.Context
         public DbSet<DepartmentEntity> Departments { get; set; }
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<BlogEntity> Blogs { get; set; }
-        public DbSet<AppointmentEntity> Appointments { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -70,15 +69,22 @@ namespace Cms.Data.Context
 
            );
             modelBuilder.Entity<AppointmentEntity>().HasData(
-new AppointmentEntity { Id = 1, PatientId = 1, DoctorId = 1, DateTime = DateTime.UtcNow },
-new AppointmentEntity { Id = 2, PatientId = 2, DoctorId = 2, DateTime = DateTime.UtcNow },
-new AppointmentEntity { Id = 3, PatientId = 1, DoctorId = 3, DateTime = DateTime.UtcNow },
- new AppointmentEntity { Id = 4, PatientId = 2, DoctorId = 4, DateTime = DateTime.UtcNow },
-new AppointmentEntity { Id = 5, PatientId = 1, DoctorId = 5, DateTime = DateTime.UtcNow }
+         new AppointmentEntity { Id = 1, PatientId = 1,DoctorId=1,DoctorCategoryId=1,DateTime= DateTime.UtcNow},
+         new AppointmentEntity { Id = 2, PatientId = 2, DoctorId = 2, DoctorCategoryId = 2, DateTime = DateTime.UtcNow },
+         new AppointmentEntity { Id = 3, PatientId = 1, DoctorId = 3, DoctorCategoryId = 3, DateTime = DateTime.UtcNow },
+          new AppointmentEntity { Id = 4, PatientId = 2, DoctorId = 4, DoctorCategoryId = 4, DateTime = DateTime.UtcNow },
+         new AppointmentEntity { Id = 5, PatientId = 1, DoctorId = 5, DoctorCategoryId = 5, DateTime = DateTime.UtcNow }
 
-);
+         );
+            //modelBuilder.Entity<AppointmentEntity>()
+            //   .HasOne(a => a.Doctor)
+            //   .WithMany(d => d.Appointments)
+            //   .HasForeignKey(a => a.DoctorId);
 
-
+            //modelBuilder.Entity<AppointmentEntity>()
+            //    .HasOne(a => a.Patient)
+            //    .WithMany(p => p.Appointments)
+            //    .HasForeignKey(a => a.PatientId);
 
             modelBuilder.Entity<PatientEntity>().HasData(
           new PatientEntity

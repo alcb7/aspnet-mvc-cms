@@ -16,6 +16,8 @@ namespace Cms.Web.Api.MappingProfiles
             CreateMap<PatientUpdateDto, PatientEntity>().ReverseMap();
             CreateMap<BlogCreateDto, BlogEntity>().ReverseMap();
             CreateMap<BlogUpdateDto, BlogEntity>().ReverseMap();
+            CreateMap<AppointmentCreateDto, AppointmentEntity>().ReverseMap();
+            CreateMap<AppointmentUpdateDto, AppointmentEntity>().ReverseMap();
 
 
 
