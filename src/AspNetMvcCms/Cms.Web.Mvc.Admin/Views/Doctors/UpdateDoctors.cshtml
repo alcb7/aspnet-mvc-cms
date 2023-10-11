@@ -1,0 +1,29 @@
+﻿@model DoctorViewModel
+
+<div class="page-wrapper">
+    <div class="content">
+        <form asp-action="UpdateDoctors" asp-controller="Doctors" method="post">
+            <div class="form-group">
+                <label for="Id">Id:</label>
+                <input asp-for="Id" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="Surname">Surname:</label>
+                <textarea asp-for="Surname" class="form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+
+                <label for="CategoryId">CategoryId:</label>
+                <textarea asp-for="CategoryId" class="form-control"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
