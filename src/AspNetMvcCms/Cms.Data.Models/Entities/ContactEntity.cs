@@ -16,7 +16,7 @@ namespace Cms.Data.Models.Entities
 
         [Required]
         [StringLength(50)]
-        public string Name { get; set; } = string.Empty;
+        public string Fullname { get; set; } = string.Empty;
 
         [Required]
         public string Topic { get; set; } = string.Empty;
@@ -29,7 +29,8 @@ namespace Cms.Data.Models.Entities
         [Required]
         [Phone]
         public string Phone { get; set; } = string.Empty;
-
+       
+        [Required]
         public string Text { get; set; }
     }
 }
