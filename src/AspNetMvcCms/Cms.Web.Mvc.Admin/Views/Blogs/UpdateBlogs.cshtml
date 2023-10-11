@@ -1,9 +1,12 @@
 ﻿@model BlogViewModel
-@* @using Cms.Data.Models.Entities;
-@model List<BlogEntity> *@
+
 <div class="page-wrapper">
     <div class="content">
-        <form asp-action="AddBlogs" asp-controller="Blogs" method="post">
+        <form asp-action="UpdateBlogs" asp-controller="Blogs" method="post">
+            <div class="form-group">
+                <label for="Id">Id:</label>
+                <input asp-for="Id" class="form-control" />
+            </div>
             <div class="form-group">
                 <label for="Title">Title:</label>
                 <input asp-for="Title" class="form-control" />

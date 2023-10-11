@@ -71,6 +71,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
             // Blog bilgilerini bir DTO'ya aktarabilirsiniz
             var blogDto = new BlogViewModel
             {
+                Id=id,
                 Title = blog.Title,
                 Description = blog.Description,
                 BlogCategoryId = blog.BlogCategoryId
@@ -89,6 +90,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
             var blogEntity = new BlogEntity
             {
+                Id = id,
                 Title = dto.Title,
                 Description = dto.Description,
                 BlogCategoryId = dto.BlogCategoryId

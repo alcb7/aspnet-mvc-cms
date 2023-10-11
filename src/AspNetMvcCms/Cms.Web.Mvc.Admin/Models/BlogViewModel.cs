@@ -4,6 +4,7 @@ namespace Cms.Web.Mvc.Admin.Models
 {
     public class BlogViewModel
     {
+        [Required]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "İsim zorunludur.")]
