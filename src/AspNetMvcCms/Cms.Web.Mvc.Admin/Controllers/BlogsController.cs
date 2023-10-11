@@ -1,6 +1,8 @@
 ﻿using Cms.Data.Models.Entities;
-using Cms.Web.Mvc.Admin.DTOs;
+
+using Cms.Web.Mvc.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -11,12 +13,12 @@ namespace Cms.Web.Mvc.Admin.Controllers
     public class BlogsController : Controller
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiBlog; // API URL'sini burada tanımlayın
+
+        private readonly string _apiBlog = "https://localhost:7188/api/Blogs";
 
         public BlogsController(HttpClient httpClient)
         {
             _httpClient = httpClient;
-            _apiBlog = "https://localhost:7188/api/Blogs"; // API URL'sini burada ayarlayın
         }
 
         public async Task<ActionResult> GetBlogs()
@@ -24,100 +26,86 @@ namespace Cms.Web.Mvc.Admin.Controllers
             var model = await _httpClient.GetFromJsonAsync<List<BlogEntity>>(_apiBlog);
             return View(model);
         }
-        
-        [HttpPost]
-        public async Task<ActionResult> AddBlogs([FromBody] BlogCreateDto dto)
+
+        [HttpGet]
+        public IActionResult AddBlogs()
         {
-            // Öncelikle customer nesnesini BlogEntity'ye çevirin veya uygun veri yapısına dönüştürün
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> AddBlogs(BlogViewModel dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(dto);
+            }
+
+           
             var blogEntity = new BlogEntity
             {
-                // CustomerModel'den alınan verileri BlogEntity'ye kopyalayın
-                // Örnek: blogEntity.Name = customer.Name;
+              
                 Title = dto.Title,
                 Description =dto.Description,
                 BlogCategoryId = dto.BlogCategoryId
                 
             };
+            var response = await _httpClient.PostAsJsonAsync(_apiBlog, blogEntity);
+            if (response.IsSuccessStatusCode)
+            {
+                ViewBag.Message = "Blog Başarıyla kaydedildi.";
+            }
 
-            HttpResponseMessage response = await _httpClient.PostAsJsonAsync(_apiBlog, blogEntity);
+            return View(dto);
+         
+        }
+        [HttpGet]
+        public async Task<ActionResult> UpdateBlogs(int id)
+        {
+            // İlgili blogun bilgilerini almak için id kullanın
+            var blog = await _httpClient.GetFromJsonAsync<BlogEntity>($"{_apiBlog}/{id}");
+            if (blog == null)
+            {
+                return NotFound(); // Blog bulunamadıysa 404 hatası döndürün veya başka bir işlem yapın.
+            }
+
+            // Blog bilgilerini bir DTO'ya aktarabilirsiniz
+            var blogDto = new BlogViewModel
+            {
+                Title = blog.Title,
+                Description = blog.Description,
+                BlogCategoryId = blog.BlogCategoryId
+            };
+
+            return View(blogDto);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> UpdateBlogs(int id, BlogViewModel dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(dto);
+            }
+
+            var blogEntity = new BlogEntity
+            {
+                Title = dto.Title,
+                Description = dto.Description,
+                BlogCategoryId = dto.BlogCategoryId
+            };
+
+            // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin
+            var response = await _httpClient.PutAsJsonAsync($"{_apiBlog}/{id}", blogEntity);
 
             if (response.IsSuccessStatusCode)
             {
-                // Başarılı ekleme işlemi
-                return RedirectToAction("Index");
+                ViewBag.Message = "Blog Başarıyla güncellendi.";
             }
-            else
-            {
-                // Hata durumu
-                ModelState.AddModelError(string.Empty, "Ekleme işlemi başarısız.");
-                return View(dto);
-            }
+
+            return View(dto);
         }
-        //[HttpPost]
-        //public async Task<ActionResult> AddBlogs(CustomerModel customer)
-        //{
-        //    var model = await _httpClient.PostAsJsonAsync<BlogEntity>(_apiBlog);
 
-        //    if (model.IsSuccessStatusCode)
-        //    {
-        //        // Başarılı ekleme işlemi
-        //        return RedirectToAction("Index");
-        //    }
-        //    else
-        //    {
-        //        // Hata durumu
-        //        ModelState.AddModelError(string.Empty, "Ekleme işlemi başarısız.");
-        //        return View(customer);
-        //    }
-        //}
-        //[HttpPost]
-        //public ActionResult AddBlog(BlogEntity blog)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        // Blog verilerini veritabanına kaydedin
-        //        // Örnek olarak Entity Framework kullanımı:
-        //        // dbContext.Blogs.Add(blog);
-        //        // dbContext.SaveChanges();
-        //        return RedirectToAction("GetBlogs", "Blogs"); // Blog listesine geri dön
-        //    }
-        //    return View(blog); // Hata durumunda formu tekrar göster
-        //}
-        //    [HttpPost]
-        //    public async Task<ActionResult> AddBlogs(BlogEntity blog)
-        //    {
-        //        try
-        //        {
-        //            if (ModelState.IsValid)
-        //            {
-        //                var jsonBlog = JsonConvert.SerializeObject(blog);
-        //                var content = new StringContent(jsonBlog, Encoding.UTF8, "application/json");
 
-        //                var response = await _httpClient.PostAsync(_apiBlog, content); // API URL'sini kullanarak POST isteği yapın
-
-        //                if (response.IsSuccessStatusCode)
-        //                {
-        //                    TempData["SuccessMessage"] = "Blog başarıyla eklendi ve API'ye gönderildi.";
-        //                    return RedirectToAction("GetBlogs", "Blogs");
-        //                }
-        //                else
-        //                {
-        //                    TempData["ErrorMessage"] = "Blog eklenirken bir hata oluştu. API'ye gönderme başarısız.";
-        //                }
-        //            }
-        //            else
-        //            {
-        //                ModelState.AddModelError(string.Empty, "Blog verileri geçerli değil. Lütfen gerekli alanları doldurun.");
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            TempData["ErrorMessage"] = "Blog eklenirken bir hata oluştu. Lütfen tekrar deneyin.";
-        //        }
-
-        //        return View(blog);
-        //    }
-        //}
 
     }
 

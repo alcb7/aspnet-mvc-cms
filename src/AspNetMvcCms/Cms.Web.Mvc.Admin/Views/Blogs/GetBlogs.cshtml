@@ -6,9 +6,13 @@
             <div class="col-sm-8 col-4">
                 <h4 class="page-title">Blog</h4>
             </div>
-            <div class="col-sm-4 col-8 text-right m-b-30">
+           @*  <div class="col-sm-4 col-8 text-right m-b-30">
                 <a asp-action="AddBlogs" asp-controller="Blogs" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Blog</a>
+            </div> *@
+            <div class="col-sm-4 col-8 text-right m-b-30">
+                <a href="/Blogs/AddBlogs" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Blog</a>
             </div>
+
         </div>
         <div class="row">
             @foreach (var item in Model)
@@ -28,6 +32,12 @@
                                         <li><a href="#."><i class="fa fa-calendar"></i> <span>@item?.Category?.Title</span></a></li>
                                     </ul>
                                 </div>
+                                <div>
+                                    <a asp-action="UpdateBlogs" asp-controller="Blogs" asp-route-id="@item.Id" class="dropdown-item">
+                                        <i class="fa fa-pencil m-r-5"></i> Edit
+                                    </a>
+                                </div>
+
                                 <div class="post-right"><a href="#."><i class="fa fa-heart-o"></i>21</a> <a href="#."><i class="fa fa-eye"></i>8</a> <a href="#."><i class="fa fa-comment-o"></i>17</a></div>
                             </div>
                         </div>

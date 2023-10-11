@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cms.Web.Mvc.Admin.DTOs
+namespace Cms.Web.Mvc.Admin.Models
 {
-    public class BlogUpdateDto
+    public class BlogViewModel
     {
-        [Required]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "İsim zorunludur.")]
