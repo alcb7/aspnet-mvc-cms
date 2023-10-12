@@ -144,7 +144,13 @@ namespace Cms.Data.Context
             new DoctorCategoryEntity() { Id = 6, Name = "Traumatology" }
 
                  );
-          
+            modelBuilder.Entity<ContactEntity>().HasData(
+             new ContactEntity() { Id = 1, Fullname = "Mehmet Kirişoğlu", Email = "aliriza@canbulan.com",Phone = "05554443322", Topic="FDFSDF",Text = "fldşjsfşdjsşf"},
+             new ContactEntity() { Id = 2, Fullname = "Ali Rıza Canbulan", Email = "aliriza@canbulan.com", Phone = "05554443322" , Topic = "FDFSDF", Text = "fldşjsfşdjsşf" },
+             new ContactEntity() { Id = 3, Fullname = "Rıza Argun", Email = "aliriza@canbulan.com", Phone = "05554443322", Topic = "FDFSDF", Text = "fldşjsfşdjsşf" }
+           
+
+                  );
 
             base.OnModelCreating(modelBuilder);
         }

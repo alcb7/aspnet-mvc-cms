@@ -24,7 +24,7 @@ builder.Services.AddScoped<IDataRepository<PatientEntity>, DataRepository<Patien
 builder.Services.AddScoped<IDataRepository<NavbarEntity>, DataRepository<NavbarEntity>>();
 builder.Services.AddScoped<IDataRepository<BlogEntity>, DataRepository<BlogEntity>>();
 builder.Services.AddScoped<IDataRepository<AppointmentEntity>, DataRepository<AppointmentEntity>>();
-
+builder.Services.AddScoped<IDataRepository<ContactEntity>, DataRepository<ContactEntity>>();
 
 builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IPatientService, PatientService>();

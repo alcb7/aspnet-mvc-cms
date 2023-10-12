@@ -14,7 +14,7 @@ namespace Cms.Data.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int? CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         [Required]
         [StringLength(50)]
