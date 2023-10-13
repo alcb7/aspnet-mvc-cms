@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Services", "Cms.Service
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Web.Mvc.Patient", "Cms.Web.Mvc.Patient\Cms.Web.Mvc.Patient.csproj", "{A8F71433-5623-476C-BE61-2B5D66620863}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cms.Web.Mvc.Admin", "Cms.Web.Mvc.Admin\Cms.Web.Mvc.Admin.csproj", "{3DA45D41-484B-470F-8409-FA786B2BA20F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Web.Mvc.Admin", "Cms.Web.Mvc.Admin\Cms.Web.Mvc.Admin.csproj", "{3DA45D41-484B-470F-8409-FA786B2BA20F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cms.Web.Mvc.Doctor", "Cms.Web.Mvc.Doctor\Cms.Web.Mvc.Doctor.csproj", "{EEBFA46B-0E05-477A-ACD6-29F13697F177}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{3DA45D41-484B-470F-8409-FA786B2BA20F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DA45D41-484B-470F-8409-FA786B2BA20F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DA45D41-484B-470F-8409-FA786B2BA20F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEBFA46B-0E05-477A-ACD6-29F13697F177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEBFA46B-0E05-477A-ACD6-29F13697F177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEBFA46B-0E05-477A-ACD6-29F13697F177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEBFA46B-0E05-477A-ACD6-29F13697F177}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
