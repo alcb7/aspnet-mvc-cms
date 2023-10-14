@@ -37,7 +37,7 @@ namespace Cms.Data.Context
             modelBuilder.Entity<DoctorEntity>().HasData(
                new DoctorEntity { Id = 1, Name = "Ali Rıza ", Surname = "Canbulan", Email = "aliriza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 1, ResimDosyaAdi = "team/1.jpg" },
                new DoctorEntity { Id = 2, Name = "xxx ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 2, ResimDosyaAdi = "team/2.jpg" },
-               new DoctorEntity { Id = 3, Name = "yyyy ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 3, ResimDosyaAdi = "team/3.jpg" },
+               new DoctorEntity { Id = 3, Name = "yyyy ", Surname = "Canbulan", Email = "mehmet@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 3, ResimDosyaAdi = "team/3.jpg" },
                new DoctorEntity { Id = 4, Name = "bbb ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, ResimDosyaAdi = "team/4.jpg" },
                new DoctorEntity { Id = 5, Name = "nnnn", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 5, ResimDosyaAdi = "team/1.jpg" },
                new DoctorEntity { Id = 6, Name = "yyyy", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 6, ResimDosyaAdi = "team/2.jpg" },
@@ -70,7 +70,7 @@ namespace Cms.Data.Context
            );
             modelBuilder.Entity<AppointmentEntity>().HasData(
          new AppointmentEntity { Id = 1, PatientId = 1,DoctorId=1,DoctorCategoryId=1,DateTime= DateTime.UtcNow},
-         new AppointmentEntity { Id = 2, PatientId = 2, DoctorId = 1, DoctorCategoryId = 2, DateTime = DateTime.UtcNow },
+         new AppointmentEntity { Id = 2, PatientId = 2, DoctorId = 3, DoctorCategoryId = 2, DateTime = DateTime.UtcNow },
          new AppointmentEntity { Id = 3, PatientId = 1, DoctorId = 3, DoctorCategoryId = 3, DateTime = DateTime.UtcNow },
           new AppointmentEntity { Id = 4, PatientId = 2, DoctorId = 4, DoctorCategoryId = 4, DateTime = DateTime.UtcNow },
          new AppointmentEntity { Id = 5, PatientId = 1, DoctorId = 5, DoctorCategoryId = 5, DateTime = DateTime.UtcNow }

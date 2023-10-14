@@ -1,5 +1,6 @@
 ﻿using Cms.Data.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Cms.Web.Mvc.Doctor.Controllers
 {
@@ -20,13 +21,28 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 
 		//	return View(model);
 		//}
-		[HttpGet("{id}")]
+		//[HttpGet("{id}")]
+		//public async Task<ActionResult> GetAppointments(int id)
+		//{
+		//	var model = await _httpClient.GetFromJsonAsync<List<AppointmentEntity>>(_apiAppointment + id);
+
+		//	return View(model);
+		//}
+
 		public async Task<ActionResult> GetAppointments(int id)
 		{
+			// Doktorun randevularını API'den çekmek için gerekli isteği yapın.
 			var model = await _httpClient.GetFromJsonAsync<List<AppointmentEntity>>(_apiAppointment + id);
+
+			// Giriş yapan kullanıcının kimliğini alın
+			var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
+
+			// ViewBag veya ViewData ile kullanıcı kimliğini görünüme aktarabilirsiniz.
+			ViewBag.UserId = userId;
 
 			return View(model);
 		}
+
 		[HttpPost]
 		public async Task<ActionResult> DeleteAppointments(int id)
 		{
