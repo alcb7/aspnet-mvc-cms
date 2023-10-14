@@ -13,28 +13,24 @@
 			</div>
 			<div class="col-lg-6">
 				<div class="text-lg-right top-right-bar mt-2 mt-lg-0">
-					<a href="tel:+23-345-67890">
-						<span>Call Now : </span>
-						<span class="h4">823-4565-13456</span>
-					</a>
+					
+
+					@{
+						if (girisyapti)
+						{
+							<ul class="nav-item ms-auto">
+								<a class="nav-link text-white" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+							</ul>
+						}
+						else
+						{
+							<ul class="nav-item ms-auto">
+								<a class="nav-link text-white" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+							</ul>
+						}
+					}
 				</div>
 			</div>
-			<span>
-				@{
-					if (girisyapti)
-					{
-						<li class="nav-item ms-auto">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
-						</li>
-					}
-					else
-					{
-						<li class="nav-item ms-auto">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
-						</li>
-					}
-				}
-			</span>
 		</div>
 	</div>
 </div>

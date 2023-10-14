@@ -8,15 +8,22 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 		private readonly HttpClient _httpClient;
 
 
-		private readonly string _apiAppointment = "https://localhost:7188/api/Appointment";
+		private readonly string _apiAppointment = "https://localhost:7188/api/Appointment/";
 		public AppointmentsController(HttpClient httpClient)
 		{
 			_httpClient = httpClient;
 		}
 
-		public async Task<ActionResult> GetAppointments()
+		//public async Task<ActionResult> GetAppointments()
+		//{
+		//	var model = await _httpClient.GetFromJsonAsync<List<AppointmentEntity>>(_apiAppointment);
+
+		//	return View(model);
+		//}
+		[HttpGet("{id}")]
+		public async Task<ActionResult> GetAppointments(int id)
 		{
-			var model = await _httpClient.GetFromJsonAsync<List<AppointmentEntity>>(_apiAppointment);
+			var model = await _httpClient.GetFromJsonAsync<List<AppointmentEntity>>(_apiAppointment + id);
 
 			return View(model);
 		}

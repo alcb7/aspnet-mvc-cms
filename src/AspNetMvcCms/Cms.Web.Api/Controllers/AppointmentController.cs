@@ -29,20 +29,27 @@ namespace Cms.Web.Api.Controllers
             return doctors;
         }
 
-        // GET: api/Doctors/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetByIdAsync([FromRoute] int id)
-        {
-            var doctor = await _appointmentService.GetByIdAsync(id);
-            if (doctor == null)
-            {
-                return NotFound();
-            }
-            return Ok(doctor);
-        }
+        //// GET: api/Doctors/5
+        ////[HttpGet("{id}")]
+        ////public async Task<IActionResult> GetByIdAsync([FromRoute] int id)
+        ////{
+        ////    var doctor = await _appointmentService.GetByIdAsync(id);
+        ////    if (doctor == null)
+        ////    {
+        ////        return NotFound();
+        ////    }
+        ////    return Ok(doctor);
+        ////}
+		[HttpGet("{id}")]
+		public IEnumerable<AppointmentEntity> GetByDoctorId(int id)
+		{
+			var doctorAppointments = _appointmentService.GetByDoctorId(id);
 
-        // POST: api/Doctors
-        [HttpPost]
+			return doctorAppointments;
+		}
+
+		// POST: api/Doctors
+		[HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] AppointmentCreateDto dto)
         {
             if (!ModelState.IsValid)
