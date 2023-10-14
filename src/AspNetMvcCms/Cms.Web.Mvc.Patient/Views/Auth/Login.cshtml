@@ -25,10 +25,17 @@
     </div>
     <button type="submit" class="btn btn-primary me-3">Login</button>
     <a asp-action="Register" asp-controller="Auth" class="btn btn-success">Register</a>
+    
    
-    <a href="https://localhost:7154/login">
-        <button type="submit">Submit to another page</button>
-    </a>
+
 </form>
+
+<form action="https://localhost:7019/login" method="get">
+    <button type="submit" class="btn btn-primary me-3">Admin Login</button>
+</form>
+<form action="https://localhost:7154/login" method="get">
+    <button type="submit" class="btn btn-primary me-3">Doctor Login</button>
+</form>
+
 
 

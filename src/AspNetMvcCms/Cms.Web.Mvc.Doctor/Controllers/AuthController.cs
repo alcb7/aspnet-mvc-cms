@@ -9,7 +9,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 {
 	public class AuthController : Controller
 	{
-		private readonly string _apiUrl = "https://localhost:7188/api/Admins";
+		private readonly string _apiUrl = "https://localhost:7188/api/Doctors";
 		private readonly HttpClient _httpClient; // Client
 
 		public AuthController(HttpClient httpClient) // Dependency injection ile HttpClient ekleyin
@@ -36,7 +36,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 
 			if (response.IsSuccessStatusCode)
 			{
-				List<AdminEntity> model = await _httpClient.GetFromJsonAsync<List<AdminEntity>>(_apiUrl);
+				List<DoctorEntity> model = await _httpClient.GetFromJsonAsync<List<DoctorEntity>>(_apiUrl);
 
 				var mainModel = model.FirstOrDefault(u => u.Email == login.Email && u.Password == login.Password);
 
