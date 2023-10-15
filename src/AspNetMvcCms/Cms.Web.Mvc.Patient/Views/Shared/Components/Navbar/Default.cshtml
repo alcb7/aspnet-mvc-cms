@@ -53,10 +53,18 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="doctorsDropdown">
                                 <a class="dropdown-item" asp-controller="Doctors" asp-action="Index">Doctors</a>
-                                <a class="dropdown-item" asp-controller="Doctors" asp-action="Detail">Doctors Detail</a>
+                                @if (item.Doctors != null)
+                                {
+                                    @foreach (var doctor in item.Doctors)
+                                    {
+                                        <a class="dropdown-item" asp-controller="Doctors" asp-action="Index">@doctor.Name</a>
+                                    }
+                                }
                             </div>
                         </li>
                     }
+
+
                     else if (item.Name == "Blog")
                     {
                         <li class="nav-item dropdown">

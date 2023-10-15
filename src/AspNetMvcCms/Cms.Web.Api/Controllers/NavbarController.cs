@@ -12,9 +12,9 @@ namespace Cms.Web.Api.Controllers
     [ApiController]
     public class NavbarController : ControllerBase
     {
-        private readonly IDataRepository<NavbarEntity> _navbarService;
+        private readonly INavbarService _navbarService;
 
-        public NavbarController(IDataRepository<NavbarEntity> navbarService)
+        public NavbarController(INavbarService navbarService)
         {
             _navbarService = navbarService;
         }
