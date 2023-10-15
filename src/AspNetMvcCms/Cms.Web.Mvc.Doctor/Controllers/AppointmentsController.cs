@@ -29,13 +29,13 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 		//	return View(model);
 		//}
 
-		public async Task<ActionResult> GetAppointments(int id)
-		{
-			// Doktorun randevularını API'den çekmek için gerekli isteği yapın.
-			var model = await _httpClient.GetFromJsonAsync<List<AppointmentEntity>>(_apiAppointment + id);
+		public async Task<ActionResult> GetAppointments()
+        {
+            // Giriş yapan kullanıcının kimliğini alın
+            var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
 
-			// Giriş yapan kullanıcının kimliğini alın
-			var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
+            // Doktorun randevularını API'den çekmek için gerekli isteği yapın.
+            var model = await _httpClient.GetFromJsonAsync<List<AppointmentEntity>>(_apiAppointment + userId);
 
 			// ViewBag veya ViewData ile kullanıcı kimliğini görünüme aktarabilirsiniz.
 			ViewBag.UserId = userId;

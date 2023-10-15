@@ -30,6 +30,7 @@ namespace Cms.Data.Context
         public DbSet<DepartmentEntity> Departments { get; set; }
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<BlogEntity> Blogs { get; set; }
+        public DbSet<FileEntity> Files { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
