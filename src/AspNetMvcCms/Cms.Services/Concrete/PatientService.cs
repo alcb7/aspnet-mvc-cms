@@ -12,11 +12,11 @@ namespace Cms.Services.Concrete
     public class PatientService : IPatientService
     {
         private readonly IDataRepository<PatientEntity> _patientrepository;
-        private readonly AppDbContext _appDbContext;
-        public PatientService(IDataRepository<PatientEntity> patientrepository, AppDbContext appDbContext)
+        
+        public PatientService(IDataRepository<PatientEntity> patientrepository)
         {
             _patientrepository = patientrepository;
-            _appDbContext = appDbContext;
+            
         }
 
         public async Task<PatientEntity> AddAsync(PatientEntity entity)

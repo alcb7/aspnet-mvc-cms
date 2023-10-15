@@ -13,11 +13,11 @@ namespace Cms.Services.Concrete
 	public class AppointmentService : IAppointmentService
 	{
 		private readonly IDataRepository<AppointmentEntity> _appointmentrepository;
-		private readonly AppDbContext _appDbContext;
-		public AppointmentService(IDataRepository<AppointmentEntity> appointmentrepository, AppDbContext appDbContext)
+		
+		public AppointmentService(IDataRepository<AppointmentEntity> appointmentrepository)
 		{
 			_appointmentrepository = appointmentrepository;
-			_appDbContext = appDbContext;
+			
 		}
 
 		public async Task<AppointmentEntity> AddAsync(AppointmentEntity entity)

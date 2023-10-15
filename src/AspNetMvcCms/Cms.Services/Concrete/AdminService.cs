@@ -12,11 +12,11 @@ namespace Cms.Services.Concrete
     public class AdminService : IAdminService
     {
         private readonly IDataRepository<AdminEntity> _adminrepository;
-        private readonly AppDbContext _appDbContext;
-        public AdminService(IDataRepository<AdminEntity> adminrepository, AppDbContext appDbContext)
+        
+        public AdminService(IDataRepository<AdminEntity> adminrepository)
         {
             _adminrepository = adminrepository;
-            _appDbContext = appDbContext;
+            
         }
 
         public async Task<AdminEntity> AddAsync(AdminEntity entity)

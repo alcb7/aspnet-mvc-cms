@@ -36,12 +36,12 @@ namespace Cms.Data.Context
         {
             modelBuilder.Entity<DoctorEntity>().HasData(
                new DoctorEntity { Id = 1, Name = "Ali Rıza ", Surname = "Canbulan", Email = "aliriza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 1, ResimDosyaAdi = "team/1.jpg" },
-               new DoctorEntity { Id = 2, Name = "xxx ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 2, ResimDosyaAdi = "team/2.jpg" },
-               new DoctorEntity { Id = 3, Name = "yyyy ", Surname = "Canbulan", Email = "mehmet@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 3, ResimDosyaAdi = "team/3.jpg" },
-               new DoctorEntity { Id = 4, Name = "bbb ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, ResimDosyaAdi = "team/4.jpg" },
-               new DoctorEntity { Id = 5, Name = "nnnn", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 5, ResimDosyaAdi = "team/1.jpg" },
-               new DoctorEntity { Id = 6, Name = "yyyy", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 6, ResimDosyaAdi = "team/2.jpg" },
-               new DoctorEntity { Id = 7, Name = "Ali  ", Surname = "Canbulan", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, ResimDosyaAdi = "team/3.jpg" }
+               new DoctorEntity { Id = 2, Name = "Mehmet ", Surname = "Kirisoglu", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 2, ResimDosyaAdi = "team/2.jpg" },
+               new DoctorEntity { Id = 3, Name = "Ahmet ", Surname = "Canbulan", Email = "mehmet@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 3, ResimDosyaAdi = "team/3.jpg" },
+               new DoctorEntity { Id = 4, Name = "Huseyin ", Surname = "Canbulan", Email = "ali@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, ResimDosyaAdi = "team/4.jpg" },
+               new DoctorEntity { Id = 5, Name = "Kerem", Surname = "Canbulan", Email = "riza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 5, ResimDosyaAdi = "team/1.jpg" },
+               new DoctorEntity { Id = 6, Name = "Kum", Surname = "Canbulan", Email = "kum@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 6, ResimDosyaAdi = "team/2.jpg" },
+               new DoctorEntity { Id = 7, Name = "Gokhan  ", Surname = "Canbulan", Email = "gokhan@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, ResimDosyaAdi = "team/3.jpg" }
                );
 
             modelBuilder.Entity<DepartmentEntity>().HasData(
@@ -90,9 +90,9 @@ namespace Cms.Data.Context
           new PatientEntity
           {
               Id = 1,
-              Name = "Ali Rızaxx ",
-              Surname = "Canbulanxx",
-              Email = "aliriza@canbulanxx.com",
+              Name = "Ali Rıza ",
+              Surname = "Canbulan",
+              Email = "aliriza@canbulan.com",
               Phone = "05554443311",
               Password = "12345"
 
@@ -103,9 +103,9 @@ namespace Cms.Data.Context
           new PatientEntity
           {
               Id = 2,
-              Name = "mehmet ",
-              Surname = "Canbulanxx",
-              Email = "alirıza@canbulanxx.com",
+              Name = "Suleyman",
+              Surname = "Canbulan",
+              Email = "alirıza@canbulan.com",
               Phone = "05554443311",
               Password = "12345"
 
@@ -118,11 +118,11 @@ namespace Cms.Data.Context
                new AdminEntity
                {
                    Id = 1,
-                   Name = "Ali Rızaxxyy ",
-                   Surname = "Canbulanxxyy",
-                   Email = "aliriza@canbulanxxyy.com",
+                   Name = "Ali Rıza ",
+                   Surname = "Canbulan",
+                   Email = "aliriza@canbulan.com",
                    Phone = "05554442211",
-                   Password = "12345678"
+                   Password = "1234"
 
                }
                 );

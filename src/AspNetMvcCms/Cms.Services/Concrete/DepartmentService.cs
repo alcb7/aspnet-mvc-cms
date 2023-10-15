@@ -12,11 +12,11 @@ namespace Cms.Services.Concrete
 	public class DepartmentService : IDepartmentService
 	{
 		private readonly IDataRepository<DepartmentEntity> _repository;
-		private readonly AppDbContext _appDbContext;
-		public DepartmentService(IDataRepository<DepartmentEntity> repository, AppDbContext appDbContext)
+		
+		public DepartmentService(IDataRepository<DepartmentEntity> repository)
 		{
 			_repository = repository;
-			_appDbContext = appDbContext;
+			
 		}
 
 		public async Task<DepartmentEntity> AddAsync(DepartmentEntity entity)
