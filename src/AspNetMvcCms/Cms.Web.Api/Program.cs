@@ -26,6 +26,7 @@ builder.Services.AddScoped<IDataRepository<BlogEntity>, DataRepository<BlogEntit
 builder.Services.AddScoped<IDataRepository<AppointmentEntity>, DataRepository<AppointmentEntity>>();
 builder.Services.AddScoped<IDataRepository<ContactEntity>, DataRepository<ContactEntity>>();
 builder.Services.AddScoped<IDataRepository<DepartmentEntity>, DataRepository<DepartmentEntity>>();
+builder.Services.AddScoped<IDataRepository<DoctorCommentEntity>, DataRepository<DoctorCommentEntity>>();
 
 
 builder.Services.AddScoped<IDoctorService, DoctorService>();
@@ -35,6 +36,7 @@ builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<INavbarService, NavbarService>();
+builder.Services.AddScoped<IDoctorCommentService, DoctorCommentService>();
 
 
 

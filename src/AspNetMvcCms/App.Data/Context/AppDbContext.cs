@@ -60,7 +60,13 @@ namespace Cms.Data.Context
             
 
              );
+            modelBuilder.Entity<DoctorCommentEntity>().HasData(
+           new DoctorCommentEntity { Id = 1, Title = "çok güzel ", Description = "r Illum libero t al nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.",DoctorId=1 },
+           new DoctorCommentEntity { Id = 2, Title = "harika", Description = "Non illo quas blanditiis repellendus lsantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.",DoctorId = 1 },
+            new DoctorCommentEntity { Id = 3, Title = "bok gibi", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore." ,DoctorId = 1 }
 
+
+            );
             modelBuilder.Entity<BlogCategoryEntity>().HasData(
            new BlogCategoryEntity { Id = 1, Title = "Medicine" },
            new BlogCategoryEntity { Id = 2, Title = "Equipments" },
