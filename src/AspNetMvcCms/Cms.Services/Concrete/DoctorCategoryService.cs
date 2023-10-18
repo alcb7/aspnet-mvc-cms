@@ -51,8 +51,8 @@ namespace Cms.Services.Concrete
         public IQueryable<DoctorCategoryEntity> GetByDoctorCategoryId(int dcategoryid)
         {
             return _patientrepository.GetAll()
-       .Where(a => a.. == dcategoryid)
-      .Include(d => d.Doctor);
+       .Where(a => a.Doctors.CategoryId == dcategoryid)
+      .Include(d => d.Doctors);
 
 
         }

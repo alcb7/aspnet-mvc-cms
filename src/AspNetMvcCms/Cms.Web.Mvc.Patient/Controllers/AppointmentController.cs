@@ -7,7 +7,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
         private readonly HttpClient _httpClient;
 
 
-        private readonly string _apiDepartment = "https://localhost:7188/api/Departments/";
+        private readonly string _apiDepartment = "https://localhost:7188/api/DoctorCategories/";
         public AppointmentController(HttpClient httpClient)
         {
             _httpClient = httpClient;
