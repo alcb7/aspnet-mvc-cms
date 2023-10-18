@@ -1,4 +1,6 @@
-﻿<section class="page-title bg-1">
+﻿@using Cms.Data.Models.Entities;
+@model List<DoctorCategoryEntity>
+<section class="page-title bg-1">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -40,14 +42,12 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>Choose Department</option>
-                                        <option>Software Design</option>
-                                        <option>Development cycle</option>
-                                        <option>Software Development</option>
-                                        <option>Maintenance</option>
-                                        <option>Process Query</option>
-                                        <option>Cost and Duration</option>
-                                        <option>Modal Delivery</option>
+                                        @foreach(var item in Model)
+                                        {
+                                            <option>@item.Name</option>
+                                        }
+                                        
+                                       
                                     </select>
                                 </div>
                             </div>
