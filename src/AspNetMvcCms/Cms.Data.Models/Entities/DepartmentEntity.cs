@@ -20,6 +20,8 @@ namespace Cms.Data.Models.Entities
         [Required]
         public string Description { get; set; }
 
+
+
         //public string ResimDosyaAdi { get; set; } // Resim dosya adını burada saklayabilirsiniz.
 
         //public string ResimYolu
