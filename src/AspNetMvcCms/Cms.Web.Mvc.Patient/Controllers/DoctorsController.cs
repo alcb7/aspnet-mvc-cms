@@ -7,7 +7,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
+        private readonly string _apiDoctor = "https://localhost:7188/api/Doctors/";
         public DoctorsController(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -22,7 +22,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
         public async Task<ActionResult> Detail(int id)
         {
             // Belirli bir doktorun detaylarını getir.
-            var doctor = await _httpClient.GetFromJsonAsync<DoctorEntity>($"{_apiDoctor}/{id}");
+            var doctor = await _httpClient.GetFromJsonAsync<DoctorEntity>(_apiDoctor + id);
 
             if (doctor == null)
             {
