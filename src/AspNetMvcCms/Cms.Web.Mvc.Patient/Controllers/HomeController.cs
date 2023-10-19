@@ -9,14 +9,14 @@ namespace Cms.Web.Mvc.Patient.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiNavbar = "https://localhost:7188/api/Navbar";
+        private readonly string _apiDComment = "https://localhost:7188/api/DoctorComment";
         public HomeController(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
         public async Task<ActionResult> Index()
         {
-            var model = await _httpClient.GetFromJsonAsync<List<NavbarEntity>>(_apiNavbar);
+            var model = await _httpClient.GetFromJsonAsync<List<DoctorCommentEntity>>(_apiDComment);
 
             return View(model);
         }
