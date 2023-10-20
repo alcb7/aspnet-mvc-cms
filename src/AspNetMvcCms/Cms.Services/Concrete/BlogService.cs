@@ -49,10 +49,26 @@ namespace Cms.Services.Concrete
 
 		public async Task<BlogEntity?> GetByIdAsync(int id)
         {
-            // Veritabanından doktoru ID'ye göre almak için Repository kullanılır.
-            return await _blogrepository.GetByIdAsync(id);
+            return await _appDbContext.Blogs
+        .Where(b => b.Id == id)
+        .Include(b => b.Comments)
+        .Select(b => new BlogEntity
+        {
+            Id = b.Id,
+            Title = b.Title,
+            Description = b.Description,
+            ResimDosyaAdi = b.ResimDosyaAdi,
+            BlogCategoryId = b.BlogCategoryId,
+            Comments = b.Comments.Select(c => new CommentEntity
+            {
+                Id = c.Id,
+                BlogId = c.BlogId,
+                Text = c.Text,
+            }).ToList()
+        })
+        .FirstOrDefaultAsync();
 
-		}
+        }
 
 		public async Task<BlogEntity?> UpdateAsync(int id, BlogEntity entity)
         {
