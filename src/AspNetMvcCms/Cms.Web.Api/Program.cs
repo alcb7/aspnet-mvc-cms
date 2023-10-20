@@ -40,6 +40,8 @@ builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<INavbarService, NavbarService>();
 builder.Services.AddScoped<IDoctorCommentService, DoctorCommentService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
+//builder.Services.AddScoped<IFileService<FileEntity>, FileService>();
+
 
 
 
