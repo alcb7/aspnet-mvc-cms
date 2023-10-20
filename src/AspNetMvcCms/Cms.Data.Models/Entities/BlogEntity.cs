@@ -17,6 +17,7 @@ namespace Cms.Data.Models.Entities
         public string Description { get; set; }
 
         public int BlogCategoryId { get; set; }
+        //public int BlogCommentId { get; set; }
 
         [ForeignKey(nameof(BlogCategoryId))]
         public BlogCategoryEntity? Category { get; set; }
@@ -33,5 +34,9 @@ namespace Cms.Data.Models.Entities
                 return null;
             }
         }
+		//[ForeignKey(nameof(BlogCommentId))]
+		//public CommentEntity? Comments { get; set; }
+        public ICollection<CommentEntity>? Comments { get; set; }
+
     }
 }

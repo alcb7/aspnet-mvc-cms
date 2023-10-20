@@ -54,8 +54,8 @@ namespace Cms.Data.Context
                new DepartmentEntity { Id = 6, Name = "Gynecology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." }
             );
             modelBuilder.Entity<BlogEntity>().HasData(
-            new BlogEntity { Id = 1, Title = "Healthy environment to care with modern equipment ", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", BlogCategoryId =1, ResimDosyaAdi= "blog/blog-1.jpg" },
-            new BlogEntity { Id = 2, Title = "All test cost 25% in always in our laboratory", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", BlogCategoryId =2, ResimDosyaAdi= "blog/blog-2.jpg" },
+            new BlogEntity { Id = 1, Title = "Healthy environment to care with modern equipment ", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", BlogCategoryId =1, ResimDosyaAdi= "blog/blog-1.jpg"},
+            new BlogEntity { Id = 2, Title = "All test cost 25% in always in our laboratory", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", BlogCategoryId =2, ResimDosyaAdi= "blog/blog-2.jpg"},
              new BlogEntity { Id = 3, Title = "Get Free consulation from our special surgeon and doctors", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", BlogCategoryId =3, ResimDosyaAdi= "blog/blog-4.jpg" }
             
 
@@ -158,7 +158,15 @@ namespace Cms.Data.Context
            
 
                   );
-
+            modelBuilder.Entity<CommentEntity>().HasData(
+            new CommentEntity() { Id = 1,BlogId = 2, Text = "Home"  },
+            new CommentEntity() { Id = 2,BlogId = 2, Text = "About"  },
+            new CommentEntity() { Id = 3,BlogId = 2, Text = "Services" },
+            new CommentEntity() { Id = 4,BlogId = 2, Text = "Departments",  },
+            new CommentEntity() { Id = 5,BlogId = 2, Text = "Doctors" },
+            new CommentEntity() { Id = 6,BlogId = 2, Text = "Blog" },
+            new CommentEntity() { Id = 7,BlogId = 2, Text = "Contact" }
+            );
             base.OnModelCreating(modelBuilder);
         }
 

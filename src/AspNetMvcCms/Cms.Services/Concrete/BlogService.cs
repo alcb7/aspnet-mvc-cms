@@ -43,17 +43,21 @@ namespace Cms.Services.Concrete
             //return _blogrepository.GetAll();
             return _appDbContext.Blogs
                 .Include(d => d.Category);
+				
 
 
         }
 
-        public async Task<BlogEntity?> GetByIdAsync(int id)
+	
+
+		public async Task<BlogEntity?> GetByIdAsync(int id)
         {
             // Veritabanından doktoru ID'ye göre almak için Repository kullanılır.
             return await _blogrepository.GetByIdAsync(id);
-        }
 
-        public async Task<BlogEntity?> UpdateAsync(int id, BlogEntity entity)
+		}
+
+		public async Task<BlogEntity?> UpdateAsync(int id, BlogEntity entity)
         {
             if (entity == null)
             {

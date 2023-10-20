@@ -14,5 +14,7 @@ namespace Cms.Services.Abstract
         Task<BlogEntity> AddAsync(BlogEntity entity);
         Task<BlogEntity?> UpdateAsync(int id, BlogEntity entity);
         Task<bool> DeleteAsync(int id);
-    }
+	
+
+	}
 }

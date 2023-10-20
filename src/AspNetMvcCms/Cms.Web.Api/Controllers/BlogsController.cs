@@ -29,8 +29,9 @@ namespace Cms.Web.Api.Controllers
             return doctors;
         }
 
-        // GET: api/Doctors/5
-        [HttpGet("{id}")]
+
+        //GET: api/Doctors/5
+		[HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync([FromRoute] int id)
         {
             var doctor = await _blogService.GetByIdAsync(id);

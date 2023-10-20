@@ -14,18 +14,11 @@ namespace Cms.Data.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Text { get; set; }
+        public int BlogId { get; set; }
 
-    }
+        [ForeignKey(nameof(BlogId))]
+        public BlogEntity? Blog { get; set; }
 
-    public class FileEntity
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-
-        public byte[] Data { get; set; }
-        public string MimeType { get; set; }
-        public string FileName { get; set; }
 
     }
 }
