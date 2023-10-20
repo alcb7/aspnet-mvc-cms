@@ -1,6 +1,11 @@
 ﻿@using Cms.Data.Models.Entities;
 @using System.Security.Claims;
 @model List<AppointmentEntity>
+
+@{
+    var userName = User.FindFirstValue(ClaimTypes.Name);
+    var userId = User.FindFirstValue(ClaimTypes.PrimarySid);
+}
 <div class="page-wrapper">
     <div class="content">
         <div class="row">

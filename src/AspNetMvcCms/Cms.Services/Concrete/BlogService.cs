@@ -43,9 +43,6 @@ namespace Cms.Services.Concrete
             //return _blogrepository.GetAll();
             return _appDbContext.Blogs
                 .Include(d => d.Category);
-				
-
-
         }
 
 	

@@ -1,9 +1,12 @@
 ﻿using Cms.Data.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace Cms.Web.Mvc.Doctor.Controllers
 {
+	[Authorize]
 	public class AppointmentsController : Controller
 	{
 		private readonly HttpClient _httpClient;
@@ -34,13 +37,20 @@ namespace Cms.Web.Mvc.Doctor.Controllers
             // Giriş yapan kullanıcının kimliğini alın
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
 
-            // Doktorun randevularını API'den çekmek için gerekli isteği yapın.
-            var model = await _httpClient.GetFromJsonAsync<List<AppointmentEntity>>(_apiAppointment + userId);
+			// Doktorun randevularını API'den çekmek için gerekli isteği yapın.
+			var response = await _httpClient.GetAsync($"{_apiAppointment}{userId}");
+
+			if (!response.IsSuccessStatusCode)
+			{
+				return StatusCode((int)response.StatusCode);
+			}
+
+			var doctorAppointments = await response.Content.ReadFromJsonAsync<List<AppointmentEntity>>();
 
 			// ViewBag veya ViewData ile kullanıcı kimliğini görünüme aktarabilirsiniz.
-			ViewBag.UserId = userId;
+			//ViewBag.UserId = userId;
 
-			return View(model);
+			return View(doctorAppointments);
 		}
 
 		[HttpPost]

@@ -4,6 +4,7 @@ using Cms.Services.Abstract;
 using Cms.Web.Api.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cms.Web.Api.Controllers
 {
@@ -22,11 +23,29 @@ namespace Cms.Web.Api.Controllers
 
         // GET: api/Doctors
         [HttpGet]
-        public IEnumerable<BlogEntity> GetAll()
+        public async Task<IEnumerable<BlogResponseDto>> GetAll()
         {
-            var doctors = _blogService.GetAll();
+            var blogQuery = _blogService.GetAll();
 
-            return doctors;
+            var blogs = await blogQuery
+                .Include(b => b.Comments)
+                .Select(b => new BlogResponseDto
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Description = b.Description,
+                    ResimDosyaAdi = b.ResimDosyaAdi,
+                    BlogCategoryId = b.BlogCategoryId,
+                    Comments = b.Comments.Select(c => new CommentResponseDto
+                    {
+                        Id = c.Id,
+                        BlogId = c.BlogId,
+                        Text = c.Text,
+                    }).ToList()
+                })
+                .ToListAsync();
+
+            return blogs;
         }
 
 
