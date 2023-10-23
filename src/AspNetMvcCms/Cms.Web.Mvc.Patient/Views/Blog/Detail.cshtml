@@ -109,12 +109,15 @@
 											<div class="comment-meta mt-2">
 												<a href="#!"><i class="icofont-reply mr-2 text-muted"></i>Reply </a>
 											</div>
-
-											<div class="comment-content mt-3">
-												<p>
-													@Model.Comments
-												</p>
-											</div>
+											@foreach(var item in Model.Comments)
+											{
+												<div class="comment-content mt-3">
+													<p>
+														@item.Text
+													</p>
+												</div>
+											}
+											
 										</div>
 									</div>
 								</li>

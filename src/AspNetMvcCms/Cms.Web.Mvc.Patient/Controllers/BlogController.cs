@@ -22,7 +22,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
         public async Task<ActionResult> Detail(int id)
         {
             // Belirli bir doktorun detaylarını getir.
-            var doctor = await _httpClient.GetFromJsonAsync<BlogEntity>(_apiBlog + id);
+            BlogEntity? doctor = await _httpClient.GetFromJsonAsync<BlogEntity>(_apiBlog + id);
 
             if (doctor == null)
             {
