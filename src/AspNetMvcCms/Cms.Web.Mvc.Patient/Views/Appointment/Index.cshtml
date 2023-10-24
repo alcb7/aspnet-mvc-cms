@@ -1,16 +1,16 @@
 ﻿@model AppointmentEntity
-<form id="#" class="appoinment-form" method="post" asp-controller="Appointment" asp-action="Index">
+<form class="appoinment-form" method="post" asp-controller="Appointment" asp-action="Index">
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
                 <label asp-for="DoctorCategoryId" class="form-label">Department</label>
-                <select id="departmentList" name="DoctorCategoryId" class="form-control" asp-items="ViewBag.DepartmentId">
+                <select id="departmentList" name="DoctorCategoryId" class="form-control" asp-items="ViewBag.DepartmentId" onchange="loadDoctors()">
                     <option>Select Department</option>
                 </select>
             </div>
         </div>
         <div class="col-lg-6">
-            <div class="form-group">
+            <div class "form-group">
                 <label asp-for="DoctorId" class="form-label">Doctor</label>
                 <select id="doctorList" name="DoctorId" class="form-control">
                     <option value="-1">Select Doctor</option>
@@ -18,44 +18,35 @@
             </div>
         </div>
     </div>
-    
 
-      
-    <button class="btn btn-main btn-round-full" type="submit">Make Appoinment<i class="icofont-simple-right ml-2"></i></button>
+    <button class="btn btn-main btn-round-full" type="submit">Make Appointment<i class="icofont-simple-right ml-2"></i></button>
 </form>
 
 @section Scripts{
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("#departmentList").change(function () {
+        function loadDoctors() {
+            var departmentId = $("#departmentList").val();
+            if (departmentId === "-1") {
                 $("#doctorList").empty();
+                $("#doctorList").append('<option value="-1">Select Doctor</option>');
+            } else {
                 $.ajax({
                     type: 'GET',
-                    url: 'http://localhost:7010/Appointment/LoadDoctor',
-
-                
-
-
-                    dataType: 'Json',
-
-                    data: { DoctorCategoryId: $("#departmentList").val() },
-
+                    url: '/Appointment/LoadDoctor',
+                    data: { categoryId: departmentId }, 
+                    dataType: 'json',
                     success: function (doctors) {
-                        $("#doctorList").append('<option value ="' + -1 + '">' + "Select Doctor" + '</option>');
-
+                        $("#doctorList").empty();
+                        $("#doctorList").append('<option value="-1">Select Doctor</option>');
                         $.each(doctors, function (i, doctor) {
-                            $("#doctorList").append('<option value="' + doctor.value + '">' + doctor.text + '</option>')
+                            $("#doctorList").append('<option value="' + doctor.value + '">' + doctor.text + '</option>');
                         });
                     },
-
                     error: function () {
-                        alert('Somethings going to wrong and we do not know actually... Yeah')
+                        alert('Something went wrong, and we do not know what exactly...');
                     }
-
                 });
-
-                return false;
-            })
-        })
+            }
+        }
     </script>
- }
+}
