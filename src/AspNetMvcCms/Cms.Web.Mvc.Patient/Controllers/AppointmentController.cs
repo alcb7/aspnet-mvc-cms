@@ -1,7 +1,6 @@
 ﻿using Cms.Data.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Net.Http;
 
 namespace Cms.Web.Mvc.Patient.Controllers
 {
@@ -9,42 +8,37 @@ namespace Cms.Web.Mvc.Patient.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiDoctor = "https://localhost:7188/api/Doctors/";
+        private readonly string _apiDoctorCategory = "https://localhost:7188/api/DoctorCategory";
+
+        private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
         public AppointmentController(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
-        public IActionResult Index()
+        
+        [HttpGet]
+        public async Task<ActionResult> Index()
         {
+    
+
+            var model = await _httpClient.GetFromJsonAsync<List<DoctorCategoryEntity>>(_apiDoctorCategory);
+
+            ViewBag.DepartmentId = new SelectList(model, "Id", "Name");
             return View();
         }
-        //[HttpGet]
-        //public async Task<JsonResult> LoadDoctor(int categoryId)
-        //{
-        //    var doctorlist = await _httpClient.GetFromJsonAsync<List<DoctorEntity>>(_apiDoctor);
-
-        //    var newDoctors = doctorlist?.Where(d => d.CategoryId == categoryId).ToList();
-
-
-        //    return Json(new SelectList(newDoctors, "Id", "Name"));
-        //}
-        [HttpGet]
+     
+  
         public async Task<JsonResult> LoadDoctor(int categoryId)
         {
-            var doctorlist = await _httpClient.GetFromJsonAsync<List<DoctorEntity>>(_apiDoctor);
+            List<DoctorEntity>? doctorlist = await _httpClient.GetFromJsonAsync<List<DoctorEntity>>(_apiDoctor);
 
-            var newDoctors = doctorlist?
+            List<DoctorEntity>? newDoctors = doctorlist?
                 .Where(d => d.CategoryId == categoryId)
-                .Select(d => new SelectListItem
-                {
-                    Value = d.Id.ToString(),
-                    Text = d.Name // veya d.FullName veya başka bir özellik
-                })
                 .ToList();
 
-            return Json(newDoctors);
+            return Json(new SelectList(newDoctors, "Id" ,"Name"));
         }
-
+       
     }
 
 }

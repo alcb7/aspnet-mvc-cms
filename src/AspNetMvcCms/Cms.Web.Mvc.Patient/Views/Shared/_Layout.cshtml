@@ -19,7 +19,7 @@
 
 		@await Component.InvokeAsync("Navbar")
 
-		@RenderSection("Scripts", required: false)
+	
 	</header>
 	<div class="container">
 		<main role="main" class="pb-3">
@@ -29,6 +29,8 @@
 
 	<partial name="_FooterPartial" />
 	<partial name="_ScriptsPartial" />
+
+	@await RenderSectionAsync("Scripts", required: false)
 
 </body>
 </html>

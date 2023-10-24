@@ -14,5 +14,8 @@ namespace Cms.Data.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public List<DoctorEntity> Doctors { get; set; }
+
     }
 }

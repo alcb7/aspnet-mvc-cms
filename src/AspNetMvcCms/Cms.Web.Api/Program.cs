@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,7 @@ builder.Services.AddScoped<IDataRepository<ContactEntity>, DataRepository<Contac
 builder.Services.AddScoped<IDataRepository<DepartmentEntity>, DataRepository<DepartmentEntity>>();
 builder.Services.AddScoped<IDataRepository<DoctorCommentEntity>, DataRepository<DoctorCommentEntity>>();
 builder.Services.AddScoped<IDataRepository<CommentEntity>, DataRepository<CommentEntity>>();
+builder.Services.AddScoped<IDataRepository<DoctorCategoryEntity>, DataRepository<DoctorCategoryEntity>>();
 
 
 
@@ -40,11 +42,13 @@ builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<INavbarService, NavbarService>();
 builder.Services.AddScoped<IDoctorCommentService, DoctorCommentService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<IDoctorCategoryService, DoctorCategoryService>();
+
 //builder.Services.AddScoped<IFileService<FileEntity>, FileService>();
 
 
 
-
+builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));

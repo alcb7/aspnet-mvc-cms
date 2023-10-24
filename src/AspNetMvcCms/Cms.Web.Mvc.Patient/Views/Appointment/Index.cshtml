@@ -1,10 +1,10 @@
-﻿@model AppointmentViewModel
-<form id="#" class="appoinment-form" method="post" asp-controller="Appointments" asp-action="Create">
+﻿@model AppointmentEntity
+<form id="#" class="appoinment-form" method="post" asp-controller="Appointment" asp-action="Index">
     <div class="row">
         <div class="col-lg-6">
             <div class="form-group">
-                <label asp-for="CategoryId" class="form-label">Department</label>
-                <select id="departmentList" name="CategoryId" class="form-control" asp-items="ViewBag.DepartmentId">
+                <label asp-for="DoctorCategoryId" class="form-label">Department</label>
+                <select id="departmentList" name="DoctorCategoryId" class="form-control" asp-items="ViewBag.DepartmentId">
                     <option>Select Department</option>
                 </select>
             </div>
@@ -17,42 +17,45 @@
                 </select>
             </div>
         </div>
-
-        <div class="col-lg-6">
-            <div class="form-group">
-                <label for="AppointmentDate" class="form-label">Appointment Date and Time</label>
-                <input type="datetime-local" id="AppointmentDate" name="AppointmentDate" class="form-control">
-                <span asp-validation-for="AppointmentDate" class="text-danger"></span>
-            </div>
-        </div>
+    </div>
+    
 
       
     <button class="btn btn-main btn-round-full" type="submit">Make Appoinment<i class="icofont-simple-right ml-2"></i></button>
 </form>
 
-@section Scripts {
+@section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
             $("#departmentList").change(function () {
                 $("#doctorList").empty();
                 $.ajax({
                     type: 'GET',
-                    url: 'http://localhost:7010/Appointments/LoadDoctor',
-                    dataType: 'json',
-                    data: { categoryId: $("#departmentList").val() },
+                    url: 'http://localhost:7010/Appointment/LoadDoctor',
+
+                
+
+
+                    dataType: 'Json',
+
+                    data: { DoctorCategoryId: $("#departmentList").val() },
+
                     success: function (doctors) {
-                        $("#doctorList").append('<option value ="-1">Select Doctor</option>');
+                        $("#doctorList").append('<option value ="' + -1 + '">' + "Select Doctor" + '</option>');
+
                         $.each(doctors, function (i, doctor) {
-                            $("#doctorList").append('<option value="' + doctor.value + '">' + doctor.text + '</option>');
+                            $("#doctorList").append('<option value="' + doctor.value + '">' + doctor.text + '</option>')
                         });
                     },
+
                     error: function () {
-                        alert('Something is going wrong, and we do not know why...');
+                        alert('Somethings going to wrong and we do not know actually... Yeah')
                     }
+
                 });
 
                 return false;
-            });
+            })
         })
     </script>
-}
+ }
