@@ -1,107 +1,76 @@
 ﻿using Cms.Data.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace Cms.Web.Mvc.Patient.Controllers
+
+public class AppointmentController : Controller
 {
-    [Authorize]
-    public class AppointmentController : Controller
+    private readonly HttpClient _httpClient;
+
+    private readonly string _apiDoctorCategory = "https://localhost:7188/api/DoctorCategory";
+    private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
+    private readonly string _apiAppointment = "https://localhost:7188/api/Appointment";
+
+    public AppointmentController(HttpClient httpClient)
     {
-        private readonly HttpClient _httpClient;
+        _httpClient = httpClient;
+    }
 
-        private readonly string _apiDoctorCategory = "https://localhost:7188/api/DoctorCategory";
+    [HttpGet]
+    public async Task<ActionResult> Index()
+    {
+        var model = await _httpClient.GetFromJsonAsync<List<DoctorCategoryEntity>>(_apiDoctorCategory);
+        ViewBag.DepartmentId = new SelectList(model, "Id", "Name");
+        return View();
+    }
 
-        private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
-
-        private readonly string _apiAppointment = "https://localhost:7188/api/Appointment";
-        public AppointmentController(HttpClient httpClient)
+    [HttpPost]
+    public async Task<ActionResult> Index(AppointmentEntity entity)
+    {
+        if (!ModelState.IsValid)
         {
-            _httpClient = httpClient;
-        }
-       
-    
-        [HttpGet]
-        public async Task<ActionResult> Index()
-        {
-    
-
+            // Geçerli değilse, hata mesajıyla birlikte aynı görünümü döndürün
             var model = await _httpClient.GetFromJsonAsync<List<DoctorCategoryEntity>>(_apiDoctorCategory);
-
             ViewBag.DepartmentId = new SelectList(model, "Id", "Name");
-            return View();
-        }
-        [HttpPost]
-        public async Task<ActionResult> Index(AppointmentEntity entity)
-        {
-            //var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
-
-            if (!ModelState.IsValid)
-            {
-                return View(entity);
-            }
-            var AppointmentEntity = new AppointmentEntity
-            {
-
-                DoctorCategoryId = entity.DoctorCategoryId,
-                DoctorId = entity.DoctorId,
-                DateTime = entity.DateTime
-
-            };
-            var response = await _httpClient.PostAsJsonAsync(_apiAppointment, AppointmentEntity);
-            if (response.IsSuccessStatusCode)
-            {
-                ViewBag.Message = "Doktor Başarıyla kaydedildi.";
-            }
-
             return View(entity);
         }
 
+        // Oturum açmış kullanıcının kimlik bilgilerini al
+        var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
 
-        public async Task<JsonResult> LoadDoctor(int categoryId)
+        // AppointmentEntity'yi oluştur
+        var appointmentEntity = new AppointmentEntity
         {
-            List<DoctorEntity>? doctorlist = await _httpClient.GetFromJsonAsync<List<DoctorEntity>>(_apiDoctor);
+            DoctorCategoryId = entity.DoctorCategoryId,
+            DoctorId = entity.DoctorId,
+            DateTime = entity.DateTime,
+            PatientId = userId // Kullanıcının kimliğini atan
+        };
 
-            List<DoctorEntity>? newDoctors = doctorlist?
-                .Where(d => d.CategoryId == categoryId)
-                .ToList();
+        // Randevu oluşturmayı API'ye gönder
+        var response = await _httpClient.PostAsJsonAsync(_apiAppointment, appointmentEntity);
 
-            return Json(new SelectList(newDoctors, "Id" ,"Name"));
+        if (response.IsSuccessStatusCode)
+        {
+            ViewBag.Message = "Randevu Başarıyla Oluşturuldu.";
         }
-       
+        else
+        {
+            ViewBag.Error = "Randevu oluşturulurken bir hata oluştu.";
+        }
+
+        return View(entity);
     }
 
+    public async Task<JsonResult> LoadDoctor(int categoryId)
+    {
+        List<DoctorEntity>? doctorlist = await _httpClient.GetFromJsonAsync<List<DoctorEntity>>(_apiDoctor);
+        List<DoctorEntity>? newDoctors = doctorlist?
+            .Where(d => d.CategoryId == categoryId)
+            .ToList();
+
+        return Json(new SelectList(newDoctors, "Id", "Name"));
+    }
 }
-
-//[HttpGet]
-//public IActionResult AddDoctors()
-//{
-//    return View();
-//}
-//[HttpPost]
-//public async Task<ActionResult> AddDoctors(DoctorViewModel dto)
-//{
-//    if (!ModelState.IsValid)
-//    {
-//        return View(dto);
-//    }
-
-
-//    var doctorEntity = new DoctorEntity
-//    {
-
-//        Name = dto.Name,
-//        Surname = dto.Surname,
-//        CategoryId = dto.CategoryId
-
-//    };
-//    var response = await _httpClient.PostAsJsonAsync(_apiDoctor, doctorEntity);
-//    if (response.IsSuccessStatusCode)
-//    {
-//        ViewBag.Message = "Doktor Başarıyla kaydedildi.";
-//    }
-
-//    return View(dto);
-
-//}
