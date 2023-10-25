@@ -18,5 +18,6 @@ namespace Cms.Data.Models.Entities
 
 
         public ICollection<DoctorEntity> Doctors { get; set; }
-    }
+		public ICollection<DepartmentEntity> Departments { get; set; }
+	}
 }

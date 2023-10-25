@@ -57,5 +57,12 @@ namespace Cms.Data.Models.Entities
             }
         }
         public string? Cv { get; set; } = string.Empty;
-    }
+
+
+        public int? NavbarId { get; set; } = 5;
+
+
+        [ForeignKey(nameof(NavbarId))]
+		public NavbarEntity? Navbar { get; set; }
+	}
 }

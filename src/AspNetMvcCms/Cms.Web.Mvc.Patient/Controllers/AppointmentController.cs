@@ -21,9 +21,18 @@ public class AppointmentController : Controller
     [HttpGet]
     public async Task<ActionResult> Index()
     {
-        var model = await _httpClient.GetFromJsonAsync<List<DoctorCategoryEntity>>(_apiDoctorCategory);
-        ViewBag.DepartmentId = new SelectList(model, "Id", "Name");
-        return View();
+        if (User.Identity.IsAuthenticated)
+        {
+            // Kullanıcı oturum açmışsa randevu sayfasını görüntüle
+            var model = await _httpClient.GetFromJsonAsync<List<DoctorCategoryEntity>>(_apiDoctorCategory);
+            ViewBag.DepartmentId = new SelectList(model, "Id", "Name");
+            return View();
+        }
+        else
+        {
+            // Kullanıcı oturum açmamışsa oturum açma sayfasına yönlendir
+            return RedirectToAction("Login", "Auth");
+        }
     }
 
     [HttpPost]

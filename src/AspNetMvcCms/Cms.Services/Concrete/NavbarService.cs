@@ -42,6 +42,7 @@ namespace Cms.Services.Concrete
             // Tüm doktorları almak için Repository kullanılır.
             //return _repository.GetAll();
             return _appDbContext.Navbars
+                .Include(c=> c.Departments)
                 .Include(d => d.Doctors);
 
 

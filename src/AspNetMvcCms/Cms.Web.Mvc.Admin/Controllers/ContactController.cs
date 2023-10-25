@@ -1,4 +1,5 @@
 ﻿using Cms.Data.Models.Entities;
+using Cms.Web.Mvc.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cms.Web.Mvc.Admin.Controllers
@@ -19,5 +20,6 @@ namespace Cms.Web.Mvc.Admin.Controllers
             var model = await _httpClient.GetFromJsonAsync<List<ContactEntity>>(_apiContact);
             return View(model);
         }
+       
     }
 }

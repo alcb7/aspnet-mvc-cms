@@ -41,7 +41,13 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="departmentDropdown">
                                 <a class="dropdown-item" asp-controller="Departments" asp-action="Index">Departments</a>
-                                <a class="dropdown-item" asp-controller="Departments" asp-action="Detail">Departments Detail</a>
+                                @if (item.Departments != null)
+                                {
+                                    @foreach (var department in item.Departments)
+                                    {
+                                        <a class="dropdown-item" asp-controller="Department" asp-action="Index">@department.Name</a>
+                                    }
+                                }
                             </div>
                         </li>
                     }

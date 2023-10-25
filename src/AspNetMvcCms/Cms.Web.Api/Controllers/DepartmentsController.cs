@@ -42,7 +42,7 @@ namespace Cms.Web.Api.Controllers
 
 		// POST: api/Doctors
 		[HttpPost]
-		public async Task<IActionResult> AddAsync([FromBody] AppointmentCreateDto dto)
+		public async Task<IActionResult> AddAsync([FromBody] DepartmentCreateDto dto)
 		{
 			if (!ModelState.IsValid)
 			{
@@ -64,7 +64,7 @@ namespace Cms.Web.Api.Controllers
 
 		// PUT: api/Doctors/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> UpdateAsync(int id, [FromBody] AppointmentUpdateDto dto)
+		public async Task<IActionResult> UpdateAsync(int id, [FromBody] DepartmentUpdateDto dto)
 		{
 			if (dto.Id != id)
 				return BadRequest();
