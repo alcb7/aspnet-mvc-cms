@@ -52,6 +52,7 @@ namespace Cms.Web.Mvc.Controllers
             {
                 new Claim(ClaimTypes.Name, mainModel.Name),
                 new Claim(ClaimTypes.Surname, mainModel.Surname),
+                    new Claim(ClaimTypes.PrimarySid, mainModel.Id.ToString())
                 // Diğer kimlik bilgilerini burada ekleyebilirsiniz
             };
 
