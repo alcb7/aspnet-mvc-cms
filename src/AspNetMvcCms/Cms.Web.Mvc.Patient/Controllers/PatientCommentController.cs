@@ -1,10 +1,12 @@
 ﻿using Cms.Data.Models.Entities;
 using Cms.Web.Mvc.Patient.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace Cms.Web.Mvc.Patient.Controllers
 {
+	[Authorize]
 	public class PatientCommentController : Controller
 	{
 		
