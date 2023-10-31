@@ -20,12 +20,14 @@ namespace Cms.Web.Api.MappingProfiles
             CreateMap<AppointmentUpdateDto, AppointmentEntity>().ReverseMap();
             CreateMap<DepartmentCreateDto, DepartmentEntity>().ReverseMap();
             CreateMap<DepartmentUpdateDto, DepartmentEntity>().ReverseMap();
+			CreateMap<PatientCommentDto, PatientCommentEntity>().ReverseMap();
 
 
 
 
 
-        }
-    }
+
+		}
+	}
 }
 

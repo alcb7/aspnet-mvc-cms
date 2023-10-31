@@ -31,9 +31,12 @@ namespace Cms.Data.Context
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<BlogEntity> Blogs { get; set; }
         public DbSet<FileEntity> Files { get; set; }
+		public DbSet<PatientCommentEntity> PatientComments { get; set; }
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DoctorEntity>().HasData(
                new DoctorEntity { Id = 1, Name = "Ali Rıza ", Surname = "Canbulan", Email = "aliriza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 1, ResimDosyaAdi = "team/1.jpg",Cv="fdsjfıldjsfldjflıdjsfıjldsjfdsı" ,NavbarId=5},
@@ -155,19 +158,27 @@ namespace Cms.Data.Context
              new ContactEntity() { Id = 1, Fullname = "Mehmet Kirişoğlu", Email = "aliriza@canbulan.com",Phone = "05554443322", Topic="FDFSDF",Text = "fldşjsfşdjsşf"},
              new ContactEntity() { Id = 2, Fullname = "Ali Rıza Canbulan", Email = "aliriza@canbulan.com", Phone = "05554443322" , Topic = "FDFSDF", Text = "fldşjsfşdjsşf" },
              new ContactEntity() { Id = 3, Fullname = "Rıza Argun", Email = "aliriza@canbulan.com", Phone = "05554443322", Topic = "FDFSDF", Text = "fldşjsfşdjsşf" }
-           
+
 
                   );
             modelBuilder.Entity<CommentEntity>().HasData(
-            new CommentEntity() { Id = 1,BlogId = 2, Text = "Home"  },
-            new CommentEntity() { Id = 2,BlogId = 2, Text = "About"  },
-            new CommentEntity() { Id = 3,BlogId = 2, Text = "Services" },
-            new CommentEntity() { Id = 4,BlogId = 2, Text = "Departments",  },
-            new CommentEntity() { Id = 5,BlogId = 2, Text = "Doctors" },
-            new CommentEntity() { Id = 6,BlogId = 2, Text = "Blog" },
-            new CommentEntity() { Id = 7,BlogId = 2, Text = "Contact" }
+            new CommentEntity() { Id = 1, BlogId = 2, Text = "Home" },
+            new CommentEntity() { Id = 2, BlogId = 2, Text = "About" },
+            new CommentEntity() { Id = 3, BlogId = 2, Text = "Services" },
+            new CommentEntity() { Id = 4, BlogId = 2, Text = "Departments", },
+            new CommentEntity() { Id = 5, BlogId = 2, Text = "Doctors" },
+            new CommentEntity() { Id = 6, BlogId = 2, Text = "Blog" },
+            new CommentEntity() { Id = 7, BlogId = 2, Text = "Contact" }
             );
-            base.OnModelCreating(modelBuilder);
+			modelBuilder.Entity<PatientCommentEntity>().HasData(
+		   new PatientCommentEntity { Id = 1, Title = "çok güzel ", Description = "r Illum libero t al nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", PatientId = 1 },
+		   new PatientCommentEntity { Id = 2, Title = "harika", Description = "Non illo quas blanditiis repellendus lsantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", PatientId = 2 },
+			new PatientCommentEntity { Id = 3, Title = "bok gibi", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", PatientId = 1 }
+
+
+			);
+			base.OnModelCreating(modelBuilder);
+
         }
 
     }

@@ -30,6 +30,8 @@ builder.Services.AddScoped<IDataRepository<DepartmentEntity>, DataRepository<Dep
 builder.Services.AddScoped<IDataRepository<DoctorCommentEntity>, DataRepository<DoctorCommentEntity>>();
 builder.Services.AddScoped<IDataRepository<CommentEntity>, DataRepository<CommentEntity>>();
 builder.Services.AddScoped<IDataRepository<DoctorCategoryEntity>, DataRepository<DoctorCategoryEntity>>();
+builder.Services.AddScoped<IDataRepository<PatientCommentEntity>, DataRepository<PatientCommentEntity>>();
+
 
 
 
@@ -43,6 +45,7 @@ builder.Services.AddScoped<INavbarService, NavbarService>();
 builder.Services.AddScoped<IDoctorCommentService, DoctorCommentService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<IDoctorCategoryService, DoctorCategoryService>();
+builder.Services.AddScoped<IPatientCommentService, PatientCommentService>();
 
 //builder.Services.AddScoped<IFileService<FileEntity>, FileService>();
 
@@ -58,8 +61,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+	app.UseSwagger();
+	app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
@@ -69,9 +72,9 @@ app.UseAuthorization();
 app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<AppDbContext>();
-    await context.Database.EnsureDeletedAsync();
-    await context.Database.EnsureCreatedAsync();
+	var services = scope.ServiceProvider;
+	var context = services.GetRequiredService<AppDbContext>();
+	await context.Database.EnsureDeletedAsync();
+	await context.Database.EnsureCreatedAsync();
 }
 app.Run();
