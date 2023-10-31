@@ -34,7 +34,7 @@ namespace Cms.Data.Models.Entities
 			}
 		}
 
-		public int? NavbarId { get; set; } = 4;
+		public int? NavbarId { get; set; } 
 
 
 		[ForeignKey(nameof(NavbarId))]

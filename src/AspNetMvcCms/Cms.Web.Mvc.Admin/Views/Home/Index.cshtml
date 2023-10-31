@@ -1,1 +1,11 @@
-﻿
+﻿@using Cms.Data.Models.Entities;
+@model AdminEntity
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="welcome-text">
+            <h1>Hoş Geldiniz</h1>
+            <p>Giriş yapan admin: <span>@Model.Name @Model.Surname</span></p>
+        </div>
+        <!-- Giriş formu veya diğer içerikleri buraya ekleyebilirsiniz. -->
+    </main>
+</div>

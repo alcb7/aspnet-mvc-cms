@@ -45,7 +45,7 @@
                                 {
                                     @foreach (var department in item.Departments)
                                     {
-                                        <a class="dropdown-item" asp-controller="Department" asp-action="Index">@department.Name</a>
+                                        <a class="dropdown-item" asp-controller="Departments" asp-action="Detail" asp-route-id="@department.Id">@department.Name</a>
                                     }
                                 }
                             </div>
@@ -63,7 +63,7 @@
                                 {
                                     @foreach (var doctor in item.Doctors)
                                     {
-                                        <a class="dropdown-item" asp-controller="Doctors" asp-action="Index">@doctor.Name</a>
+                                        <a class="dropdown-item" asp-controller="Doctors" asp-action="Detail" asp-route-id="@doctor.Id">@doctor.Name</a>
                                     }
                                 }
                             </div>

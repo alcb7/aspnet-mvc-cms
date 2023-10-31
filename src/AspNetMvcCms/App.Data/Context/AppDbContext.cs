@@ -49,13 +49,13 @@ namespace Cms.Data.Context
                );
 
             modelBuilder.Entity<DepartmentEntity>().HasData(
-               new DepartmentEntity { Id = 1, Name = "Opthomology ", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." ,NavbarId=4 },
-               new DepartmentEntity { Id = 2, Name = "Cardiology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", NavbarId = 4 },
-               new DepartmentEntity { Id = 3, Name = "Dental Care", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", NavbarId = 4 },
-               new DepartmentEntity { Id = 4, Name = "Child Care", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", NavbarId = 4 },
-               new DepartmentEntity { Id = 5, Name = "Pulmology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", NavbarId = 4 },
-               new DepartmentEntity { Id = 6, Name = "Gynecology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", NavbarId = 4 }
-            );
+               new DepartmentEntity { Id = 1, Name = "Opthomology ", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque." ,NavbarId= 4 , ResimDosyaAdi = "service/service-1.jpg" },
+               new DepartmentEntity { Id = 2, Name = "Cardiology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", NavbarId = 4, ResimDosyaAdi = "service/service-2.jpg" },
+               new DepartmentEntity { Id = 3, Name = "Dental Care", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", NavbarId = 4, ResimDosyaAdi = "service/service-3.jpg" },
+               new DepartmentEntity { Id = 4, Name = "Child Care", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", NavbarId = 4, ResimDosyaAdi = "service/service-4.jpg" },
+               new DepartmentEntity { Id = 5, Name = "Pulmology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", NavbarId = 4, ResimDosyaAdi = "service/service-6.jpg" },
+               new DepartmentEntity { Id = 6, Name = "Gynecology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", NavbarId = 4, ResimDosyaAdi = "service/service-8.jpg" }
+			);
             modelBuilder.Entity<BlogEntity>().HasData(
             new BlogEntity { Id = 1, Title = "Healthy environment to care with modern equipment ", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", BlogCategoryId =1, ResimDosyaAdi= "blog/blog-1.jpg"},
             new BlogEntity { Id = 2, Title = "All test cost 25% in always in our laboratory", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", BlogCategoryId =2, ResimDosyaAdi= "blog/blog-2.jpg"},

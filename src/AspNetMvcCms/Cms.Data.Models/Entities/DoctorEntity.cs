@@ -59,7 +59,7 @@ namespace Cms.Data.Models.Entities
         public string? Cv { get; set; } = string.Empty;
 
 
-        public int? NavbarId { get; set; } = 5;
+        public int? NavbarId { get; set; } 
 
 
         [ForeignKey(nameof(NavbarId))]

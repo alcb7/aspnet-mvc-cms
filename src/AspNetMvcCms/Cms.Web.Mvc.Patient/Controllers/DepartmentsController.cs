@@ -7,7 +7,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiDepartment = "https://localhost:7188/api/Departments";
+        private readonly string _apiDepartment = "https://localhost:7188/api/Departments/";
         public DepartmentsController(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -19,9 +19,18 @@ namespace Cms.Web.Mvc.Patient.Controllers
             return View(model);
         }
 
-        public IActionResult Detail()
-        {
-            return View();
-        }
-    }
+		public async Task<ActionResult> Detail(int id)
+		{
+			// Belirli bir doktorun detaylarını getir.
+			var doctor = await _httpClient.GetFromJsonAsync<DepartmentEntity>(_apiDepartment + id);
+
+			if (doctor == null)
+			{
+				// Belirli bir doktor bulunamazsa hata sayfasına yönlendirme yapılabilir.
+				return NotFound();
+			}
+
+			return View(doctor);
+		}
+	}
 }
