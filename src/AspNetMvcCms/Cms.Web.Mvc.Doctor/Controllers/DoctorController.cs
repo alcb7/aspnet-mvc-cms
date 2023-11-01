@@ -54,6 +54,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
             var doctorvm= new DoctorUpdateViewModel
             {
                 Id = id,
+                CategoryId=doctor.CategoryId,
                 Name= doctor.Name,
                 Surname = doctor.Surname,
                 Address = doctor.Address,
@@ -81,6 +82,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
             {
 
                 Id = id,
+                CategoryId = doctorvm.CategoryId,
                 Name = doctorvm.Name,
                 Surname = doctorvm.Surname,
                 Address = doctorvm.Address,

@@ -17,5 +17,22 @@ namespace Cms.Web.Api.DTOs
 
         [Required]
         public int CategoryId { get; set; }
+       
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+
+
+
+
+        [Phone]
+        public string? Phone { get; set; } = string.Empty;
+
+
+        public string? Address { get; set; } = string.Empty;
+
+
+
+        public string? Cv { get; set; } = string.Empty;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Cms.Data.Models.Entities;
+using Cms.Web.Mvc.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -35,63 +36,69 @@ namespace Cms.Web.Mvc.Admin.Controllers
             return View(doctor);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> UpdateAdmin()
+        {
+            var id = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
+            // İlgili blogun bilgilerini almak için id kullanın
+            var doctor = await _httpClient.GetFromJsonAsync<AdminEntity>($"{_apiAdmin}/{id}");
+            if (doctor == null)
+            {
+                return NotFound(); // Blog bulunamadıysa 404 hatası döndürün veya başka bir işlem yapın.
+            }
 
-        //[HttpGet]
-        //public async Task<ActionResult> UpdateDoctor([FromRoute] int id)
-        //{
-        //    // İlgili blogun bilgilerini almak için id kullanın
-        //    var doctor = await _httpClient.GetFromJsonAsync<DoctorEntity>($"{_apiAdmin}/{id}");
-        //    if (doctor == null)
-        //    {
-        //        return NotFound(); // Blog bulunamadıysa 404 hatası döndürün veya başka bir işlem yapın.
-        //    }
+            // Blog bilgilerini bir DTO'ya aktarabilirsiniz
+            var doctorvm = new AdminUpdateViewModel
+            {
+                Id = id,
+              
+                Name = doctor.Name,
+                Surname = doctor.Surname,
+                Address = doctor.Address,
+                Cv = doctor.Cv,
+                Phone = doctor.Phone,
+                Email = doctor.Email,
 
-        //    // Blog bilgilerini bir DTO'ya aktarabilirsiniz
-        //    var doctorvm = new DoctorUpdateViewModel
-        //    {
-        //        Id = id,
-        //        Name = doctor.Name,
-        //        Surname = doctor.Surname,
-        //        Address = doctor.Address,
-        //        Cv = doctor.Cv,
-        //        Phone = doctor.Phone,
-        //        Email = doctor.Email,
+            };
 
-        //    };
+            return View(doctorvm);
+        }
 
-        //    return View(doctorvm);
-        //}
+        [HttpPost]
+        public async Task<ActionResult> UpdateAdmin(AdminUpdateViewModel doctorvm)
+        {
+            var id = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
 
-        //[HttpPost]
-        //public async Task<ActionResult> UpdateDoctor(int id, DoctorUpdateViewModel doctorvm)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(doctorvm);
-        //    }
 
-        //    var doctorEntity = new DoctorEntity
-        //    {
+            if (!ModelState.IsValid)
+            {
+                return View(doctorvm);
+            }
 
-        //        Id = id,
-        //        Name = doctorvm.Name,
-        //        Surname = doctorvm.Surname,
-        //        Address = doctorvm.Address,
-        //        Cv = doctorvm.Cv,
-        //        Phone = doctorvm.Phone,
-        //        Email = doctorvm.Email,
-        //    };
+            var doctorEntity = new DoctorEntity
+            {
 
-        //    // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin
-        //    var response = await _httpClient.PutAsJsonAsync($"{_apiDoctor}/{id}", doctorEntity);
+                Id = id,
+               
+                Name = doctorvm.Name,
+                Surname = doctorvm.Surname,
+                Address = doctorvm.Address,
+                Cv = doctorvm.Cv,
+                Phone = doctorvm.Phone,
+                Email = doctorvm.Email,
+            };
 
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        ViewBag.Message = "Blog Başarıyla güncellendi.";
-        //    }
+            // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin
+            var response = await _httpClient.PutAsJsonAsync($"{_apiAdmin}/{id}", doctorEntity);
 
-        //    return View(doctorvm);
-        //}
+            if (response.IsSuccessStatusCode)
+            {
+                ViewBag.Message = "Blog Başarıyla güncellendi.";
+            }
+
+            return View(doctorvm);
+        }
+
 
 
 
