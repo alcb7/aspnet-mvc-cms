@@ -1,6 +1,7 @@
 ﻿using Cms.Data.Models.Entities;
 using Cms.Web.Mvc.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata;
 
 namespace Cms.Web.Mvc.Admin.Controllers
 {
@@ -74,23 +75,23 @@ namespace Cms.Web.Mvc.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> UpdateDepartments(int id, BlogViewModel dto)
+        public async Task<ActionResult> UpdateDepartments(int id, DepartmentViewModel dto)
         {
             if (!ModelState.IsValid)
             {
                 return View(dto);
             }
 
-            var blogEntity = new BlogEntity
+            var departmentEntity = new DepartmentEntity
             {
                 Id = id,
-                Title = dto.Title,
+                Name = dto.Name,
                 Description = dto.Description,
-                BlogCategoryId = dto.BlogCategoryId
+                
             };
 
             // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin
-            var response = await _httpClient.PutAsJsonAsync($"{_apiDepartment}/{id}", blogEntity);
+            var response = await _httpClient.PutAsJsonAsync($"{_apiDepartment}/{id}", departmentEntity);
 
             if (response.IsSuccessStatusCode)
             {

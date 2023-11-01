@@ -6,9 +6,7 @@
             <div class="col-sm-4 col-3">
                 <h4 class="page-title">Appointments</h4>
             </div>
-            <div class="col-sm-8 col-9 text-right m-b-20">
-                <a href="add-appointment.html" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Appointment</a>
-            </div>
+          
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -23,7 +21,7 @@
                                 <th>Department</th>
                                 <th>Appointment Date</th>
                                 <th>Appointment Time</th>
-                                <th>Status</th>
+                            
                                 <th class="text-right">Action</th>
                             </tr>
                         </thead>
@@ -32,13 +30,13 @@
                             {
                                 <tr>
                                     <td>@item.Id</td>
-                                    <td><img width="28" height="28" src="assets/img/user.jpg" class="rounded-circle m-r-5" alt=""> @item.Patient.Name  @item.Patient.Surname</td>
+                                    <td> @item.Patient.Name  @item.Patient.Surname</td>
                                     @* <td>35</td> *@
                                     <td>@item.Doctor.Name</td>
                                     <td>@item.Category.Name</td>
                                     <td>@item.DateTime</td>
                                     <td>10:00am - 11:00am</td>
-                                    <td><span class="custom-badge status-red">Inactive</span></td>
+                                   
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>

@@ -1,8 +1,13 @@
 ﻿@model DepartmentViewModel
 
+
 <div class="page-wrapper">
     <div class="content">
-        <form asp-action="AddDepartments" asp-controller="Departments" method="post">
+        <form asp-action="UpdateDepartments" asp-controller="Departments" method="post">
+            <div class="form-group">
+                <label for="Id">Id:</label>
+                <input asp-for="Id" class="form-control" />
+            </div>
             <div class="form-group">
                 <label for="Name">Name:</label>
                 <input asp-for="Name" class="form-control" />
