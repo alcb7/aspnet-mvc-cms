@@ -48,10 +48,10 @@ namespace Cms.Web.Mvc.Admin.Controllers
             {
                 new Claim(ClaimTypes.Name, mainModel.Name),
                 new Claim(ClaimTypes.Surname, mainModel.Surname),
-                new Claim(ClaimTypes.PrimarySid, mainModel.Id.ToString()),
-                    new Claim(ClaimTypes.Email, mainModel.Email),
-                new Claim(ClaimTypes.MobilePhone, mainModel.Phone),
-                new Claim(ClaimTypes.StreetAddress, mainModel.Address)
+                new Claim(ClaimTypes.PrimarySid, mainModel.Id.ToString())
+                //    new Claim(ClaimTypes.Email, mainModel.Email),
+                //new Claim(ClaimTypes.MobilePhone, mainModel.Phone),
+                //new Claim(ClaimTypes.StreetAddress, mainModel.Address)
                 // Diğer kimlik bilgilerini burada ekleyebilirsiniz
             };
 

@@ -70,7 +70,11 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Id = id,
                 Name = doctor.Name,
                 Surname = doctor.Surname,
-                CategoryId = doctor.CategoryId
+                CategoryId = doctor.CategoryId,
+                 Phone = doctor.Phone,
+                Address = doctor.Address,
+                Cv = doctor.Cv,
+                Email = doctor.Email,
             };
 
             return View(doctorDto);
@@ -89,7 +93,13 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Id = id,
                 Name = dto.Name,
                 Surname = dto.Surname,
-                CategoryId = dto.CategoryId
+                CategoryId = dto.CategoryId,
+                Phone = dto.Phone,
+                Address = dto.Address,
+                Cv = dto.Cv,
+                Email = dto.Email,
+
+                
             };
 
             // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin

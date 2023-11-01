@@ -17,5 +17,26 @@ namespace Cms.Web.Mvc.Admin.Models
 
         [Required]
         public int CategoryId { get; set; }
+        [Required]
+       
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+
+
+        public string Password { get; set; }
+
+        [Phone]
+        public string? Phone { get; set; } = string.Empty;
+
+
+
+
+        //public ICollection<AppointmentEntity> Appointments { get; set; }
+
+        public string? Address { get; set; } = string.Empty;
+
+
+
+        public string? Cv { get; set; } = string.Empty;
     }
 }
