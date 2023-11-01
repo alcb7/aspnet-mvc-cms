@@ -132,8 +132,8 @@ namespace Cms.Data.Context
                    Surname = "Canbulan",
                    Email = "aliriza@canbulan.com",
                    Phone = "05554442211",
-                   Password = "1234"
-
+                   Password = "1234",
+                   Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı"
                }
                 );
             modelBuilder.Entity<NavbarEntity>().HasData(

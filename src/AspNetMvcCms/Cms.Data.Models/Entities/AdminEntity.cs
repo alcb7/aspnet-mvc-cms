@@ -49,5 +49,7 @@ namespace Cms.Data.Models.Entities
         //        return null;
         //    }
         //}
+
+        public string? Cv { get; set; } = string.Empty;
     }
 }
