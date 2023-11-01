@@ -40,8 +40,9 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 
         
         [HttpGet]
-        public async Task<ActionResult> UpdateDoctor([FromRoute]int id)
+        public async Task<ActionResult> UpdateDoctor()
         {
+            var id = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
             // İlgili blogun bilgilerini almak için id kullanın
             var doctor = await _httpClient.GetFromJsonAsync<DoctorEntity>($"{_apiDoctor}/{id}");
             if (doctor == null)
@@ -66,8 +67,11 @@ namespace Cms.Web.Mvc.Doctor.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> UpdateDoctor(int id, DoctorUpdateViewModel doctorvm)
+        public async Task<ActionResult> UpdateDoctor( DoctorUpdateViewModel doctorvm)
         {
+            var id = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
+
+
             if (!ModelState.IsValid)
             {
                 return View(doctorvm);
