@@ -150,26 +150,15 @@
                             <a asp-action="GetDepartments" asp-controller="Departments"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
                         </li>
 
-
-
-
-                        <li class="submenu">
-                            <a href="#"><i class="fa fa-envelope"></i> <span> Contact</span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a asp-action="GetContacts" asp-controller="Contact">Contact</a></li>
-                                <li><a href="inbox.html">Inbox</a></li>
-                                <li><a href="mail-view.html">Mail View</a></li>
-                            </ul>
+                        <li>
+                            <a asp-action="GetContacts" asp-controller="Contact"><i class="fa fa-envelope"></i> <span>Contact</span></a>
                         </li>
-                        <li class="submenu">
-                            <a href="#"><i class="fa fa-commenting-o"></i> <span> Blog</span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a asp-action="GetBlogs" asp-controller="Blogs">Blog</a></li>
-                                <li><a href="blog-details.html">Blog View</a></li>
-                                <li><a asp-action="AddBlogs" asp-controller="Blogs">Add Blog</a></li>
-                                <li><a asp-action="Blogs" asp-controller="Blogs">Edit Blog</a></li>
-                            </ul>
+                        <li>
+                            <a asp-action="GetBlogs" asp-controller="Blogs"><i class="fa fa-commenting-o"></i> <span>Blogs</span></a>
                         </li>
+
+                      
+                   
 
 
                     </ul>

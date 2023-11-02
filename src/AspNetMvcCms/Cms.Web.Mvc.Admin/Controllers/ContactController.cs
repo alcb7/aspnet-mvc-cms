@@ -21,12 +21,12 @@ namespace Cms.Web.Mvc.Admin.Controllers
             return View(model);
         }
       
-        [HttpDelete]
+        [HttpPost]
         public async Task<ActionResult> DeleteContacts(int id)
         {
             // İlgili departmanın bilgilerini almak için id kullanın
-            var department = await _httpClient.GetFromJsonAsync<ContactEntity>($"{_apiContact}/{id}");
-            if (department == null)
+            var contact = await _httpClient.GetFromJsonAsync<ContactEntity>($"{_apiContact}/{id}");
+            if (contact == null)
             {
                 return NotFound(); // Departman bulunamadıysa 404 hatası döndürün veya başka bir işlem yapın.
             }

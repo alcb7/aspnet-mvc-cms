@@ -12,7 +12,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 		private readonly HttpClient _httpClient;
 
 
-		private readonly string _apiAppointment = "https://localhost:7188/api/Appointment/";
+		private readonly string _apiAppointment = "https://localhost:7188/api/Appointment";
 		public AppointmentsController(HttpClient httpClient)
 		{
 			_httpClient = httpClient;
@@ -38,7 +38,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
 
 			// Doktorun randevularını API'den çekmek için gerekli isteği yapın.
-			var response = await _httpClient.GetAsync($"{_apiAppointment}{userId}");
+			var response = await _httpClient.GetAsync($"{_apiAppointment}/{userId}");
 
 			if (!response.IsSuccessStatusCode)
 			{

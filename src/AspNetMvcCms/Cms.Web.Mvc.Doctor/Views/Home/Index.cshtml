@@ -1,1 +1,33 @@
-﻿
+﻿@using Cms.Data.Models.Entities
+@model DoctorEntity
+
+
+
+@{
+    Layout = "_Layout";
+}
+
+<style>
+    /* Bu CSS kuralları sayfa içeriğini yatayda merkeze hizalar ve yazıları büyük yapar */
+    .content-wrapper {
+        margin-left: 260px; /* Sidebar genişliği ayarlayın */
+        transition: margin-left 0.5s; /* Geçiş efekti ekleyin (isteğe bağlı) */
+    }
+
+    .sidebar {
+        width: 260px; /* Sidebar genişliği ayarlayın */
+        transition: width 0.5s; /* Geçiş efekti ekleyin (isteğe bağlı) */
+    }
+
+    .welcome-text {
+        text-align: center; /* Metni yatayda merkeze hizala */
+        margin: 50px auto 0; /* Sayfa içeriğini dikeyde 50px aşağıya kaydır */
+        font-size: 24px; /* Yazı boyutunu büyütün */
+    }
+</style>
+
+<div class="welcome-text">
+    <h1>Novena Hastanesi Doktor Paneli</h1>
+    <p>Sağlıklı günler, @Model.Name @Model.Surname! Hoş geldiniz.</p>
+</div>
+<!-- Diğer sayfa içeriği buraya gelecek -->
