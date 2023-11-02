@@ -46,5 +46,17 @@ namespace Cms.Web.Api.Controllers
             }
 
         }
+       
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var isDeleted = await _contactService.DeleteAsync(id);
+            if (!isDeleted)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
     }
 }
