@@ -1,5 +1,11 @@
-﻿@using Cms.Data.Models.Entities;
+﻿
+@using Cms.Data.Models.Entities;
+@using System.Security.Claims;
 @model List<DoctorCommentEntity>
+@{
+    var userName = User.FindFirstValue(ClaimTypes.Name);
+    var userId = User.FindFirstValue(ClaimTypes.PrimarySid);
+}
 <div class="page-wrapper">
     <div class="content">
         <div class="row">
@@ -7,7 +13,7 @@
                 <h4 class="page-title">Comments</h4>
             </div>
             <div class="col-sm-7 col-7 text-right m-b-30">
-                <a asp-action="AddDoctorComments" asp-controller="DoctorComment" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Comments</a>
+                <a asp-action="AddDoctorComment" asp-controller="DoctorComment" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Comments</a>
             </div>
         </div>
         <div class="row">
