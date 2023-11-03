@@ -30,7 +30,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
             }
             var model = await response.Content.ReadFromJsonAsync<List<DoctorCommentEntity>>();
             return View(model);
-        }
+		}
 		//[HttpGet]
 		//public IActionResult AddDepartments()
 		//{
@@ -134,6 +134,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 				return View(); // Silme başarısızsa geri dönün veya başka bir işlem yapın.
 			}
 		}
+
 
 
 
