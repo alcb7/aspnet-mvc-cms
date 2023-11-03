@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Cms.Data.Models.Entities;
 using Cms.Services.Abstract;
+using Cms.Services.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,5 +29,14 @@ namespace Cms.Web.Api.Controllers
 
             return doctors;
         }
-    }
+
+        [HttpGet("{id}")]
+        public IEnumerable<DoctorCommentEntity> GetByDoctorId(int id)
+        {
+            var doctorAppointments = _dcommentService.GetByDoctorId(id);
+
+            return doctorAppointments;
+        }
+		
+	}
 }

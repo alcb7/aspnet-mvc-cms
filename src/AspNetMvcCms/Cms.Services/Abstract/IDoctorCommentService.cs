@@ -14,5 +14,7 @@ namespace Cms.Services.Abstract
         Task<DoctorCommentEntity> AddAsync(DoctorCommentEntity entity);
         Task<DoctorCommentEntity?> UpdateAsync(int id, DoctorCommentEntity entity);
         Task<bool> DeleteAsync(int id);
-    }
+
+		IQueryable<DoctorCommentEntity> GetByDoctorId(int doctorId);
+	}
 }

@@ -5,6 +5,7 @@ using System.Security.Claims;
 
 namespace Cms.Web.Mvc.Doctor.Controllers
 {
+    [Authorize]
     
     public class DoctorCommentController : Controller
     {
@@ -21,9 +22,16 @@ namespace Cms.Web.Mvc.Doctor.Controllers
         public async Task<ActionResult> GetDoctorComment()
         {
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
-            var model = await _httpClient.GetFromJsonAsync<List<DoctorCommentEntity>>($"{_apiDComment}/{userId}");
-            return View(model);
-        }
 
-    }
+			var response = await _httpClient.GetAsync($"{_apiDComment}/{userId}");
+			if (!response.IsSuccessStatusCode)
+			{
+				return StatusCode((int)response.StatusCode);
+			}
+			var model = await response.Content.ReadFromJsonAsync<List<DoctorCommentEntity>>();
+			return View(model);
+        }
+		
+
+	}
 }
