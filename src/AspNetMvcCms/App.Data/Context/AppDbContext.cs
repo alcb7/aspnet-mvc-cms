@@ -80,7 +80,7 @@ namespace Cms.Data.Context
            );
             modelBuilder.Entity<AppointmentEntity>().HasData(
          new AppointmentEntity { Id = 1, PatientId = 1,DoctorId=1,DoctorCategoryId=1,DateTime= DateTime.UtcNow},
-         new AppointmentEntity { Id = 2, PatientId = 2, DoctorId = 3, DoctorCategoryId = 2, DateTime = DateTime.UtcNow },
+         new AppointmentEntity { Id = 2, PatientId = 2, DoctorId = 1, DoctorCategoryId = 2, DateTime = DateTime.UtcNow },
          new AppointmentEntity { Id = 3, PatientId = 1, DoctorId = 3, DoctorCategoryId = 3, DateTime = DateTime.UtcNow },
           new AppointmentEntity { Id = 4, PatientId = 2, DoctorId = 4, DoctorCategoryId = 4, DateTime = DateTime.UtcNow },
          new AppointmentEntity { Id = 5, PatientId = 1, DoctorId = 5, DoctorCategoryId = 5, DateTime = DateTime.UtcNow }

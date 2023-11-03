@@ -53,7 +53,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 			return View(doctorAppointments);
 		}
 
-		[HttpDelete]
+		[HttpPost]
 		public async Task<ActionResult> DeleteAppointments(int id)
 		{
 			// İlgili departmanın bilgilerini almak için id kullanın

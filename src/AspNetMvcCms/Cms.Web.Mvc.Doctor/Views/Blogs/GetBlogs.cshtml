@@ -34,6 +34,11 @@
                                     <a asp-action="UpdateBlogs" asp-controller="Blogs" asp-route-id="@item.Id" class="dropdown-item">
                                         <i class="fa fa-pencil m-r-5"></i> Edit
                                     </a>
+
+                                    <form method="post" asp-action="DeleteBlogs" asp-controller="Blogs">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit">Sil</button>
+                                    </form>
                                 </div>
 
                                 <div class="post-right"><a href="#."><i class="fa fa-heart-o"></i>21</a> <a href="#."><i class="fa fa-eye"></i>8</a> <a href="#."><i class="fa fa-comment-o"></i>17</a></div>
