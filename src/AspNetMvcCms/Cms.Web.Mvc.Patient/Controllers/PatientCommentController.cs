@@ -6,7 +6,7 @@ using System.Security.Claims;
 
 namespace Cms.Web.Mvc.Patient.Controllers
 {
-	[Authorize]
+	
 	public class PatientCommentController : Controller
 	{
 		
@@ -32,7 +32,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
 				return View();
 			}
 			[HttpPost]
-			public async Task<ActionResult> AddPComment(PatientCommentViewModel dto)
+			public async Task<ActionResult> AddPComment(PatientCommentEntity dto)
 			{
 				var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
 
@@ -44,7 +44,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
 
 				var pcommentEntity = new PatientCommentEntity
 				{
-
+					
 					Title = dto.Title,
 					Description = dto.Description,
 					PatientId = userId,

@@ -6,5 +6,7 @@
 
 		public string Description { get; set; }
 
+		public int PatientId { get; set; }
+
 	}
 }
