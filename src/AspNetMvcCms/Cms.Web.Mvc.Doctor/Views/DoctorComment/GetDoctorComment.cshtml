@@ -43,7 +43,7 @@
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item" asp-action="UpdateDepartments" asp-controller="Departments"><i class="fa fa-pencil m-r-5"></i> Edit</a>
                                                 @*  <a method="post" asp-action="DeleteDepartments" asp-controller="Departments" asp-route-id="@item.Id" class="dropdown-item"> Delete</a> *@
-                                                <form method="post" asp-action="DeleteDepartments" asp-controller="Departments">
+                                                <form method="post" asp-action="DeleteDComment" asp-controller="DoctorComment">
                                                     <input type="hidden" name="id" value="@item.Id" />
                                                     <button type="submit">Sil</button>
                                                 </form>

@@ -37,6 +37,17 @@ namespace Cms.Web.Api.Controllers
 
             return doctorAppointments;
         }
-		
-	}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var isDeleted = await _dcommentService.DeleteAsync(id);
+            if (!isDeleted)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+    }
 }
