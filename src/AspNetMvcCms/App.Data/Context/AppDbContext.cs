@@ -109,7 +109,7 @@ namespace Cms.Data.Context
 
 
           },
-           
+
           new PatientEntity
           {
               Id = 2,
@@ -121,8 +121,46 @@ namespace Cms.Data.Context
 
 
 
-          }
-           );
+          },
+
+		  new PatientEntity
+		  {
+			  Id = 3,
+			  Name = "Ssaasddsa",
+			  Surname = "Canbulan",
+			  Email = "alirıza@canbulan.com",
+			  Phone = "05554443311",
+			  Password = "12345"
+
+
+
+		  },
+          new PatientEntity
+          {
+              Id = 4,
+              Name = "xzxzxan",
+              Surname = "Canbulan",
+              Email = "alirıza@canbulan.com",
+              Phone = "05554443311",
+              Password = "12345"
+
+
+
+          },
+
+		  new PatientEntity
+		  {
+			  Id = 5,
+			  Name = "Sulxxxx",
+			  Surname = "Canbulan",
+			  Email = "alirıza@canbulan.com",
+			  Phone = "05554443311",
+			  Password = "12345"
+
+
+
+		  }
+		   );
 
             modelBuilder.Entity<AdminEntity>().HasData(
                new AdminEntity

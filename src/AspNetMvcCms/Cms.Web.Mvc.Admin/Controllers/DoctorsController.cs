@@ -10,7 +10,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
         private readonly HttpClient _httpClient;
 
         private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
-      
+
         public DoctorsController(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -71,7 +71,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Name = doctor.Name,
                 Surname = doctor.Surname,
                 CategoryId = doctor.CategoryId,
-                 Phone = doctor.Phone,
+                Phone = doctor.Phone,
                 Address = doctor.Address,
                 Cv = doctor.Cv,
                 Email = doctor.Email,
@@ -99,7 +99,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Cv = dto.Cv,
                 Email = dto.Email,
 
-                
+
             };
 
             // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin
@@ -115,9 +115,10 @@ namespace Cms.Web.Mvc.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> DeleteDoctors(int id)
         {
+            
             // İlgili departmanın bilgilerini almak için id kullanın
-            var department = await _httpClient.GetFromJsonAsync<DoctorEntity>($"{_apiDoctor}/{id}");
-            if (department == null)
+            var doctor = await _httpClient.GetFromJsonAsync<DoctorEntity>($"{_apiDoctor}/{id}");
+            if (doctor == null)
             {
                 return NotFound(); // Departman bulunamadıysa 404 hatası döndürün veya başka bir işlem yapın.
             }

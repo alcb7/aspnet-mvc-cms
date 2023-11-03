@@ -1,41 +1,90 @@
 ﻿@model LoginViewModel
 
-<h2>Login Form</h2>
-@if (!string.IsNullOrWhiteSpace(ViewBag.Error))
-{
-    <div class="alert alert-danger" role="alert">
-        @ViewBag.Error
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="styles.css"> <!-- CSS dosyanızın yolu -->
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="text-center">Login Form</h2>
+        @if (!string.IsNullOrWhiteSpace(ViewBag.Error))
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.Error
+            </div>
+        }
+
+        <form asp-controller="Auth" asp-action="Login" method="post" class="login-form">
+            <div class="form-group">
+                <label asp-for="Email" class="form-label">Email address</label>
+                <input asp-for="Email" class="form-control">
+                <span asp-validation-for="Email" class="error-text"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" class="form-control">
+                <span asp-validation-for="Password" class="error-text"></span>
+            </div>
+            <div class="form-check">
+                <input asp-for="RememberMe" class="form-check-input">
+                <label asp-for="RememberMe" class="form-check-label">Remember Me</label>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a asp-action="Register" asp-controller="Auth" class="btn btn-success">Register</a>
+            </div>
+        </form>
+
+        <div class="login-options">
+            <form action="https://localhost:7019/login" method="get">
+                <button type="submit" class="btn admin-login">Admin Login</button>
+            </form>
+            <form action="https://localhost:7154/login" method="get">
+                <button type="submit" class="btn doctor-login">Doctor Login</button>
+            </form>
+        </div>
     </div>
-}
-<form asp-controller="Auth" asp-action="Login" method="post">
-
-    <div class="mb-3">
-        <label asp-for="Email" class="form-label">Email address</label>
-        <input asp-for="Email" class="form-control">
-        <span asp-validation-for="Email" class="error-text"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Password" class="form-label">Password</label>
-        <input asp-for="Password" class="form-control">
-        <span asp-validation-for="Password" class="error-text"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="RememberMe" class="form-label">Remember Me</label>
-        <input asp-for="RememberMe">
-    </div>
-    <button type="submit" class="btn btn-primary me-3">Login</button>
-    <a asp-action="Register" asp-controller="Auth" class="btn btn-success">Register</a>
-    
-   
-
-</form>
-
-<form action="https://localhost:7019/login" method="get">
-    <button type="submit" class="btn btn-primary me-3">Admin Login</button>
-</form>
-<form action="https://localhost:7154/login" method="get">
-    <button type="submit" class="btn btn-primary me-3">Doctor Login</button>
-</form>
+</body>
+</html>
 
 
+<style>
+    .login-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
 
+    .login-form {
+        margin-top: 20px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .error-text {
+        color: #ff5733; /* Hata mesajı rengi */
+    }
+
+    /* Özelleştirilmiş renkler ve stiller */
+    .admin-login {
+        background-color: #ff5733; /* Admin Login düğmesinin arka plan rengi */
+        border-color: #ff5733; /* Admin Login düğmesinin kenarlık rengi */
+    }
+
+    .doctor-login {
+        background-color: #1ac7e8; /* Doctor Login düğmesinin arka plan rengi */
+        border-color: #1ac7e8; /* Doctor Login düğmesinin kenarlık rengi */
+    }
+
+</style>
