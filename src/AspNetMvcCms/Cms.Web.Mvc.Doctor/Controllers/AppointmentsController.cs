@@ -57,8 +57,8 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 		public async Task<ActionResult> DeleteAppointments(int id)
 		{
 			// İlgili departmanın bilgilerini almak için id kullanın
-			var department = await _httpClient.GetFromJsonAsync<AppointmentEntity>($"{_apiAppointment}/{id}");
-			if (department == null)
+			var appointment = await _httpClient.GetFromJsonAsync<AppointmentEntity>($"{_apiAppointment}/{id}");
+			if (appointment == null)
 			{
 				return NotFound(); // Departman bulunamadıysa 404 hatası döndürün veya başka bir işlem yapın.
 			}
