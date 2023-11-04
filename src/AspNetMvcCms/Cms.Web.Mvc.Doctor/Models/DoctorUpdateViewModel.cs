@@ -25,7 +25,11 @@ namespace Cms.Web.Mvc.Doctor.Models
         [EmailAddress]
         public string Email { get; set; } = string.Empty;
 
-    
+
+        [Required]
+        [MinLength(8)]
+        [DataType(DataType.Password)]
+        public string Password { get; set; } = string.Empty;
 
 
         [Phone]
@@ -34,7 +38,7 @@ namespace Cms.Web.Mvc.Doctor.Models
 
         
 
-        //public ICollection<AppointmentEntity> Appointments { get; set; }
+        
 
         public string? Address { get; set; } = string.Empty;
     

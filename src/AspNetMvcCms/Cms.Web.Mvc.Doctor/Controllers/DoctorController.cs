@@ -61,7 +61,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
                 Cv = doctor.Cv,
                 Phone = doctor.Phone,
                 Email = doctor.Email,
-                
+                Password = doctor.Password,
             };
 
             return View(doctorvm);
@@ -89,6 +89,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
                 Cv = doctorvm.Cv,
                 Phone = doctorvm.Phone,
                 Email = doctorvm.Email,
+                Password = doctorvm.Password,
             };
 
             // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin

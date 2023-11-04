@@ -1,6 +1,7 @@
 ﻿using Cms.Data.Models.Entities;
 using Cms.Web.Mvc.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Numerics;
 using System.Security.Claims;
 
 namespace Cms.Web.Mvc.Admin.Controllers
@@ -51,7 +52,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
             var doctorvm = new AdminUpdateViewModel
             {
                 Id = id,
-              
+                Password = doctor.Password,
                 Name = doctor.Name,
                 Surname = doctor.Surname,
                 Address = doctor.Address,
@@ -79,7 +80,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
             {
 
                 Id = id,
-               
+                Password = doctorvm.Password,
                 Name = doctorvm.Name,
                 Surname = doctorvm.Surname,
                 Address = doctorvm.Address,

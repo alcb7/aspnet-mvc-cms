@@ -25,13 +25,14 @@ namespace Cms.Web.Mvc.Admin.Models
 
 
 
+        [Required]
+        [MinLength(8)]
+        [DataType(DataType.Password)]
+        public string Password { get; set; } = string.Empty;
+
         [Phone]
         public string? Phone { get; set; } = string.Empty;
 
-
-
-
-        //public ICollection<AppointmentEntity> Appointments { get; set; }
 
         public string? Address { get; set; } = string.Empty;
 

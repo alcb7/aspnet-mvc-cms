@@ -41,7 +41,12 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
                 Name = dto.Name,
                 Surname = dto.Surname,
-                CategoryId = dto.CategoryId
+                CategoryId = dto.CategoryId,
+                Phone = dto.Phone,
+                Address = dto.Address,
+                Cv = dto.Cv,
+                Email = dto.Email,
+                Password = dto.Password,
 
             };
             var response = await _httpClient.PostAsJsonAsync(_apiDoctor, doctorEntity);
@@ -75,6 +80,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Address = doctor.Address,
                 Cv = doctor.Cv,
                 Email = doctor.Email,
+                Password = doctor.Password,
             };
 
             return View(doctorDto);
@@ -98,7 +104,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Address = dto.Address,
                 Cv = dto.Cv,
                 Email = dto.Email,
-
+                Password= dto.Password,
 
             };
 
