@@ -2,6 +2,7 @@
 using Cms.Data.Models.Entities;
 using Cms.Services.Abstract;
 using Cms.Services.Concrete;
+using Cms.Web.Api.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,11 +13,14 @@ namespace Cms.Web.Api.Controllers
     public class DoctorCommentController : ControllerBase
     {
         private readonly IDoctorCommentService _dcommentService;
-       
+        private readonly IMapper _mapper;
 
-        public DoctorCommentController(IDoctorCommentService dcommentService)
+        
+
+        public DoctorCommentController(IDoctorCommentService dcommentService, IMapper mapper)
         {
             _dcommentService = dcommentService;
+            _mapper = mapper;
         }
 
 
@@ -36,6 +40,49 @@ namespace Cms.Web.Api.Controllers
             var doctorAppointments = _dcommentService.GetByDoctorId(id);
 
             return doctorAppointments;
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddAsync([FromBody] DoctorCommentCreateDto dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var mapp = _mapper.Map<DoctorCommentEntity>(dto);
+                var doctor = await _dcommentService.AddAsync(mapp);
+                return Ok(doctor);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+
+        }
+
+        // PUT: api/Doctors/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] DoctorCommentUpdateDto dto)
+        {
+            if (dto.Id != id)
+                return BadRequest();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var mapp = _mapper.Map<DoctorCommentEntity>(dto);
+                var doctor = await _dcommentService.UpdateAsync(id, mapp);
+                return Ok(doctor);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)

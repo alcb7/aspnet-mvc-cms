@@ -41,7 +41,9 @@
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" asp-action="UpdateDepartments" asp-controller="Departments"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a asp-action="UpdateDoctorComment" asp-controller="DoctorComment" class="dropdown-item">
+                                                    <i class="fa fa-pencil m-r-5"></i> Edit
+                                                </a>
                                                 @*  <a method="post" asp-action="DeleteDepartments" asp-controller="Departments" asp-route-id="@item.Id" class="dropdown-item"> Delete</a> *@
                                                 <form method="post" asp-action="DeleteDComment" asp-controller="DoctorComment">
                                                     <input type="hidden" name="id" value="@item.Id" />
