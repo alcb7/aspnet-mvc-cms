@@ -38,6 +38,9 @@ namespace Cms.Web.Mvc.Admin.Controllers
 				Name = blog.Name,
 				Surname = blog.Surname,
 				Email = blog.Email,
+				Phone = blog.Phone,
+				Address = blog.Address,
+				Password = blog.Password,
 
 			};
 
@@ -57,8 +60,11 @@ namespace Cms.Web.Mvc.Admin.Controllers
 				Name = dto.Name,
 				Surname = dto.Surname,
 				Email = dto.Email,
+                Phone = dto.Phone,
+                Address = dto.Address,
+                Password = dto.Password,
 
-			};
+            };
 
 			
 			// Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin
