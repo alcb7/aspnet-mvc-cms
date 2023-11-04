@@ -1,5 +1,5 @@
 ﻿@using Cms.Data.Models.Entities;
-@model List<BlogEntity>
+@model BlogModel
 <div class="page-wrapper">
     <div class="content">
         <div class="row">
@@ -13,7 +13,7 @@
 
         </div>
         <div class="row">
-            @foreach (var item in Model)
+            @foreach (var item in Model.blogs)
             {
                 <div class="col-sm-6 col-md-6 col-lg-4 mb-4">
                     <div class="blog grid-blog">
@@ -27,7 +27,7 @@
                             <div class="blog-info clearfix">
                                 <div class="post-left">
                                     <ul>
-                                        <li><a href="#."><i class="fa fa-calendar"></i> <span>@item?.Category?.Title</span></a></li>
+                                        <li><a href="#."><i class="fa fa-calendar"></i> <span>@item.Category.Title</span></a></li>
                                     </ul>
                                 </div>
                                 <div>

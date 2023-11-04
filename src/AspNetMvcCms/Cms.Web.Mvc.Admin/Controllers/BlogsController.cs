@@ -15,6 +15,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
         private readonly HttpClient _httpClient;
 
         private readonly string _apiBlog = "https://localhost:7188/api/Blogs";
+        private readonly string _apibCategories = "https://localhost:7188/api/BlogCategories";
 
         public BlogsController(HttpClient httpClient)
         {
@@ -24,7 +25,19 @@ namespace Cms.Web.Mvc.Admin.Controllers
         public async Task<ActionResult> GetBlogs()
         {
             var model = await _httpClient.GetFromJsonAsync<List<BlogEntity>>(_apiBlog);
-            return View(model);
+            var model1 = await _httpClient.GetFromJsonAsync<List<BlogCategoryEntity>>(_apibCategories);
+            var viewModel = new BlogModel
+            {
+                blogs = model,
+                blogcategories = model1,
+                
+               
+            };
+
+
+            return View(viewModel);
+
+           
         }
 
         [HttpGet]
@@ -40,14 +53,14 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 return View(dto);
             }
 
-           
+
             var blogEntity = new BlogEntity
             {
-              
+
                 Title = dto.Title,
-                Description =dto.Description,
+                Description = dto.Description,
                 BlogCategoryId = dto.BlogCategoryId
-                
+
             };
             var response = await _httpClient.PostAsJsonAsync(_apiBlog, blogEntity);
             if (response.IsSuccessStatusCode)
@@ -56,7 +69,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
             }
 
             return View(dto);
-         
+
         }
         [HttpGet]
         public async Task<ActionResult> UpdateBlogs(int id)
@@ -71,7 +84,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
             // Blog bilgilerini bir DTO'ya aktarabilirsiniz
             var blogDto = new BlogViewModel
             {
-                Id=id,
+                Id = id,
                 Title = blog.Title,
                 Description = blog.Description,
                 BlogCategoryId = blog.BlogCategoryId

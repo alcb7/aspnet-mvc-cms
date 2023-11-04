@@ -31,6 +31,7 @@ builder.Services.AddScoped<IDataRepository<DoctorCommentEntity>, DataRepository<
 builder.Services.AddScoped<IDataRepository<CommentEntity>, DataRepository<CommentEntity>>();
 builder.Services.AddScoped<IDataRepository<DoctorCategoryEntity>, DataRepository<DoctorCategoryEntity>>();
 builder.Services.AddScoped<IDataRepository<PatientCommentEntity>, DataRepository<PatientCommentEntity>>();
+builder.Services.AddScoped<IDataRepository<BlogCategoryEntity>, DataRepository<BlogCategoryEntity>>();
 
 
 
@@ -46,6 +47,7 @@ builder.Services.AddScoped<IDoctorCommentService, DoctorCommentService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<IDoctorCategoryService, DoctorCategoryService>();
 builder.Services.AddScoped<IPatientCommentService, PatientCommentService>();
+builder.Services.AddScoped<IBlogCategoriesService, BlogCategoriesService>();
 
 //builder.Services.AddScoped<IFileService<FileEntity>, FileService>();
 
