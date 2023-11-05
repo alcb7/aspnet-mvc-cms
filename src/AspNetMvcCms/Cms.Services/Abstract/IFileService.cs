@@ -1,4 +1,5 @@
 ﻿using Cms.Data.Models.Entities;
+using Cms.Services.Responses;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,13 @@ using System.Threading.Tasks;
 
 namespace Cms.Services.Abstract
 {
-	public interface IFileService<FileEntity>
-	{
-		IQueryable<FileEntity?> GetFileList();
-		Task<FileEntity> GetFile(int id);
-		Task<FileEntity?> PostFile( IFormFile entity);
-	}
+    public interface IFileService
+    {
+        List<string> GetFiles();
+        Task UploadFileAsync(IFormFile formFile);
+
+        Task<FileResponse?> DownloadFileAsync(string fileName);
+
+        Task DeleteAsync(string fileName);
+    }
 }

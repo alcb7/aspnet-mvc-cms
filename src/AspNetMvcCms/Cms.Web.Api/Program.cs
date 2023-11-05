@@ -49,8 +49,7 @@ builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<IDoctorCategoryService, DoctorCategoryService>();
 builder.Services.AddScoped<IPatientCommentService, PatientCommentService>();
 builder.Services.AddScoped<IBlogCategoriesService, BlogCategoriesService>();
-
-//builder.Services.AddScoped<IFileService<FileEntity>, FileService>();
+builder.Services.AddScoped<IFileService, FileService>();
 
 
 

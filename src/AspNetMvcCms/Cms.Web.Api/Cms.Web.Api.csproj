@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Cms.Services\Cms.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Uploads\" />
+  </ItemGroup>
+
 </Project>

@@ -1,8 +1,13 @@
 ﻿using Cms.Data.Context;
 using Cms.Data.Models.Entities;
 using Cms.Services.Abstract;
+using Cms.Services.Responses;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,59 +16,93 @@ using System.Threading.Tasks;
 
 namespace Cms.Services.Concrete
 {
-	public class FileService : IFileService<FileEntity>
-	{
-		private readonly IFileService<FileEntity> _filerepository;
-		private readonly AppDbContext _appDbContext;
+    public class FileService : IFileService
+    {
+        private readonly string _rootPath;
+        private readonly IConfiguration _configuration;
+        private ILogger<FileService> _logger;
 
-		public FileService(IFileService<FileEntity> filerepository, AppDbContext appDbContext)
-		{
-			_filerepository = filerepository;
-			_appDbContext = appDbContext;
-		}
+        public FileService(IConfiguration configuration, ILogger<FileService> logger, IHostingEnvironment environment)
+        {
+            _rootPath = Path.Combine(environment.ContentRootPath, "Uploads");
+            _configuration = configuration;
+            _logger = logger;
+        }
 
-		public async Task<FileEntity> GetFile(int id)
-		{
-			// Veritabanından belirli bir dosya verisini alma kodunu buraya ekleyin
-			var file = await _appDbContext.Files.FirstOrDefaultAsync(f => f.Id == id);
-			return file;
-		}
 
-		public IQueryable<FileEntity> GetFileList()
-		{
-			// Veritabanındaki tüm dosya verilerini sorgu olarak alın
-			var fileListQuery = _appDbContext.Files;
 
-			// IQueryable'i bir liste olarak dönüştürün (materialize)
-			var fileList = fileListQuery.ToList();
+        public async Task DeleteAsync(string fileName)
+        {
+            await Task.Run(() =>
+            {
+                var uploadFolder = GetUploadFolder();
+                var fullFilePath = Path.Combine(uploadFolder, fileName);
+                if (File.Exists(fullFilePath))
+                {
+                    File.Delete(fullFilePath);
+                }
+            });
+        }
 
-			return fileList.AsQueryable();
-		}
+        public async Task<FileResponse?> DownloadFileAsync(string fileName)
+        {
+            var uploadFolder = GetUploadFolder();
+            var fullFilePath = Path.Combine(uploadFolder, fileName);
+            if (!File.Exists(fullFilePath))
+            {
+                return null;
+            }
+            var provider = new FileExtensionContentTypeProvider();
+            if (!provider.TryGetContentType(fullFilePath, out var contentType))
+            {
+                contentType = "application/octet-stream";
+            }
 
-		public async Task<FileEntity> PostFile(IFormFile formFile)
-		{
-			// Gelen dosya verisini veritabanına kaydetme kodunu buraya ekleyin
-			if (formFile == null || formFile.Length == 0)
-			{
-				throw new Exception("Dosya geçersiz veya boş.");
-			}
+            return new FileResponse
+            {
+                FileName = fileName,
+                ContentType = contentType,
+                FileContent = await File.ReadAllBytesAsync(fullFilePath)
+            };
+        }
 
-			using (var stream = new MemoryStream())
-			{
-				await formFile.CopyToAsync(stream);
+        public List<string> GetFiles()
+        {
+            var uploadFolder = GetUploadFolder();
 
-				var file = new FileEntity
-				{
-					Data = stream.ToArray(),
-					MimeType = formFile.ContentType,
-					FileName = formFile.FileName
-				};
+            var files = Directory.GetFiles(uploadFolder);
 
-				_appDbContext.Files.Add(file);
-				await _appDbContext.SaveChangesAsync();
+            return files.Select(f => Path.GetFileName(f)).ToList();
+        }
 
-				return file;
-			}
-		}
-	}
+        public async Task UploadFileAsync(IFormFile formFile)
+        {
+            var uploadFolder = GetUploadFolder();
+
+            var fullFilePath = Path.Combine(uploadFolder, formFile.FileName);
+
+            using var fileStream = new FileStream(fullFilePath, FileMode.Create);
+
+            await formFile.CopyToAsync(fileStream);
+
+            _logger.LogInformation("File uploaded");
+        }
+
+
+        private string GetUploadFolder()
+        {
+            var localUploadFolder = _configuration.GetSection("FileUploadLocation").Value;
+            if (string.IsNullOrWhiteSpace(localUploadFolder))
+            {
+                throw new InvalidOperationException("FileUploadLocation is not configured.");
+            }
+            var fullPath = Path.Combine(_rootPath, localUploadFolder);
+            if (!Directory.Exists(fullPath))
+            {
+                Directory.CreateDirectory(fullPath);
+            }
+
+            return fullPath;
+        }
+    }
 }

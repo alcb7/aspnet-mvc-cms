@@ -15,77 +15,44 @@ namespace Cms.Web.Api.Controllers
     [ApiController]
     public class FileController : ControllerBase
     {
-		private readonly IFileService<FileEntity> _fileService;
+        private readonly IFileService _fileService;
 
-		public FileController(IFileService<FileEntity> fileService)
-		{
-			_fileService = fileService;
-        }
-
-        
-		[HttpGet("get-files")]
-		public IEnumerable<FileEntity> GetFileList()
-		{
-			var files = _fileService.GetFileList();
-
-			return files;
-        }
-
-
-
-        [HttpGet("get-file/{id}")]
-        public async Task<IActionResult> GetFile(int id)
+        public FileController(IFileService fileService)
         {
-            var doctorAppointments = await _fileService.GetFile(id);
-
-			return Ok(doctorAppointments);
+            _fileService = fileService;
         }
 
+        [HttpPost]
+        public async Task<IActionResult> UploadAsync(IFormFile formFile)
+        {
+            try
+            {
+                await _fileService.UploadFileAsync(formFile);
+                return Ok("File Uploaded");
+            }
+            catch (Exception e)
+            {
 
+                return BadRequest(e);
+            }
 
-  //      [HttpPost("post-file")]
-  //      public async Task<IActionResult> PostFile(IFormFile file)
-  //      {
-  //          var fileEntity = new FileEntity
-  //          {
-  //              FileName = file.FileName,
-  //              MimeType = file.ContentType
-  //          };
+        }
 
-  //          using (var ms = new MemoryStream())
-  //          {
-  //              file.CopyTo(ms);
-  //              fileEntity.Data = ms.ToArray();
-  //          }
+        [HttpGet]
+        public async Task<IActionResult> DownloadAsync([FromQuery] string fileName)
+        {
+            try
+            {
+                var response = await _fileService.DownloadFileAsync(fileName);
+                return File(response.FileContent, response.ContentType, response.FileName);
+            }
+            catch (Exception e)
+            {
 
-  //          DbContext.Files.Add(fileEntity);
-  //          await DbContext.SaveChangesAsync();
+                return BadRequest(e);
+            }
 
+        }
 
-  //          return Ok(new
-  //          {
-  //              fileEntity.Id
-  //          }); // { id : 3 }
-  //      }
-		//[HttpPost]
-		//public async Task<IActionResult> AddAsync([FromBody] AppointmentCreateDto dto)
-		//{
-		//	if (!ModelState.IsValid)
-		//	{
-		//		return BadRequest();
-		//	}
-		//	try
-		//	{
-		//		var mapp = _mapper.Map<AppointmentEntity>(dto);
-		//		var doctor = await _appointmentService.AddAsync(mapp);
-		//		return Ok(doctor);
-		//	}
-		//	catch (Exception e)
-		//	{
-
-		//		return BadRequest(e.Message);
-		//	}
-
-		//}
-	}
+    }
 }
