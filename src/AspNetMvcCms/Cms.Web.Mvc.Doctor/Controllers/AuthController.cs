@@ -90,8 +90,9 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 		public async Task<IActionResult> Logout()
 		{
 			await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-			return RedirectToAction(nameof(Login));
-		}
+            string otherMvcProjectUrl = "https://localhost:7010/login";
+            return Redirect(otherMvcProjectUrl);
+        }
 
 
 
