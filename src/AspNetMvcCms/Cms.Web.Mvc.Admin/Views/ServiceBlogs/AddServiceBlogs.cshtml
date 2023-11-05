@@ -1,0 +1,21 @@
+﻿@model ServiceBlogViewModel
+
+<div class="page-wrapper">
+    <div class="content">
+        <form asp-action="AddServiceBlogs" asp-controller="ServiceBlogs" method="post">
+            <div class="form-group">
+                <label for="Title">Title:</label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="Description">Description:</label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

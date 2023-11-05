@@ -23,13 +23,14 @@ namespace Cms.Web.Api.MappingProfiles
 			CreateMap<PatientCommentDto, PatientCommentEntity>().ReverseMap();
             CreateMap<DoctorCommentCreateDto, DoctorCommentEntity>().ReverseMap();
             CreateMap<DoctorCommentUpdateDto, DoctorCommentEntity>().ReverseMap();
-
+            CreateMap<ServiceBlogCreateDto, ServiceBlogEntity>().ReverseMap();
+            CreateMap<ServiceBlogUpdateDto, ServiceBlogEntity>().ReverseMap();
 
 
 
 
 
         }
-	}
+    }
 }
 

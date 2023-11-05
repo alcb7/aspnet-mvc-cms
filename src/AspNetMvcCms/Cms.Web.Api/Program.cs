@@ -32,6 +32,7 @@ builder.Services.AddScoped<IDataRepository<CommentEntity>, DataRepository<Commen
 builder.Services.AddScoped<IDataRepository<DoctorCategoryEntity>, DataRepository<DoctorCategoryEntity>>();
 builder.Services.AddScoped<IDataRepository<PatientCommentEntity>, DataRepository<PatientCommentEntity>>();
 builder.Services.AddScoped<IDataRepository<BlogCategoryEntity>, DataRepository<BlogCategoryEntity>>();
+builder.Services.AddScoped<IDataRepository<ServiceBlogEntity>, DataRepository<ServiceBlogEntity>>();
 
 
 
