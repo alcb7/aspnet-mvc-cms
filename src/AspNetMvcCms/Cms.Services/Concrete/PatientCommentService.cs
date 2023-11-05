@@ -47,7 +47,16 @@ namespace Cms.Services.Concrete
 
 		}
 
-		public async Task<PatientCommentEntity?> GetByIdAsync(int id)
+        public IQueryable<PatientCommentEntity> GetByDoctorId(int id)
+        {
+            return _repository.GetAll()
+       .Where(a => a.Patient.Id == id )
+
+
+       ;
+        }
+
+        public async Task<PatientCommentEntity?> GetByIdAsync(int id)
 		{
 			// Veritabanından doktoru ID'ye göre almak için Repository kullanılır.
 			return await _repository.GetByIdAsync(id);

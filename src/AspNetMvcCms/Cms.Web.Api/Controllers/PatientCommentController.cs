@@ -20,14 +20,21 @@ namespace Cms.Web.Api.Controllers
 			_pcommentService = pcommentService;
 			_mapper = mapper;
 		}
+        [HttpGet("{id}")]
+        public IEnumerable<PatientCommentEntity> GetByDoctorId(int id)
+        {
+            var doctorAppointments = _pcommentService.GetByDoctorId(id);
+
+            return doctorAppointments;
+        }
 
 
 
 
 
 
-		// GET: api/Doctors
-		[HttpGet]
+        // GET: api/Doctors
+        [HttpGet]
 		public IEnumerable<PatientCommentEntity> GetAll()
 		{
 			var patients = _pcommentService.GetAll();
