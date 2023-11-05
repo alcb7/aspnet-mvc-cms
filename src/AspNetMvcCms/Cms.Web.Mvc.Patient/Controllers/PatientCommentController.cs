@@ -30,55 +30,54 @@ namespace Cms.Web.Mvc.Patient.Controllers
 			[HttpGet]
 			public  IActionResult AddPComment()
 			{
-           
-
-
-            return View();
-			}
-			[HttpPost]
-			public async Task<ActionResult> AddPComment(PatientCommentViewModel dto)
-			{
-            if (User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
             {
-                // Kullanıcı oturum açmışsa randevu sayfasını görüntüle
-                var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
-
-                if (!ModelState.IsValid)
-                {
-                    return View(dto);
-                }
-                dto.PatientId = userId;
-
-
-                var pcommentEntity = new PatientCommentEntity
-                {
-
-
-                    Title = dto.Title,
-                    Description = dto.Description,
-                    PatientId = userId,
-
-
-
-
-
-                };
-                var response = await _httpClient.PostAsJsonAsync(_apipComments, pcommentEntity);
-                if (response.IsSuccessStatusCode)
-                {
-                    ViewBag.Message = "Blog Başarıyla kaydedildi.";
-                }
-
-                return View(dto);
+                return RedirectToAction("Login", "Auth");
             }
             else
             {
                 // Kullanıcı oturum açmamışsa oturum açma sayfasına yönlendir
-                return RedirectToAction("Login", "Auth");
+                return View();
             }
 
 
             
+			}
+			[HttpPost]
+			public async Task<ActionResult> AddPComment(PatientCommentViewModel dto)
+			{
+
+
+
+				var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
+
+				if (!ModelState.IsValid)
+				{
+					return View(dto);
+				}
+            dto.PatientId = userId;
+
+
+            var pcommentEntity = new PatientCommentEntity
+				{
+					
+					
+					Title = dto.Title,
+					Description = dto.Description,
+                PatientId = userId,
+
+
+
+
+
+        };
+				var response = await _httpClient.PostAsJsonAsync(_apipComments, pcommentEntity);
+				if (response.IsSuccessStatusCode)
+				{
+					ViewBag.Message = "Blog Başarıyla kaydedildi.";
+				}
+
+				return View(dto);
 
 			}
 		}	
