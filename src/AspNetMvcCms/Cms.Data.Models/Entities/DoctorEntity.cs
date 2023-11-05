@@ -43,7 +43,7 @@ namespace Cms.Data.Models.Entities
         //public ICollection<AppointmentEntity> Appointments { get; set; }
 
         public string? Address { get; set; } = string.Empty;
-        public string? ResimDosyaAdi { get; set; } 
+        public string? ResimDosyaAdi { get; set; } // doctor_1.jpg
 
         public string? ResimYolu
         {
