@@ -46,7 +46,17 @@ namespace Cms.Web.Api.Controllers
             }
 
         }
-       
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByIdAsync([FromRoute] int id)
+        {
+            var doctor = await _contactService.GetByIdAsync(id);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+            return Ok(doctor);
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
