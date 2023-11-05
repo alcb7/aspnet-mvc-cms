@@ -65,11 +65,13 @@ namespace Cms.Web.Mvc.Admin.Controllers
             }
 
             // Blog bilgilerini bir DTO'ya aktarabilirsiniz
-            var departmenDto = new ServiceBlogEntity
+            var departmenDto = new ServiceBlogViewModel
             {
                 Id = id,
                 Title = blog.Title,
                 Description = blog.Description,
+               
+               
 
             };
 

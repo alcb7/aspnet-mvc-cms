@@ -77,6 +77,16 @@ namespace Cms.Web.Api.Controllers
                 return BadRequest(e.Message);
             }
         }
+		[HttpGet("{id}")]
+		public async Task<IActionResult> GetByIdAsync([FromRoute] int id)
+		{
+			var doctor = await _sblogService.GetByIdAsync(id);
+			if (doctor == null)
+			{
+				return NotFound();
+			}
+			return Ok(doctor);
+		}
 
-    }
+	}
 }
