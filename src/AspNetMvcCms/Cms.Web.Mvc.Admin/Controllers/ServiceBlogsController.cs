@@ -65,7 +65,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
             }
 
             // Blog bilgilerini bir DTO'ya aktarabilirsiniz
-            var departmenDto = new ServiceBlogEntity
+            var departmenDto = new ServiceBlogViewModel
             {
                 Id = id,
                 Title = blog.Title,
@@ -101,6 +101,32 @@ namespace Cms.Web.Mvc.Admin.Controllers
             }
 
             return View(dto);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteServiceBlogs(int id)
+        {
+
+            // İlgili departmanın bilgilerini almak için id kullanın
+            var doctor = await _httpClient.GetFromJsonAsync<ServiceBlogEntity>($"{_apiSblog}/{id}");
+            if (doctor == null)
+            {
+                return NotFound(); // Departman bulunamadıysa 404 hatası döndürün veya başka bir işlem yapın.
+            }
+
+            // Silme işlemi için HTTP DELETE isteği gönderin
+            var response = await _httpClient.DeleteAsync($"{_apiSblog}/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                ViewBag.Message = "Departman Başarıyla silindi.";
+                return RedirectToAction("GetServiceBlogs"); // Departmanlar listesine yönlendirin veya başka bir işlem yapın.
+            }
+            else
+            {
+                ViewBag.Message = "Departman silinemedi.";
+                return View(); // Silme başarısızsa geri dönün veya başka bir işlem yapın.
+            }
         }
     }
 }
