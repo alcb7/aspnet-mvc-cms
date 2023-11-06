@@ -46,7 +46,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                ViewBag.Message = "Randevu Başarıyla Oluşturuldu.";
+                ViewBag.SuccesMessage = "Randevu Başarıyla Oluşturuldu.";
             }
             else
             {

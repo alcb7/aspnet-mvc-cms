@@ -1,6 +1,18 @@
 ﻿@model DepartmentViewModel
 
 <div class="page-wrapper">
+    @if (!string.IsNullOrWhiteSpace(ViewBag.SuccessMessage))
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewBag.SuccessMessage
+        </div>
+    }
+    @if (!string.IsNullOrWhiteSpace(ViewBag.Error))
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.Error
+        </div>
+    }
     <div class="content">
         <form asp-action="AddDepartments" asp-controller="Departments" method="post">
             <div class="form-group">

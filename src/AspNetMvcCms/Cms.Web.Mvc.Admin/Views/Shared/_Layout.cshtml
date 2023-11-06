@@ -177,18 +177,7 @@
     </div>
     <div class="container">
         <main role="main" class="pb-3">
-            @if (!string.IsNullOrWhiteSpace(ViewBag.SuccessMessage))
-            {
-                <div class="alert alert-success" role="alert">
-                    @ViewBag.SuccessMessage
-                </div>
-            }
-            @if (!string.IsNullOrWhiteSpace(ViewBag.Error))
-            {
-                <div class="alert alert-danger" role="alert">
-                    @ViewBag.Error
-                </div>
-            }
+           
             @RenderBody()
         </main>
     </div>

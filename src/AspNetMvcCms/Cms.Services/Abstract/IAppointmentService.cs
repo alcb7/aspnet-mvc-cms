@@ -14,6 +14,6 @@ namespace Cms.Services.Abstract
         Task<AppointmentEntity> AddAsync(AppointmentEntity entity);
         Task<AppointmentEntity?> UpdateAsync(int id, AppointmentEntity entity);
         Task<bool> DeleteAsync(int id);
-		IQueryable<AppointmentEntity> GetByDoctorId(int doctorId);
-	}
+        Task<AppointmentEntity?> GetByDoctorId(int doctorId);
+    }
 }
