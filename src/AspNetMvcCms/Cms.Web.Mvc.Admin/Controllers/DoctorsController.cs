@@ -113,7 +113,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                ViewBag.Message = "Blog Başarıyla güncellendi.";
+                ViewBag.SuccessMessage = "Blog Başarıyla güncellendi.";
             }
 
             return View(dto);
@@ -134,7 +134,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                ViewBag.Message = "Departman Başarıyla silindi.";
+                ViewBag.SuccessMessage = "Departman Başarıyla silindi.";
                 return RedirectToAction("GetDoctors"); // Departmanlar listesine yönlendirin veya başka bir işlem yapın.
             }
             else

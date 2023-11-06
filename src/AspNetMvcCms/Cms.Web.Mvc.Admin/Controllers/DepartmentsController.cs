@@ -46,7 +46,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
             var response = await _httpClient.PostAsJsonAsync(_apiDepartment, blogEntity);
             if (response.IsSuccessStatusCode)
             {
-                ViewBag.Message = "Departman Başarıyla kaydedildi.";
+                ViewBag.SuccessMessage = "Departman Başarıyla kaydedildi.";
             }
 
             return View(dto);
@@ -115,12 +115,12 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                ViewBag.Message = "Departman Başarıyla silindi.";
+                ViewBag.SuccessMessage = "Departman Başarıyla silindi.";
                 return RedirectToAction("GetDepartments"); // Departmanlar listesine yönlendirin veya başka bir işlem yapın.
             }
             else
             {
-                ViewBag.Message = "Departman silinemedi.";
+                ViewBag.Error = "Departman silinemedi.";
                 return View(); // Silme başarısızsa geri dönün veya başka bir işlem yapın.
             }
         }

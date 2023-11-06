@@ -35,12 +35,12 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                ViewBag.Message = "Departman Başarıyla silindi.";
+                ViewBag.SuccesMessage = "Appointment Deleted.";
                 return RedirectToAction("GetAppointments"); // Departmanlar listesine yönlendirin veya başka bir işlem yapın.
             }
             else
             {
-                ViewBag.Message = "Departman silinemedi.";
+                ViewBag.ErrorMessage = "Appointment not Deleted.";
                 return View(); // Silme başarısızsa geri dönün veya başka bir işlem yapın.
             }
         }

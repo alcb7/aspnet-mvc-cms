@@ -36,7 +36,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                ViewBag.Message = "Departman Başarıyla silindi.";
+                ViewBag.SuccessMessage = "Departman Başarıyla silindi.";
                 return RedirectToAction("GetContacts"); // Departmanlar listesine yönlendirin veya başka bir işlem yapın.
             }
             else

@@ -80,6 +80,18 @@
                         <span asp-validation-for="Email" class="error-text"></span>
                     </div> *@
                     <div class="row">
+                        @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @ViewBag.SuccessMessage
+                            </div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(ViewBag.Error))
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewBag.Error
+                            </div>
+                        }
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label asp-for="Fullname" class="form-label">Fullname</label>
