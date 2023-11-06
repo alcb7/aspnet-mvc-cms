@@ -73,7 +73,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
 			if (response.IsSuccessStatusCode)
 			{
 				ViewBag.Message = "Blog Başarıyla güncellendi.";
-			}
+                return RedirectToAction("GetPatients");
+            }
 
 			return View(dto);
 		}

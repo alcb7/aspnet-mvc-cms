@@ -48,6 +48,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
             if (response.IsSuccessStatusCode)
             {
                 ViewBag.Message = "Departman Başarıyla kaydedildi.";
+                return RedirectToAction("GetServiceBlogs");
+
             }
 
             return View(dto);
@@ -98,6 +100,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
             if (response.IsSuccessStatusCode)
             {
                 ViewBag.Message = "Blog Başarıyla güncellendi.";
+                return RedirectToAction("GetServiceBlogs");
             }
 
             return View(dto);

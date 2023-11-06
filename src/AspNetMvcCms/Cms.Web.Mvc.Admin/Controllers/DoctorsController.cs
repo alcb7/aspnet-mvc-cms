@@ -53,6 +53,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
             if (response.IsSuccessStatusCode)
             {
                 ViewBag.Message = "Doktor Başarıyla kaydedildi.";
+                return RedirectToAction("GetDoctors");
+
             }
 
             return View(dto);
@@ -113,7 +115,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                ViewBag.SuccessMessage = "Blog Başarıyla güncellendi.";
+                ViewBag.SuccessMessage = "Doctor Başarıyla güncellendi.";
+                return RedirectToAction("GetDoctors");
             }
 
             return View(dto);
