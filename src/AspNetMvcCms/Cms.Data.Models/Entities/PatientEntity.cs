@@ -55,5 +55,7 @@ namespace Cms.Data.Models.Entities
         //        return null;
         //    }
         //}
+
+        public List<PatientCommentEntity>? PatientComments { get; set; }
     }
 }

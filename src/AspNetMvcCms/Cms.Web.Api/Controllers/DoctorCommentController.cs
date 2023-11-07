@@ -35,11 +35,14 @@ namespace Cms.Web.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<DoctorCommentEntity> GetByDoctorId(int id)
+        public async Task<IActionResult> GetByDoctorId(int id)
         {
-            var doctorAppointments = _dcommentService.GetByDoctorId(id);
-
-            return doctorAppointments;
+            var doctor = await _dcommentService.GetByIdAsync(id);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+            return Ok(doctor);
         }
         [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] DoctorCommentCreateDto dto)
