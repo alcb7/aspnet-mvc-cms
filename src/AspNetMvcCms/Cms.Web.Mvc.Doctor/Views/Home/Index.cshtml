@@ -1,8 +1,6 @@
 ﻿@using Cms.Data.Models.Entities
 @model DoctorEntity
 
-
-
 @{
     Layout = "_Layout";
 }
@@ -24,9 +22,24 @@
         margin: 50px auto 0; /* Sayfa içeriğini dikeyde 50px aşağıya kaydır */
         font-size: 24px; /* Yazı boyutunu büyütün */
     }
+
+    .doctor-photo {
+        max-width: 200px; /* Doktor fotoğrafının maksimum genişliği */
+        border-radius: 50%; /* Fotoğrafı yuvarlak yapmak için */
+        margin: 20px; /* Fotoğrafın etrafında biraz boşluk bırakın */
+    }
+
+    h1 {
+        font-size: 36px; /* Başlık yazı boyutunu büyütün */
+    }
+
+    p {
+        font-size: 18px; /* Paragraf yazı boyutunu büyütün */
+    }
 </style>
 
 <div class="welcome-text">
+    <img src="https://localhost:7188/api/file?fileName=@Model.ResimDosyaAdi" alt="Doktor Fotoğrafı" class="doctor-photo">
     <h1>Novena Hastanesi Doktor Paneli</h1>
     <p>Sağlıklı günler, @Model.Name @Model.Surname! Hoş geldiniz.</p>
 </div>

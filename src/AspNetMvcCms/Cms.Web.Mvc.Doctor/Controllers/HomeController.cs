@@ -20,7 +20,11 @@ namespace Cms.Web.Mvc.Doctor.Controllers
         public async Task<ActionResult> Index()
         {
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
-
+            if (userId == null || userId == 0 ) 
+            {
+                string otherMvcProjectUrl = "https://localhost:7010/login";
+                return Redirect(otherMvcProjectUrl);
+            }
             // Doktorun randevularını API'den çekmek için gerekli isteği yapın.
             var response = await _httpClient.GetAsync($"{_apiDoctor}{userId}");
 
