@@ -40,7 +40,10 @@ namespace Cms.Data.Models.Entities
         [ForeignKey(nameof(CategoryId))]
         public DoctorCategoryEntity? Category { get; set; }
 
-        //public ICollection<AppointmentEntity> Appointments { get; set; }
+        public List<AppointmentEntity>? Appointments { get; set; }
+
+        public List<DoctorCommentEntity>? DoctorComments { get; set; }
+
 
         public string? Address { get; set; } = string.Empty;
         public string? ResimDosyaAdi { get; set; } // doctor_1.jpg

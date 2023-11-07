@@ -20,16 +20,25 @@ namespace Cms.Web.Api.Controllers
 			_pcommentService = pcommentService;
 			_mapper = mapper;
 		}
+        //[HttpGet("{id}")]
+        //public IEnumerable<PatientCommentEntity> GetByDoctorId(int id)
+        //{
+        //    var doctorAppointments = _pcommentService.GetByDoctorId(id);
+
+        //    return doctorAppointments;
+        //}
+
+
         [HttpGet("{id}")]
-        public IEnumerable<PatientCommentEntity> GetByDoctorId(int id)
+        public async Task<IActionResult> GetByDoctorId(int id)
         {
-            var doctorAppointments = _pcommentService.GetByDoctorId(id);
-
-            return doctorAppointments;
+            var doctor = await _pcommentService.GetByIdAsync(id);
+            if (doctor == null)
+            {
+                return NotFound();
+            }
+            return Ok(doctor);
         }
-
-
-
 
 
 
@@ -61,5 +70,16 @@ namespace Cms.Web.Api.Controllers
 			}
 
 		}
-	}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var isDeleted = await _pcommentService.DeleteAsync(id);
+            if (!isDeleted)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+    }
 }

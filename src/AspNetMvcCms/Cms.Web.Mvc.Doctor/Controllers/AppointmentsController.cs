@@ -45,12 +45,14 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 				return StatusCode((int)response.StatusCode);
 			}
 
-			var doctorAppointments = await response.Content.ReadFromJsonAsync<List<AppointmentEntity>>();
+			var doctorAppointments = await _httpClient.GetFromJsonAsync<List<AppointmentEntity>>(_apiAppointment);
+
+			var doctorAppointmentsnew =  doctorAppointments.Where(a => a.DoctorId == userId).ToList();
 
 			// ViewBag veya ViewData ile kullanıcı kimliğini görünüme aktarabilirsiniz.
 			//ViewBag.UserId = userId;
 
-			return View(doctorAppointments);
+			return View(doctorAppointmentsnew);
 		}
 
 		[HttpPost]

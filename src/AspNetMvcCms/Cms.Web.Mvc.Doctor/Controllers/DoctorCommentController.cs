@@ -25,13 +25,22 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 			var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
 
 			var response = await _httpClient.GetAsync($"{_apiDComment}/{userId}");
-			if (!response.IsSuccessStatusCode)
-			{
-				return StatusCode((int)response.StatusCode);
-			}
-			var model = await response.Content.ReadFromJsonAsync<List<DoctorCommentEntity>>();
-			return View(model);
-		}
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode);
+            }
+
+            var doctorAppointments = await _httpClient.GetFromJsonAsync<List<DoctorCommentEntity>>(_apiDComment);
+
+            var doctorAppointmentsnew = doctorAppointments?.Where(a => a.DoctorId == userId).ToList();
+
+
+
+            // ViewBag veya ViewData ile kullanıcı kimliğini görünüme aktarabilirsiniz.
+            //ViewBag.UserId = userId;
+
+            return View(doctorAppointmentsnew);
+        }
 
 		[HttpGet]
 		public IActionResult AddDoctorComment()
@@ -136,7 +145,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 			if (response.IsSuccessStatusCode)
 			{
 				ViewBag.Message = "Departman Başarıyla silindi.";
-				return RedirectToAction("GetDepartments"); // Departmanlar listesine yönlendirin veya başka bir işlem yapın.
+				return RedirectToAction(nameof(GetDoctorComment)); // Departmanlar listesine yönlendirin veya başka bir işlem yapın.
 			}
 			else
 			{

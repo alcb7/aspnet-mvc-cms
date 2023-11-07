@@ -40,9 +40,9 @@ namespace Cms.Services.Concrete
             // Tüm doktorları almak için Repository kullanılır.
             //return _repository.GetAll();
             return _appDbContext.Doctors
-                .Include(d => d.Category);
-
-
+                .Include(d => d.Category)
+              .Include(f => f.Appointments)
+            .Include(z => z.DoctorComments);
         }
 
         public async Task<DoctorEntity?> GetByIdAsync(int id)
