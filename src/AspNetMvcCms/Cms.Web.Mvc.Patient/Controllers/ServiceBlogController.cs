@@ -8,7 +8,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
         private readonly HttpClient _httpClient;
 
 
-        private readonly string _apiSBlogs = "https://localhost:7188/api/ServiceBlog";
+        private readonly string _apiSBlogs = "https://localhost:7188/api/ServiceBlog/";
 
 
 
@@ -29,5 +29,18 @@ namespace Cms.Web.Mvc.Patient.Controllers
             return View(model);
 
         }
-    }
+		public async Task<ActionResult> Detail(int id)
+		{
+			// Belirli bir doktorun detaylarını getir.
+			ServiceBlogEntity? doctor = await _httpClient.GetFromJsonAsync<ServiceBlogEntity>(_apiSBlogs + id);
+
+			if (doctor == null)
+			{
+				// Belirli bir doktor bulunamazsa hata sayfasına yönlendirme yapılabilir.
+				return NotFound();
+			}
+
+			return View(doctor);
+		}
+	}
 }
