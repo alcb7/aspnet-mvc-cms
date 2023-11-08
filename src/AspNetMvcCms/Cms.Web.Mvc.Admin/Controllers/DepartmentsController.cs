@@ -47,7 +47,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
             if (response.IsSuccessStatusCode)
             {
                 ViewBag.SuccessMessage = "Departman Başarıyla kaydedildi.";
-                return RedirectToAction("GetDepartments");
+                
             }
 
             return View(dto);
