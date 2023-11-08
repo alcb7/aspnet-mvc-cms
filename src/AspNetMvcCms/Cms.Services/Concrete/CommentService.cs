@@ -1,5 +1,6 @@
 ﻿using Cms.Data.Models.Entities;
 using Cms.Services.Abstract;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,8 @@ namespace Cms.Services.Concrete
         public IQueryable<CommentEntity> GetAll()
         {
             // Tüm doktorları almak için Repository kullanılır.
-            return _adminrepository.GetAll();
+            return _adminrepository.GetAll()
+                .Include(d => d.Patient);
             //return _appDbContext.Doctors
             //    .Include(d => d.Category);
 
