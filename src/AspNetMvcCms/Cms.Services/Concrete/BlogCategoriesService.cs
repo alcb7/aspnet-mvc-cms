@@ -1,5 +1,7 @@
-﻿using Cms.Data.Models.Entities;
+﻿using Cms.Data.Context;
+using Cms.Data.Models.Entities;
 using Cms.Services.Abstract;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +13,12 @@ namespace Cms.Services.Concrete
     public class BlogCategoriesService : IBlogCategoriesService
     {
         private readonly IDataRepository<BlogCategoryEntity> _adminrepository;
+        private readonly AppDbContext _appDbContext;
 
-        public BlogCategoriesService(IDataRepository<BlogCategoryEntity> adminrepository)
+        public BlogCategoriesService(IDataRepository<BlogCategoryEntity> adminrepository, AppDbContext appDbContext)
         {
             _adminrepository = adminrepository;
-
+            _appDbContext = appDbContext;
         }
 
         public async Task<BlogCategoryEntity> AddAsync(BlogCategoryEntity entity)
@@ -38,7 +41,9 @@ namespace Cms.Services.Concrete
         public IQueryable<BlogCategoryEntity> GetAll()
         {
             // Tüm doktorları almak için Repository kullanılır.
-            return _adminrepository.GetAll();
+            return _appDbContext.BlogCategories
+               .Include(d => d.Blogs);
+            
             //return _appDbContext.Doctors
             //    .Include(d => d.Category);
 
