@@ -4,7 +4,9 @@ namespace Cms.Web.Mvc.Patient.Models
 {
     public class BlogViewModel
     {
-        public BlogEntity Blogs { get; set; }
-        public List<CommentEntity> Comments { get; set; }
+        public BlogEntity? Blogs { get; set; }
+        public List<CommentEntity>? Comments { get; set; }
+
+        public BlogCommentViewModel? Comment { get; set; }
     }
 }

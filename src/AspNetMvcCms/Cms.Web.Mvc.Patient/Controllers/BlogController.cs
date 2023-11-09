@@ -42,57 +42,38 @@ namespace Cms.Web.Mvc.Patient.Controllers
 
             return View(viewModel);
         }
-        
-        [HttpGet]
-        public IActionResult AddBlogComment()
-        {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-            else
-            {
-                // Kullanıcı oturum açmamışsa oturum açma sayfasına yönlendir
-                return View();
-            }
 
 
-
-        }
         [HttpPost]
-        public async Task<ActionResult> AddBlogComment(BlogCommentViewModel dto, [FromRoute] int id)
+        public async Task<ActionResult> Detail(BlogViewModel dto)
         {
-
             if (!ModelState.IsValid)
             {
                 return View(dto);
             }
 
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
-            dto.PatientId = userId;
-            dto.BlogId = id;
-
+            dto.Comment.PatientId = userId;
 
             var blogcommentEntity = new CommentEntity
             {
-
-
-                Text = dto.Text,
+                Text = dto.Comment.Text,
                 PatientId = userId,
-                BlogId=id
-
-
-
-
+                BlogId = dto.Comment.BlogId,
             };
+
             var response = await _httpClient.PostAsJsonAsync(_apiComment, blogcommentEntity);
+
             if (response.IsSuccessStatusCode)
             {
                 ViewBag.Message = "Blog Başarıyla kaydedildi.";
+
+                // Yorum eklendikten sonra sayfayı güncelle
+                return RedirectToAction("Detail", new { id = dto.Comment.BlogId });
             }
 
             return View(dto);
-
         }
+
     }
 }

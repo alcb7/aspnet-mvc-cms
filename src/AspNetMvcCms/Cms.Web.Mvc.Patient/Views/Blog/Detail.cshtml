@@ -27,7 +27,7 @@
 
                     <div class="col-lg-12 mb-5">
                         <div class="single-blog-item">
-                            <img src="https://localhost:7188/api/file?fileName=@Model.Blogs.ResimDosyaAdi" alt="" class="img-fluid">
+                            <img src="https://localhost:7188/api/file?fileName=@Model?.Blogs?.ResimDosyaAdi" alt="" class="img-fluid">
 
                             <div class="blog-item-content mt-5">
                                 <div class="blog-item-meta mb-3">
@@ -36,10 +36,10 @@
                                     <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-2"></i> 28th January 2019</span>
                                 </div>
 
-                                <h2 class="mb-4 text-md"><a href="blog-single.html">@Model.Blogs.Title</a></h2>
+                                <h2 class="mb-4 text-md"><a href="blog-single.html">@Model?.Blogs?.Title</a></h2>
 
                                 <p class="lead mb-4">
-                                    @Model.Blogs.Description
+                                    @Model?.Blogs?.Description
                                 </p>
 
 
@@ -69,33 +69,47 @@
 
 
 
-                                @foreach (var item in Model.Comments)
+                                @if (Model.Comments != null)
                                 {
-                                    <li class="mb-5">
-                                        <div class="comment-area-box d-block d-sm-flex">
-                                            <div class="comment-thumb">
-                                                <img alt="" src="images/blog/testimonial1.jpg" style="width: 70px">
-                                            </div>
+                                    <ul>
+                                        @foreach (var comment in Model.Comments)
+                                        {
+                                            <li>
+                                            <li class="mb-5">
+                                                <div class="comment-area-box d-block d-sm-flex">
+                                                    <div class="comment-thumb">
+                                                        <img alt="" src="images/blog/testimonial1.jpg" style="width: 70px">
+                                                    </div>
 
-                                            <div class="block">
-                                                <div class="comment-info">
-                                                    <h5 class="mb-1">@item.Patient.Name</h5>
-                                                    <span>United Kingdom</span>
-                                                    <span class="date-comm">| Posted April 7, 2019</span>
-                                                </div>
-                                                <div class="comment-meta mt-2">
-                                                    <a href="#!"><i class="icofont-reply mr-2 text-muted"></i>Reply</a>
-                                                </div>
+                                                    <div class="block">
+                                                        <div class="comment-info">
+                                                            <h5 class="mb-1">@comment?.Patient?.Name</h5>
+                                                            <span>United Kingdom</span>
+                                                            <span class="date-comm">| Posted April 7, 2019</span>
+                                                        </div>
+                                                        <div class="comment-meta mt-2">
+                                                            <a href="#!"><i class="icofont-reply mr-2 text-muted"></i>Reply</a>
+                                                        </div>
 
-                                                <div class="comment-content mt-3">
-                                                    <p>
-                                                        @item.Text
-                                                    </p>
+                                                        <div class="comment-content mt-3">
+                                                            <p>
+                                                                    @comment?.Text
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                   
+                                            </li>
+
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <p>No comments available.</p>
+                                }
+                                {
+                                  
                                 }
                             </ul>
                         </div>
@@ -105,12 +119,17 @@
                 </div>
             </div>
 
+            <form asp-controller="Blog" asp-action="Detail" method="post">
+                <input type="hidden" asp-for="Comment.BlogId" value="@Model?.Blogs?.Id" />
 
-            <div class="row">
-                <div class="col-lg-6 offset-lg-6">
-                    <a asp-action="AddBlogComment" asp-controller="Blog" class="btn btn-primary btn-rounded float-right">Add Comment</a>
+                <div class="form-group">
+                    <label for="commentText">Your Comment:</label>
+                    <textarea class="form-control" id="commentText" name="Comment.Text"></textarea>
                 </div>
-            </div>
+
+                <button type="submit" class="btn btn-primary">Submit Comment</button>
+            </form>
+          
         </div>
     </div>
     <div class="col-lg-4">
