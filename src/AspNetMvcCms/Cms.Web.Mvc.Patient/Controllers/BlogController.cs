@@ -42,44 +42,38 @@ namespace Cms.Web.Mvc.Patient.Controllers
 
             return View(viewModel);
         }
-        
-     
+
+
         [HttpPost]
         public async Task<ActionResult> Detail(BlogViewModel dto)
         {
-
             if (!ModelState.IsValid)
             {
                 return View(dto);
             }
 
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
-            dto.PatientId = userId;
-            
-
+            dto.Comment.PatientId = userId;
 
             var blogcommentEntity = new CommentEntity
             {
-
-
-                Text = dto.Text,
+                Text = dto.Comment.Text,
                 PatientId = userId,
-                BlogId = dto.BlogId,
-                Blog = dto.Blogs,
-                
-                
-
-
-
+                BlogId = dto.Comment.BlogId,
             };
+
             var response = await _httpClient.PostAsJsonAsync(_apiComment, blogcommentEntity);
+
             if (response.IsSuccessStatusCode)
             {
                 ViewBag.Message = "Blog Başarıyla kaydedildi.";
+
+                // Yorum eklendikten sonra sayfayı güncelle
+                return RedirectToAction("Detail", new { id = dto.Comment.BlogId });
             }
 
             return View(dto);
-
         }
+
     }
 }

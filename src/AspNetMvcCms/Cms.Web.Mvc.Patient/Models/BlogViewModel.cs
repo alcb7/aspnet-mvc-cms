@@ -4,13 +4,9 @@ namespace Cms.Web.Mvc.Patient.Models
 {
     public class BlogViewModel
     {
-        public BlogEntity Blogs { get; set; }
-        public List<CommentEntity> Comments { get; set; }
+        public BlogEntity? Blogs { get; set; }
+        public List<CommentEntity>? Comments { get; set; }
 
-        public int Id { get; set; }
-        public string? Text { get; set; }
-        public int PatientId { get; set; }
-
-        public int BlogId { get; set; }
+        public BlogCommentViewModel? Comment { get; set; }
     }
 }
