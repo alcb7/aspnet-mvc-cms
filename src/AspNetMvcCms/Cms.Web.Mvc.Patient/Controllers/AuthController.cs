@@ -33,8 +33,10 @@ namespace Cms.Web.Mvc.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                ViewBag.Error = "API ile iletişim sırasında bir hata oluştu.";
+                return View("Login"); // "Login" eylemine yönlendirmek yerine aynı sayfada kalın
             }
+
 
             // Burada kullanıcıyı doğrulamak için API'yi kullanabilirsiniz
             var response = await _httpClient.GetAsync(_apiUrl);
