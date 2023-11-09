@@ -105,12 +105,42 @@
                 </div>
             </div>
 
+            <form asp-controller="Blog" asp-action="Detail" method="post">
 
-            <div class="row">
-                <div class="col-lg-6 offset-lg-6">
-                    <a asp-action="AddBlogComment" asp-controller="Blog" class="btn btn-primary btn-rounded float-right">Add Comment</a>
+                <!-- form message -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                            Your message was sent successfully.
+                        </div>
+                    </div>
                 </div>
-            </div>
+                @*  <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email address</label>
+                <input asp-for="Email" class="form-control">
+                <span asp-validation-for="Email" class="error-text"></span>
+                </div> *@
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label asp-for="Text" class="form-label">Title</label>
+                            <input asp-for="Text" class="form-control">
+                            <span asp-validation-for="Text" class="error-text"></span>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+
+                <div>
+                    <input class="btn btn-main btn-round-full" name="submit" type="submit" value="Send Messege"></input>
+                </div>
+            </form>
+          
         </div>
     </div>
     <div class="col-lg-4">

@@ -43,24 +43,9 @@ namespace Cms.Web.Mvc.Patient.Controllers
             return View(viewModel);
         }
         
-        [HttpGet]
-        public IActionResult AddBlogComment()
-        {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-            else
-            {
-                // Kullanıcı oturum açmamışsa oturum açma sayfasına yönlendir
-                return View();
-            }
-
-
-
-        }
+     
         [HttpPost]
-        public async Task<ActionResult> AddBlogComment(BlogCommentViewModel dto, [FromRoute] int id)
+        public async Task<ActionResult> Detail(BlogViewModel dto)
         {
 
             if (!ModelState.IsValid)
@@ -70,7 +55,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
 
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
             dto.PatientId = userId;
-            dto.BlogId = id;
+            
 
 
             var blogcommentEntity = new CommentEntity
@@ -79,8 +64,10 @@ namespace Cms.Web.Mvc.Patient.Controllers
 
                 Text = dto.Text,
                 PatientId = userId,
-                BlogId=id
-
+                BlogId = dto.BlogId,
+                Blog = dto.Blogs,
+                
+                
 
 
 
