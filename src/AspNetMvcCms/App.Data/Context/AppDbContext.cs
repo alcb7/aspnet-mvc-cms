@@ -43,9 +43,9 @@ namespace Cms.Data.Context
                new DoctorEntity { Id = 2, Name = "Mehmet ", Surname = "Kirisoglu", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 2, ResimDosyaAdi = "doctor.2.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5 },
                new DoctorEntity { Id = 3, Name = "Ahmet ", Surname = "Canbulan", Email = "mehmet@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 3, ResimDosyaAdi = "doctor.3.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5 },
                new DoctorEntity { Id = 4, Name = "Huseyin ", Surname = "Canbulan", Email = "ali@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, ResimDosyaAdi = "doctor.4.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5 },
-               new DoctorEntity { Id = 5, Name = "Kerem", Surname = "Canbulan", Email = "riza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 5, ResimDosyaAdi = "doctor.1.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5 },
-               new DoctorEntity { Id = 6, Name = "Kum", Surname = "Canbulan", Email = "kum@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 6, ResimDosyaAdi = "doctor.1.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5 },
-               new DoctorEntity { Id = 7, Name = "Gokhan  ", Surname = "Canbulan", Email = "gokhan@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, ResimDosyaAdi = "doctor.1.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5 }
+               new DoctorEntity { Id = 5, Name = "Kerem", Surname = "Canbulan", Email = "riza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 5, ResimDosyaAdi = "doctor.5.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5 },
+               new DoctorEntity { Id = 6, Name = "Kum", Surname = "Canbulan", Email = "kum@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 6, ResimDosyaAdi = "doctor.5.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5 },
+               new DoctorEntity { Id = 7, Name = "Gokhan  ", Surname = "Canbulan", Email = "gokhan@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, ResimDosyaAdi = "doctor.4.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5 }
                );
 
             modelBuilder.Entity<DepartmentEntity>().HasData(
