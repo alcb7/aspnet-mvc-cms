@@ -41,7 +41,6 @@ namespace Cms.Web.Api.Controllers
                         Id = c.Id,
                         BlogId = c.BlogId,
                         Text = c.Text,
-                        PatientId = c.PatientId,
                     }).ToList()
                 })
                 .ToListAsync();

@@ -25,7 +25,6 @@ namespace Cms.Web.Api.MappingProfiles
             CreateMap<DoctorCommentUpdateDto, DoctorCommentEntity>().ReverseMap();
             CreateMap<ServiceBlogCreateDto, ServiceBlogEntity>().ReverseMap();
             CreateMap<ServiceBlogUpdateDto, ServiceBlogEntity>().ReverseMap();
-            CreateMap<CommentCreateDto, CommentEntity>().ReverseMap();
 
 
 

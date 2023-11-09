@@ -200,13 +200,13 @@ namespace Cms.Data.Context
 
                   );
             modelBuilder.Entity<CommentEntity>().HasData(
-            new CommentEntity() { Id = 1, BlogId = 2, Text = "Home" ,PatientId=1 },
-            new CommentEntity() { Id = 2, BlogId = 2, Text = "About", PatientId = 1 },
-            new CommentEntity() { Id = 3, BlogId = 2, Text = "Services", PatientId = 1 },
-            new CommentEntity() { Id = 4, BlogId = 2, Text = "Departments", PatientId = 2 },
-            new CommentEntity() { Id = 5, BlogId = 2, Text = "Doctors", PatientId = 2 },
-            new CommentEntity() { Id = 6, BlogId = 2, Text = "Blog", PatientId = 2 },
-            new CommentEntity() { Id = 7, BlogId = 2, Text = "Contact", PatientId = 2 }
+            new CommentEntity() { Id = 1, BlogId = 2, Text = "Home" },
+            new CommentEntity() { Id = 2, BlogId = 2, Text = "About" },
+            new CommentEntity() { Id = 3, BlogId = 2, Text = "Services" },
+            new CommentEntity() { Id = 4, BlogId = 2, Text = "Departments", },
+            new CommentEntity() { Id = 5, BlogId = 2, Text = "Doctors" },
+            new CommentEntity() { Id = 6, BlogId = 2, Text = "Blog" },
+            new CommentEntity() { Id = 7, BlogId = 2, Text = "Contact" }
             );
 			modelBuilder.Entity<PatientCommentEntity>().HasData(
 		   new PatientCommentEntity { Id = 1, Title = "çok güzel ", Description = "r Illum libero t al nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", PatientId = 1 },
