@@ -1,6 +1,7 @@
 ﻿using Cms.Data.Models.Entities;
 using Cms.Web.Mvc.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Numerics;
 
 namespace Cms.Web.Mvc.Admin.Controllers
@@ -10,6 +11,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
         private readonly HttpClient _httpClient;
 
         private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
+        private readonly string _apiCategories = "https://localhost:7188/api/DoctorCategory";
+
 
         public DoctorsController(HttpClient httpClient)
         {
@@ -23,8 +26,12 @@ namespace Cms.Web.Mvc.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddDoctors()
+        public async Task<ActionResult> AddDoctors()
         {
+            var categories = await _httpClient.GetFromJsonAsync<List<DoctorCategoryEntity>>(_apiCategories); // Kategori verilerini alın
+            var categoryList = new SelectList(categories, "Id", "Name"); // Kategori verilerini SelectListItem koleksiyonuna dönüştürün
+            ViewBag.CategoryList = categoryList; // ViewData veya ViewBag kullanarak seçenekleri görünüme aktarın
+
             return View();
         }
         [HttpPost]
@@ -32,7 +39,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(dto);
+               
+                return View();
             }
 
 

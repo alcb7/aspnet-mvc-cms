@@ -2,6 +2,7 @@
 
 using Cms.Web.Mvc.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -41,8 +42,12 @@ namespace Cms.Web.Mvc.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddBlogs()
+        public async Task<ActionResult> AddBlogs()
         {
+            var categories = await _httpClient.GetFromJsonAsync<List<BlogCategoryEntity>>(_apibCategories);
+            var categoryList = new SelectList(categories, "Id", "Title"); // Kategori verilerini SelectListItem koleksiyonuna dönüştürün
+            ViewBag.CategoryList = categoryList; // ViewData veya ViewBag kullanarak seçenekleri görünüme aktarın
+ 
             return View();
         }
         [HttpPost]

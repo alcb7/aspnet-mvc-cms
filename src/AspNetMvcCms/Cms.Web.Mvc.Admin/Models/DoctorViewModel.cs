@@ -38,5 +38,6 @@ namespace Cms.Web.Mvc.Admin.Models
 
 
         public string? Cv { get; set; } = string.Empty;
+
     }
 }
