@@ -33,7 +33,8 @@ namespace Cms.Web.Mvc.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                ViewBag.Error = "Password and Email Required ";
+                return View("Login"); // "Login" eylemine yönlendirmek yerine aynı sayfada kalın
             }
 
             // Burada kullanıcıyı doğrulamak için API'yi kullanabilirsiniz
