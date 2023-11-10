@@ -15,12 +15,21 @@ namespace Cms.Web.Mvc.Patient.Controllers
         {
             _httpClient = httpClient;
         }
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string search)
         {
-            var model = await _httpClient.GetFromJsonAsync<List<BlogEntity>>(_apiBlog);
+            // API'den blogları çek
+            var blogs = await _httpClient.GetFromJsonAsync<List<BlogEntity>>(_apiBlog);
 
-            return View(model);
+            // Eğer search parametresi dolu ise, blogları filtrele
+            if (!string.IsNullOrEmpty(search))
+            {
+                blogs = blogs.Where(blog => blog.Title.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            // Filtrelenmiş blogları view'e gönder
+            return View(blogs);
         }
+
 
         public async Task<ActionResult> Detail(int id)
         {
