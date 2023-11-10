@@ -17,10 +17,10 @@ namespace Cms.Data.Models.Entities
         public string Title { get; set; }
         public string Description { get; set; }
 
-        public int BlogCategoryId { get; set; }
+        public int CategoryId { get; set; }
         //public int BlogCommentId { get; set; }
 
-        [ForeignKey(nameof(BlogCategoryId))]
+        [ForeignKey(nameof(CategoryId))]
         public BlogCategoryEntity? Category { get; set; }
         public string? ResimDosyaAdi { get; set; }
 

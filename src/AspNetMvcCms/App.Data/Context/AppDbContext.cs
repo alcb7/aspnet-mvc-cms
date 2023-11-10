@@ -57,9 +57,9 @@ namespace Cms.Data.Context
                new DepartmentEntity { Id = 6, Name = "Gynecology", Description = "Saepe nulla praesentium eaque omnis perferendis a doloremque.", NavbarId = 4, ResimDosyaAdi = "service/service-8.jpg" }
 			);
             modelBuilder.Entity<BlogEntity>().HasData(
-            new BlogEntity { Id = 1, Title = "Healthy environment to care with modern equipment ", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", BlogCategoryId =1, ResimDosyaAdi= "blog-1.jpg" },
-            new BlogEntity { Id = 2, Title = "All test cost 25% in always in our laboratory", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", BlogCategoryId =2, ResimDosyaAdi= "blog-2.jpg"},
-             new BlogEntity { Id = 3, Title = "Get Free consulation from our special surgeon and doctors", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", BlogCategoryId =3, ResimDosyaAdi= "blog-4.jpg" }
+            new BlogEntity { Id = 1, Title = "Healthy environment to care with modern equipment ", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", CategoryId =1, ResimDosyaAdi= "blog-1.jpg" },
+            new BlogEntity { Id = 2, Title = "All test cost 25% in always in our laboratory", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", CategoryId =2, ResimDosyaAdi= "blog-2.jpg"},
+             new BlogEntity { Id = 3, Title = "Get Free consulation from our special surgeon and doctors", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", CategoryId =3, ResimDosyaAdi= "blog-4.jpg", }
             
 
              );
@@ -71,12 +71,12 @@ namespace Cms.Data.Context
 
             );
             modelBuilder.Entity<BlogCategoryEntity>().HasData(
-           new BlogCategoryEntity { Id = 1, Title = "Medicine" },
-           new BlogCategoryEntity { Id = 2, Title = "Equipments" },
-           new BlogCategoryEntity { Id = 3, Title = "Heart" },
-            new BlogCategoryEntity { Id = 4, Title = "Free counselling" },
-           new BlogCategoryEntity { Id = 5, Title = "Lab test " }
-
+           new BlogCategoryEntity { Id = 1, Name = "Medicine" },
+           new BlogCategoryEntity { Id = 2, Name = "Equipments" },
+           new BlogCategoryEntity { Id = 3, Name = "Heart" },
+            new BlogCategoryEntity { Id = 4,Name = "Free counselling" },
+           new BlogCategoryEntity { Id = 5, Name = "Lab test " }
+                                            
            );
             modelBuilder.Entity<AppointmentEntity>().HasData(
          new AppointmentEntity { Id = 1, PatientId = 1,DoctorId=1,DoctorCategoryId=1,DateTime= DateTime.UtcNow},

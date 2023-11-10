@@ -29,13 +29,14 @@ namespace Cms.Web.Api.Controllers
 
             var blogs = await blogQuery
                 .Include(b => b.Comments)
+                .Include(b => b.Category)
                 .Select(b => new BlogResponseDto
                 {
                     Id = b.Id,
                     Title = b.Title,
                     Description = b.Description,
                     ResimDosyaAdi = b.ResimDosyaAdi,
-                    BlogCategoryId = b.BlogCategoryId,
+                    BlogCategoryId = b.CategoryId,
                     Comments = b.Comments.Select(c => new CommentResponseDto
                     {
                         Id = c.Id,

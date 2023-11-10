@@ -10,5 +10,6 @@
         public string? ResimYolu => ResimDosyaAdi is null ? null : "/images/" + ResimDosyaAdi;
 
         public IEnumerable<CommentResponseDto>? Comments { get; set; }
+
     }
 }

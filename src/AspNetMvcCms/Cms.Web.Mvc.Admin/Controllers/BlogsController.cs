@@ -64,7 +64,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
                 Title = dto.Title,
                 Description = dto.Description,
-                BlogCategoryId = dto.BlogCategoryId
+                CategoryId = dto.BlogCategoryId
 
             };
             var response = await _httpClient.PostAsJsonAsync(_apiBlog, blogEntity);
@@ -94,7 +94,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Id = id,
                 Title = blog.Title,
                 Description = blog.Description,
-                BlogCategoryId = blog.BlogCategoryId
+                BlogCategoryId = blog.CategoryId
             };
 
             return View(blogDto);
@@ -113,7 +113,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Id = id,
                 Title = dto.Title,
                 Description = dto.Description,
-                BlogCategoryId = dto.BlogCategoryId
+                CategoryId = dto.BlogCategoryId
             };
 
             // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin

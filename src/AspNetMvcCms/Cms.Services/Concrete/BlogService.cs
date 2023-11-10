@@ -58,7 +58,7 @@ namespace Cms.Services.Concrete
             Title = b.Title,
             Description = b.Description,
             ResimDosyaAdi = b.ResimDosyaAdi,
-            BlogCategoryId = b.BlogCategoryId,
+            CategoryId = b.CategoryId,
             Comments = b.Comments.Select(c => new CommentEntity
             {
                 Id = c.Id,
