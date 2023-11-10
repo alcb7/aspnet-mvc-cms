@@ -32,8 +32,11 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="row">
+		<form method="get" asp-controller="Departments" asp-action="Index" class="form-inline">
+			<input name="search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+		</form>
+		<div class="row mt-4">
 
 			@foreach(var item in Model)
 			{

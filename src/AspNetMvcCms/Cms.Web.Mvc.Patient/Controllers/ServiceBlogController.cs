@@ -16,17 +16,18 @@ namespace Cms.Web.Mvc.Patient.Controllers
         {
             _httpClient = httpClient;
         }
-        public async Task<ActionResult> GetServiceBlogs()
+        public async Task<ActionResult> GetServiceBlogs(string search)
         {
             var model = await _httpClient.GetFromJsonAsync<List<ServiceBlogEntity>>(_apiSBlogs);
 
 
+			if (!string.IsNullOrEmpty(search))
+			{
+				model = model.Where(blog => blog.Title.ToLower().Contains(search.ToLower())).ToList();
+			}
 
 
-
-
-
-            return View(model);
+			return View(model);
 
         }
 		public async Task<ActionResult> Detail(int id)

@@ -12,11 +12,14 @@ namespace Cms.Web.Mvc.Patient.Controllers
         {
             _httpClient = httpClient;
         }
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string search)
         {
             var model = await _httpClient.GetFromJsonAsync<List<DepartmentEntity>>(_apiDepartment);
-
-            return View(model);
+			if (!string.IsNullOrEmpty(search))
+			{
+				model = model.Where(blog => blog.Name.ToLower().Contains(search.ToLower())).ToList();
+			}
+			return View(model);
         }
 
 		public async Task<ActionResult> Detail(int id)
