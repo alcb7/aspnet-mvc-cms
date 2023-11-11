@@ -2,6 +2,8 @@
 using Cms.Web.Mvc.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Numerics;
 
 namespace Cms.Web.Mvc.Admin.Controllers
@@ -12,6 +14,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
         private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
         private readonly string _apiCategories = "https://localhost:7188/api/DoctorCategory";
+        private readonly string _yourFileStoragePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads", "files");
 
 
         public DoctorsController(HttpClient httpClient)
@@ -39,14 +42,11 @@ namespace Cms.Web.Mvc.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-               
                 return View();
             }
 
-
             var doctorEntity = new DoctorEntity
             {
-
                 Name = dto.Name,
                 Surname = dto.Surname,
                 CategoryId = dto.CategoryId,
@@ -55,18 +55,50 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Cv = dto.Cv,
                 Email = dto.Email,
                 Password = dto.Password,
-
+                ResimDosyaAdi = await UploadPhoto(dto.ResimDosyaAdi)
             };
+
             var response = await _httpClient.PostAsJsonAsync(_apiDoctor, doctorEntity);
+
             if (response.IsSuccessStatusCode)
             {
-                ViewBag.Message = "Doktor Başarıyla kaydedildi.";
+                ViewBag.Message = "Doktor başarıyla eklendi.";
                 return RedirectToAction("GetDoctors");
-
             }
 
             return View(dto);
+        }
 
+        private async Task<string> UploadPhoto(IFormFile ResimDosyaAdi)
+        {
+            using (var content = new MultipartFormDataContent())
+            {
+                content.Add(new StreamContent(ResimDosyaAdi.OpenReadStream())
+                {
+                    Headers =
+            {
+                ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "file",
+                    FileName = ResimDosyaAdi.FileName
+                }
+            }
+                });
+
+                using (var client = new HttpClient())
+                {
+                    var response = await client.PostAsync("https://localhost:7188/api/File/upload", content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        var filePath = JsonConvert.DeserializeAnonymousType(result, new { filePath = "" });
+                        return filePath?.filePath;
+                    }
+                }
+            }
+
+            return null;
         }
 
         [HttpGet]
@@ -114,7 +146,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Address = dto.Address,
                 Cv = dto.Cv,
                 Email = dto.Email,
-                Password= dto.Password,
+                Password = dto.Password,
 
             };
 
@@ -132,7 +164,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> DeleteDoctors(int id)
         {
-            
+
             // İlgili departmanın bilgilerini almak için id kullanın
             var doctor = await _httpClient.GetFromJsonAsync<DoctorEntity>($"{_apiDoctor}/{id}");
             if (doctor == null)

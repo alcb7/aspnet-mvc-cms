@@ -21,23 +21,29 @@ namespace Cms.Web.Api.Controllers
         {
             _fileService = fileService;
         }
+        private readonly string _apiFileStoragePath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads", "files");
 
         [HttpPost]
-        public async Task<IActionResult> UploadAsync(IFormFile formFile)
+        [Route("upload")]
+        public async Task<IActionResult> Upload([FromForm] IFormFile file)
         {
-            try
-            {
-                await _fileService.UploadFileAsync(formFile);
-                return Ok("File Uploaded");
-            }
-            catch (Exception e)
-            {
+            if (file == null || file.Length == 0)
+                return BadRequest("Dosya seçilmedi.");
 
-                return BadRequest(e);
+            var filePath = Path.Combine(_apiFileStoragePath, file.FileName);
+
+            if (!Directory.Exists(_apiFileStoragePath))
+            {
+                Directory.CreateDirectory(_apiFileStoragePath);
             }
 
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+
+            return Ok(new { filePath });
         }
-
         [HttpGet]
         public async Task<IActionResult> DownloadAsync([FromQuery] string fileName)
         {
@@ -53,6 +59,6 @@ namespace Cms.Web.Api.Controllers
             }
 
         }
-
     }
-}
+
+} 

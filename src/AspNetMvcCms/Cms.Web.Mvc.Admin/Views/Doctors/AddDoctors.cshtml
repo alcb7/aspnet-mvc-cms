@@ -2,7 +2,8 @@
 
 <div class="page-wrapper">
     <div class="content">
-        <form asp-action="AddDoctors" asp-controller="Doctors" method="post">
+        <form asp-action="AddDoctors" asp-controller="Doctors" method="post" enctype="multipart/form-data">
+
 
             <div class="form-group">
                 <label for="Name">Name:</label>
@@ -49,6 +50,10 @@
             <div class="form-group">
                 <label for="Email">Email:</label>
                 <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ResimDosyaAdi" class="control-label"></label>
+                <input asp-for="ResimDosyaAdi" type="file" class="form-control" />
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

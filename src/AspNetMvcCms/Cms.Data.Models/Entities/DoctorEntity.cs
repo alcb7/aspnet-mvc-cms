@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Cms.Data.Models.Entities
 {
@@ -32,7 +33,7 @@ namespace Cms.Data.Models.Entities
         [MinLength(8)]
         public string Password { get; set; } = string.Empty;
 
-        
+
         [Phone]
         public string? Phone { get; set; } = string.Empty;
 
@@ -62,10 +63,12 @@ namespace Cms.Data.Models.Entities
         public string? Cv { get; set; } = string.Empty;
 
 
-        public int? NavbarId { get; set; } 
+        public int? NavbarId { get; set; }
 
 
         [ForeignKey(nameof(NavbarId))]
-		public NavbarEntity? Navbar { get; set; }
-	}
+        public NavbarEntity? Navbar { get; set; }
+
+
+    }
 }

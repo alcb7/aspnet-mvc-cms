@@ -18,7 +18,7 @@ namespace Cms.Web.Mvc.Admin.Models
         [Required]
         public int CategoryId { get; set; }
         [Required]
-       
+
         [EmailAddress]
         public string Email { get; set; } = string.Empty;
 
@@ -38,6 +38,8 @@ namespace Cms.Web.Mvc.Admin.Models
 
 
         public string? Cv { get; set; } = string.Empty;
+
+        public IFormFile ResimDosyaAdi { get; set; }
 
     }
 }
