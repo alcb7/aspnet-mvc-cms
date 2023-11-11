@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 
@@ -17,6 +18,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
         private readonly string _apiBlog = "https://localhost:7188/api/Blogs";
         private readonly string _apibCategories = "https://localhost:7188/api/BlogCategories";
+        private readonly string _yourFileStoragePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads", "files");
 
         public BlogsController(HttpClient httpClient)
         {
@@ -64,7 +66,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
                 Title = dto.Title,
                 Description = dto.Description,
-                BlogCategoryId = dto.BlogCategoryId
+                BlogCategoryId = dto.BlogCategoryId,
+                 ResimDosyaAdi = await UploadPhoto(dto.ResimDosyaAdi)
 
             };
             var response = await _httpClient.PostAsJsonAsync(_apiBlog, blogEntity);
@@ -77,6 +80,37 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
             return View(dto);
 
+        }
+        private async Task<string> UploadPhoto(IFormFile ResimDosyaAdi)
+        {
+            using (var content = new MultipartFormDataContent())
+            {
+                content.Add(new StreamContent(ResimDosyaAdi.OpenReadStream())
+                {
+                    Headers =
+            {
+                ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "file",
+                    FileName = ResimDosyaAdi.FileName
+                }
+            }
+                });
+
+                using (var client = new HttpClient())
+                {
+                    var response = await client.PostAsync("https://localhost:7188/api/File/upload", content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        var filePath = JsonConvert.DeserializeAnonymousType(result, new { filePath = "" });
+                        return filePath?.filePath;
+                    }
+                }
+            }
+
+            return null;
         }
         [HttpGet]
         public async Task<ActionResult> UpdateBlogs(int id)

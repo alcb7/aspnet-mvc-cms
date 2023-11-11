@@ -12,5 +12,7 @@ namespace Cms.Web.Api.DTOs
 
         [Required]
         public int BlogCategoryId { get; set; }
+
+        public string? ResimDosyaAdi { get; set; }
     }
 }

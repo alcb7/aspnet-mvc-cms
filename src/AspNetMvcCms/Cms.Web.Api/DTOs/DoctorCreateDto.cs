@@ -31,7 +31,7 @@ namespace Cms.Web.Api.DTOs
         [DataType(DataType.PhoneNumber)]
         public string? Phone { get; set; }
 
-
+        public string? ResimDosyaAdi { get; set; } // doctor_1.jpg
         public string? Cv { get; set; } = string.Empty;
         public string? Address { get; set; } = string.Empty;
 

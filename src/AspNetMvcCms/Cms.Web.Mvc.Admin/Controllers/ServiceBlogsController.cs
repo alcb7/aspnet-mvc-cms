@@ -1,6 +1,8 @@
 ﻿using Cms.Data.Models.Entities;
 using Cms.Web.Mvc.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Reflection.Metadata;
 
 namespace Cms.Web.Mvc.Admin.Controllers
@@ -10,8 +12,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
 		private readonly HttpClient _httpClient;
 
 		private readonly string _apiSblog = "https://localhost:7188/api/ServiceBlog";
-
-		public ServiceBlogsController(HttpClient httpClient)
+        private readonly string _yourFileStoragePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads", "files");
+        public ServiceBlogsController(HttpClient httpClient)
 		{
 			_httpClient = httpClient;
 		}
@@ -41,7 +43,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
                 Title = dto.Title,
                 Description = dto.Description,
-
+                ResimDosyaAdi = await UploadPhoto(dto.ResimDosyaAdi)
 
             };
             var response = await _httpClient.PostAsJsonAsync(_apiSblog, blogEntity);
@@ -54,6 +56,37 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
             return View(dto);
 
+        }
+        private async Task<string> UploadPhoto(IFormFile ResimDosyaAdi)
+        {
+            using (var content = new MultipartFormDataContent())
+            {
+                content.Add(new StreamContent(ResimDosyaAdi.OpenReadStream())
+                {
+                    Headers =
+            {
+                ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "file",
+                    FileName = ResimDosyaAdi.FileName
+                }
+            }
+                });
+
+                using (var client = new HttpClient())
+                {
+                    var response = await client.PostAsync("https://localhost:7188/api/File/upload", content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        var filePath = JsonConvert.DeserializeAnonymousType(result, new { filePath = "" });
+                        return filePath?.filePath;
+                    }
+                }
+            }
+
+            return null;
         }
 
         [HttpGet]

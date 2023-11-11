@@ -15,5 +15,8 @@ namespace Cms.Web.Mvc.Admin.Models
 
         [Required]
         public int BlogCategoryId { get; set; }
+
+        public IFormFile ResimDosyaAdi { get; set; }
+
     }
 }
