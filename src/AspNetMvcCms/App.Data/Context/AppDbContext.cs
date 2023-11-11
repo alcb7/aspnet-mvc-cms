@@ -129,7 +129,7 @@ namespace Cms.Data.Context
 			  Id = 3,
 			  Name = "Ssaasddsa",
 			  Surname = "Canbulan",
-			  Email = "alirıza@canbulan.com",
+			  Email = "canbulan1849@gmail.com",
 			  Phone = "05554443311",
 			  Password = "12345"
 

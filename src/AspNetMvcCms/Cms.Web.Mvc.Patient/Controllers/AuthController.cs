@@ -9,6 +9,8 @@ using System.Text.Json.Serialization;
 using System.Text;
 using System.Text.Json;
 using Cms.Web.Mvc.Patient.Models;
+using System.Net.Mail;
+using System.Net;
 
 namespace Cms.Web.Mvc.Controllers
 {
@@ -134,7 +136,55 @@ namespace Cms.Web.Mvc.Controllers
 
             return View();
         }
+		[HttpGet]
+		public IActionResult ResetPassword()
+		{
+			return View();
+		}
+		
+        [HttpPost]
+		public async Task<IActionResult> ResetPassword([FromForm] ResetViewModel register)
+		{
 
 
-    }
+			var model = await _httpClient.GetFromJsonAsync<List<PatientEntity>>(_apiUrl);
+			if (model != null)
+			{
+				var patient = model.FirstOrDefault(p => p.Email == register.Email);
+				if (patient != null)
+				{
+					Guid random = Guid.NewGuid();
+					patient.Password = random.ToString().Substring(0, 8);
+					SmtpClient smtpClient = new SmtpClient();
+					smtpClient.Credentials = new NetworkCredential("canbulanhospital@gmail.com", "kffj rjhh qkyw qema");
+					smtpClient.Port = 587;
+					smtpClient.Host = "smtp.gmail.com";
+					smtpClient.EnableSsl = true;
+					MailMessage message = new MailMessage();
+					message.To.Add(register.Email);
+					message.From = new MailAddress("canbulanhospital@gmail.com", "Şifre Yenileme");
+					message.IsBodyHtml = true;
+					message.Subject = "Şifre Sıfırlama";
+					message.Body += "Merhaba Sayın" + patient.Name + "<br/> Kullanıcı Adınız =" + patient.Name + "<br/> Şifreniz=" + patient.Password;
+					try
+					{
+						smtpClient.Send(message);
+						var response = await _httpClient.PostAsJsonAsync(_apiUrl, patient);
+
+						return RedirectToAction("Index", "Home");
+
+					}
+					catch (Exception ex)
+					{
+						throw;
+					}
+
+
+				}
+
+			}
+			return View();
+		}
+
+	}
 }
