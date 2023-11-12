@@ -210,9 +210,9 @@ namespace Cms.Data.Context
             new CommentEntity() { Id = 7, BlogId = 2, Text = "Contact", PatientId = 2 }
             );
 			modelBuilder.Entity<PatientCommentEntity>().HasData(
-		   new PatientCommentEntity { Id = 1, Title = "çok güzel ", Description = "r Illum libero t al nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", PatientId = 1 },
-		   new PatientCommentEntity { Id = 2, Title = "harika", Description = "Non illo quas blanditiis repellendus lsantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", PatientId = 2 },
-			new PatientCommentEntity { Id = 3, Title = "bok gibi", Description = "Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.", PatientId = 1 }
+		   new PatientCommentEntity { Id = 1, Title = "çok güzel ", Description = "I recently had an experience at the hospital that exceeded my expectations. The staff was incredibly attentive and caring, making sure I felt comfortable throughout my stay. The facilities were clean and well-maintained, and I was impressed by the modern equipment they used", PatientId = 1 },
+		   
+			new PatientCommentEntity { Id = 3, Title = "bok gibi", Description = "My recent visit to the hospital was a mixed experience. On the positive side, the facility was clean, and the waiting times were reasonable. The nursing staff was generally attentive, although I did feel that communication could have been better.", PatientId = 1 }
 
 
 			);

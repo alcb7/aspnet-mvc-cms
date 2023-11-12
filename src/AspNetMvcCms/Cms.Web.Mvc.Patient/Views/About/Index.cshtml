@@ -124,27 +124,29 @@
 				</div>
 			</div>
 		</div>
-		@foreach (var item in Model)
-		{
-			<div class="row align-items-center">
-				<div class="col-lg-6 testimonial-wrap offset-lg-6">
+		<div class="row align-items-center">
+			<div class="col-lg-6 testimonial-wrap offset-lg-6">
+				@foreach (var item in Model)
+				{
 					<div class="testimonial-block">
 						<div class="client-info">
-							<h4>@item.Title</h4>
 							<span>@item.Patient.Name @item.Patient.Surname</span>
+							<h4>@item.Title</h4>
 						</div>
 						<p>
 							@item.Description
 						</p>
 						<i class="icofont-quote-right"></i>
 					</div>
-				</div>
-			</div>
-		}
-		<div class="row">
-			<div class="col-lg-6 offset-lg-6">
-				<a asp-action="AddPComment" asp-controller="PatientComment" class="btn btn-primary btn-rounded float-right">Add Comment</a>
+				}
 			</div>
 		</div>
 	</div>
 </section>
+
+
+<div class="row">
+	<div class="col-lg-6 offset-lg-6">
+		<a asp-action="AddPComment" asp-controller="PatientComment" class="btn btn-primary btn-rounded float-right">Add Comment</a>
+	</div>
+</div>
