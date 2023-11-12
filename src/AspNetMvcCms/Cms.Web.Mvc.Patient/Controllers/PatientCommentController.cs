@@ -74,7 +74,8 @@ namespace Cms.Web.Mvc.Patient.Controllers
             if (response.IsSuccessStatusCode)
             {
                 ViewBag.Message = "Blog Başarıyla kaydedildi.";
-            }
+				return RedirectToAction("Index", "About");
+			}
 
             return View(dto);
 
