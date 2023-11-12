@@ -1,5 +1,12 @@
 ﻿@using Cms.Data.Models.Entities;
 @model List<DepartmentEntity>
+<style>
+    /* CSS ile fotoğraf boyutunu ayarla */
+    .doctor-img img {
+        max-width: 90px; /* Maksimum genişlik */
+        max-height: 100px; /* Maksimum yükseklik */
+    }
+</style>
 <div class="page-wrapper">
     <div class="content">
         <div class="row">
@@ -31,6 +38,7 @@
                     <table class="table table-striped custom-table mb-0 datatable">
                         <thead>
                             <tr>
+                                <th>Foto</th>
                                 <th>Departman Adı</th>
                                 <th>Açıklama</th>
                                 <th class="text-right">İşlem</th>
@@ -40,6 +48,11 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
+                                    <td>
+                                        <div class="doctor-img">
+                                            <a class="img-fluid w-100" href="profile.html"><img alt="" src="https://localhost:7188/api/file?fileName=@item.ResimDosyaAdi"></a>
+                                        </div>
+                                    </td>
                                     <td>@item.Name</td>
                                     <td>@item.Description</td>
                                     <td class="text-right">

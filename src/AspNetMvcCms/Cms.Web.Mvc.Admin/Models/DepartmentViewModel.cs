@@ -12,6 +12,7 @@ namespace Cms.Web.Mvc.Admin.Models
 
         [Required]
         public string Description { get; set; }
+        public IFormFile ResimDosyaAdi { get; set; }
 
     }
 }

@@ -9,6 +9,7 @@ namespace Cms.Web.Api.DTOs
 
         [Required]
         public string Description { get; set; }
+        public string? ResimDosyaAdi { get; set; }
 
     }
 }
