@@ -4,7 +4,7 @@
   
     <div class="content">
        
-        <form asp-action="AddDepartments" asp-controller="Departments" method="post">
+        <form asp-action="AddDepartments" asp-controller="Departments" method="post" enctype="multipart/form-data">
             @if (!string.IsNullOrWhiteSpace(ViewBag.SuccessMessage))
             {
                 <div class="alert alert-success" role="alert">
@@ -25,6 +25,10 @@
             <div class="form-group">
                 <label for="Description">Description:</label>
                 <textarea asp-for="Description" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResimDosyaAdi" class="control-label"></label>
+                <input asp-for="ResimDosyaAdi" type="file" class="form-control" />
             </div>
 
            
