@@ -69,6 +69,7 @@ namespace Cms.Data.Models.Entities
         [ForeignKey(nameof(NavbarId))]
         public NavbarEntity? Navbar { get; set; }
 
+        public string? Cat { get; set; }
 
     }
 }
