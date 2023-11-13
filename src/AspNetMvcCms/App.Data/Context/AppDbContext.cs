@@ -104,7 +104,7 @@ namespace Cms.Data.Context
               Name = "Ali Rıza ",
               Surname = "Canbulan",
               Email = "aliriza@canbulan.com",
-              Phone = "05554443311",
+              Phone = "0507444991",
               Password = "12345"
 
 
@@ -117,7 +117,7 @@ namespace Cms.Data.Context
               Name = "Suleyman",
               Surname = "Canbulan",
               Email = "alirıza@canbulan.com",
-              Phone = "05554443311",
+              Phone = "05554449999",
               Password = "12345"
 
 
@@ -130,7 +130,7 @@ namespace Cms.Data.Context
 			  Name = "Ssaasddsa",
 			  Surname = "Canbulan",
 			  Email = "canbulan1849@gmail.com",
-			  Phone = "05554443311",
+			  Phone = "05531443366",
 			  Password = "12345"
 
 
@@ -142,7 +142,7 @@ namespace Cms.Data.Context
               Name = "xzxzxan",
               Surname = "Canbulan",
               Email = "alirıza@canbulan.com",
-              Phone = "05554443311",
+              Phone = "05414443328",
               Password = "12345"
 
 
@@ -155,7 +155,7 @@ namespace Cms.Data.Context
 			  Name = "Sulxxxx",
 			  Surname = "Canbulan",
 			  Email = "alirıza@canbulan.com",
-			  Phone = "05554443311",
+			  Phone = "05574444535",
 			  Password = "12345"
 
 

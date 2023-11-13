@@ -35,7 +35,7 @@ namespace Cms.Web.Api.DTOs
         public string? Address { get; set; } = string.Empty;
 
 
-
-        public string? Cv { get; set; } = string.Empty;
+		public string? ResimDosyaAdi { get; set; }
+		public string? Cv { get; set; } = string.Empty;
     }
 }

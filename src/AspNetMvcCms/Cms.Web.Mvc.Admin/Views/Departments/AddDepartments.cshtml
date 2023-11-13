@@ -5,7 +5,7 @@
     <div class="content">
        
         <form asp-action="AddDepartments" asp-controller="Departments" method="post" enctype="multipart/form-data">
-            @if (!string.IsNullOrWhiteSpace(ViewBag.SuccessMessage))
+            @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
             {
                 <div class="alert alert-success" role="alert">
                     @ViewBag.SuccessMessage

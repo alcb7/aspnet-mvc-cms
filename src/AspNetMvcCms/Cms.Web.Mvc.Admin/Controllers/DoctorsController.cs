@@ -64,7 +64,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
             if (response.IsSuccessStatusCode)
             {
                 ViewBag.Message = "Doktor başarıyla eklendi.";
-                return RedirectToAction("GetDoctors");
+                
             }
 
             return View(dto);
@@ -144,7 +144,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Cv = doctor.Cv,
                 Email = doctor.Email,
                 Password = doctor.Password,
-            };
+				
+			};
 
             return View(doctorDto);
         }
@@ -168,8 +169,9 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Cv = dto.Cv,
                 Email = dto.Email,
                 Password = dto.Password,
+                ResimDosyaAdi= await UploadPhoto(dto.ResimDosyaAdi),
 
-            };
+			};
 
             // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin
             var response = await _httpClient.PutAsJsonAsync($"{_apiDoctor}/{id}", doctorEntity);

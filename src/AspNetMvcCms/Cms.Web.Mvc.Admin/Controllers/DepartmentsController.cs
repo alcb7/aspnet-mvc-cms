@@ -122,8 +122,9 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Id = id,
                 Name = dto.Name,
                 Description = dto.Description,
-                
-            };
+				ResimDosyaAdi = await UploadPhoto(dto.ResimDosyaAdi),
+
+			};
 
             // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin
             var response = await _httpClient.PutAsJsonAsync($"{_apiDepartment}/{id}", departmentEntity);

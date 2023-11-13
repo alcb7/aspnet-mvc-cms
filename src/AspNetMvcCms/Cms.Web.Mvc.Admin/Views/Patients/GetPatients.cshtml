@@ -13,7 +13,7 @@
 			@if (!string.IsNullOrWhiteSpace(ViewBag.Message))
 			{
 				<div class="alert alert-success" role="alert">
-					@ViewBag.SuccessMessage
+					@ViewBag.Message
 				</div>
 			}
 			@if (!string.IsNullOrWhiteSpace(ViewBag.Message))
@@ -29,7 +29,7 @@
 						<thead>
 							<tr>
 								<th>Name</th>
-								<th>Age</th>
+								
 								<th>Address</th>
 								<th>Phone</th>
 								<th>Email</th>
@@ -41,8 +41,8 @@
 							<tbody>
 								<tr>
 									<td> @item.Name @item.Surname</td>
-									<td>35</td>
-									<td>1545 Dorsey Ln NE, Leland, NC, 28451</td>
+									
+									<td>Denizli</td>
 									<td>@item.Phone</td>
 									<td>@item.Email</td>
 									<td class="text-right">
