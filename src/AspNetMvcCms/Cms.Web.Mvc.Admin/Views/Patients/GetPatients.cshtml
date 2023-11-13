@@ -8,6 +8,20 @@
 			</div>
 			
 		</div>
+
+		<div class="row">
+			@if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+			{
+				<div class="alert alert-success" role="alert">
+					@ViewBag.SuccessMessage
+				</div>
+			}
+			@if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+			{
+				<div class="alert alert-danger" role="alert">
+					@ViewBag.Error
+				</div>
+			}
 		<div class="row">
 			<div class="col-md-12">
 				<div class="table-responsive">

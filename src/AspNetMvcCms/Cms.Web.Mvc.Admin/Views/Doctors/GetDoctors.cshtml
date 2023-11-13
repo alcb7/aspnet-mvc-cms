@@ -12,6 +12,18 @@
 
             </div>
             <div class="row">
+                @if (!string.IsNullOrWhiteSpace(ViewBag.SuccessMessage))
+                {
+                    <div class="alert alert-success" role="alert">
+                        @ViewBag.SuccessMessage
+                    </div>
+                }
+                @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewBag.Error
+                    </div>
+                }
             @foreach (var item in Model)
             {
                 <div class="col-md-3 col-sm-6 mb-4">
