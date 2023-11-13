@@ -55,7 +55,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Cv = dto.Cv,
                 Email = dto.Email,
                 Password = dto.Password,
-                ResimDosyaAdi = await UploadPhoto(dto.ResimDosyaAdi)
+                ResimDosyaAdi = await UploadPhoto(dto.ResimDosyaAdi),
+                Cat = GetCatValue(dto.CategoryId)
             };
 
             var response = await _httpClient.PostAsJsonAsync(_apiDoctor, doctorEntity);
@@ -67,6 +68,26 @@ namespace Cms.Web.Mvc.Admin.Controllers
             }
 
             return View(dto);
+        }
+        private string GetCatValue(int categoryId)
+        {
+            switch (categoryId)
+            {
+                case 1:
+                    return "cat1";
+                case 2:
+                    return "cat2";
+                case 3:
+                    return "cat3";
+                case 4:
+                    return "cat4";
+                case 5:
+                    return "cat5";
+                case 6:
+                    return "cat6";
+                default:
+                    return null; // veya başka bir değer döndürebilirsiniz
+            }
         }
 
         private async Task<string> UploadPhoto(IFormFile ResimDosyaAdi)
