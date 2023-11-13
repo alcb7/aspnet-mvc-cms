@@ -2,7 +2,7 @@
 
 <div class="page-wrapper">
     <div class="content">
-        <form asp-action="AddBlogs" asp-controller="Blogs" method="post">
+        <form asp-action="AddBlogs" asp-controller="Blogs" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="Title">Title:</label>
                 <input asp-for="Title" class="form-control" />
@@ -13,17 +13,11 @@
                 <textarea asp-for="Description" class="form-control"></textarea>
             </div>
 
-            @if (ViewBag.CategoryList != null)
-            {
-                <div class="form-group">
-                    <label for="BlogCategoryId">Category:</label>
-                    <select asp-for="BlogCategoryId" asp-items="ViewBag.CategoryList" class="form-control"></select>
-                </div>
-            }
-            else
-            {
-                <p>Category options are not available.</p>
-            }
+            <div class="form-group">
+
+                <label for="Blog Category">BlogCategoryId:</label>
+                <textarea asp-for="BlogCategoryId" class="form-control"></textarea>
+            </div>
             <div class="form-group">
                 <label asp-for="ResimDosyaAdi" class="control-label"></label>
                 <input asp-for="ResimDosyaAdi" type="file" class="form-control" />

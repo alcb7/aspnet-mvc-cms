@@ -124,6 +124,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Id = id,
                 Title = dto.Title,
                 Description = dto.Description,
+                ResimDosyaAdi = await UploadPhoto(dto.ResimDosyaAdi)
 
             };
 

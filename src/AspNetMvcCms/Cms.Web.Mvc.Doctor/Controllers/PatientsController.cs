@@ -91,9 +91,10 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 			else
 			{
 				ViewBag.Message = "Departman silinemedi.";
-				return View(); // Silme başarısızsa geri dönün veya başka bir işlem yapın.
+			// Silme başarısızsa geri dönün veya başka bir işlem yapın.
 			}
-		}
+            return RedirectToAction("GetPatients");
+        }
 
 
 	}

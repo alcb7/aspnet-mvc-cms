@@ -147,7 +147,10 @@ namespace Cms.Web.Mvc.Admin.Controllers
                 Id = id,
                 Title = dto.Title,
                 Description = dto.Description,
-                BlogCategoryId = dto.BlogCategoryId
+                BlogCategoryId = dto.BlogCategoryId,
+                ResimDosyaAdi = await UploadPhoto(dto.ResimDosyaAdi),
+
+
             };
 
             // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin

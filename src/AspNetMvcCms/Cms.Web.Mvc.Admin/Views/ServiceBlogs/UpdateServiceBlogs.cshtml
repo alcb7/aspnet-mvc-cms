@@ -3,7 +3,7 @@
 
 <div class="page-wrapper">
     <div class="content">
-        <form asp-action="UpdateServiceBlogs" asp-controller="ServiceBlogs" method="post">
+        <form asp-action="UpdateServiceBlogs" asp-controller="ServiceBlogs" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="Id">Id:</label>
                 <input asp-for="Id" class="form-control" />
@@ -17,7 +17,10 @@
                 <label for="Description">Description:</label>
                 <textarea asp-for="Description" class="form-control"></textarea>
             </div>
-
+            <div class="form-group">
+                <label asp-for="ResimDosyaAdi" class="control-label"></label>
+                <input asp-for="ResimDosyaAdi" type="file" class="form-control" />
+            </div>
 
 
             <button type="submit" class="btn btn-primary">Submit</button>
