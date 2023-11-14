@@ -1,7 +1,13 @@
-﻿
-@using Cms.Data.Models.Entities;
+﻿@using Cms.Data.Models.Entities;
+@using System.Security.Claims
 
 @model List<DoctorCommentEntity>
+
+@{
+    string userPrimarySid = User.FindFirstValue(ClaimTypes.PrimarySid);
+    int userId = 0;
+    bool isUserIdValid = int.TryParse(userPrimarySid, out userId);
+}
 
 <div class="page-wrapper">
     <div class="content">
@@ -21,7 +27,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Doctor ID</th>
-
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th class="text-right">Action</th>
@@ -30,26 +35,29 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-
                                 <tr>
                                     <td>@item.Id</td>
                                     <td>@item.DoctorId</td>
-
                                     <td>@item.Title</td>
                                     <td>@item.Description</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
+                                                @if (isUserIdValid && item.DoctorId == userId && Model.Count(a => a.DoctorId == userId) > 1 && Model.Min(a => a.Id) != item.Id)
+                                                {
+                                                    <form method="post" asp-action="DeleteDComment" asp-controller="DoctorComment">
+                                                        <input type="hidden" name="id" value="@item.Id" />
+                                                        <button type="submit">Sil</button>
+                                                    </form>
+                                                }
+                                                else
+                                                {
+                                                    <p>Admin'e danışınız.</p>
+                                                }
                                                 <a asp-action="UpdateDoctorComment" asp-controller="DoctorComment" class="dropdown-item">
                                                     <i class="fa fa-pencil m-r-5"></i> Edit
                                                 </a>
-                                                @*  <a method="post" asp-action="DeleteDepartments" asp-controller="Departments" asp-route-id="@item.Id" class="dropdown-item"> Delete</a> *@
-                                                <form method="post" asp-action="DeleteDComment" asp-controller="DoctorComment">
-                                                    <input type="hidden" name="id" value="@item.Id" />
-                                                    <button type="submit">Sil</button>
-                                                </form>
-
                                             </div>
                                         </div>
                                     </td>

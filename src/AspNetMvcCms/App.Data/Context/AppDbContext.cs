@@ -40,7 +40,7 @@ namespace Cms.Data.Context
         {
             modelBuilder.Entity<DoctorEntity>().HasData(
                new DoctorEntity { Id = 1, Name = "Ali Rıza ", Surname = "Canbulan", Email = "aliriza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 1, ResimDosyaAdi = "doctor.1.jpg", Cv="fdsjfıldjsfldjflıdjsfıjldsjfdsı" ,NavbarId=5, Cat = "cat1" },
-               new DoctorEntity { Id = 2, Name = "Mehmet ", Surname = "Kirisoglu", Email = "alirıza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 2, ResimDosyaAdi = "doctor.2.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5, Cat = "cat2" },
+               new DoctorEntity { Id = 2, Name = "Mehmet ", Surname = "Kirisoglu", Email = "alirizaa@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 2, ResimDosyaAdi = "doctor.2.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5, Cat = "cat2" },
                new DoctorEntity { Id = 3, Name = "Ahmet ", Surname = "Canbulan", Email = "mehmet@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 3, ResimDosyaAdi = "doctor.3.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5, Cat = "cat3" },
                new DoctorEntity { Id = 4, Name = "Huseyin ", Surname = "Canbulan", Email = "ali@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 4, ResimDosyaAdi = "doctor.4.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5, Cat = "cat4" },
                new DoctorEntity { Id = 5, Name = "Kerem", Surname = "Canbulan", Email = "riza@canbulan.com", Phone = "05554443322", Password = "1234", CategoryId = 5, ResimDosyaAdi = "doctor.1.jpg", Cv = "fdsjfıldjsfldjflıdjsfıjldsjfdsı", NavbarId = 5, Cat = "cat5" },
