@@ -1,6 +1,8 @@
 ﻿using Cms.Data.Models.Entities;
 using Cms.Web.Mvc.Doctor.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace Cms.Web.Mvc.Doctor.Controllers
 {
@@ -40,9 +42,10 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 
 				Title = dto.Title,
 				Description = dto.Description,
-				BlogCategoryId = dto.BlogCategoryId
+				BlogCategoryId = dto.BlogCategoryId,
 
-			};
+                 ResimDosyaAdi = await UploadPhoto(dto.ResimDosyaAdi)
+            };
 			var response = await _httpClient.PostAsJsonAsync(_apiBlog, blogEntity);
 			if (response.IsSuccessStatusCode)
 			{
@@ -52,7 +55,38 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 			return View(dto);
 
 		}
-		[HttpGet]
+        private async Task<string> UploadPhoto(IFormFile ResimDosyaAdi)
+        {
+            using (var content = new MultipartFormDataContent())
+            {
+                content.Add(new StreamContent(ResimDosyaAdi.OpenReadStream())
+                {
+                    Headers =
+            {
+                ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "file",
+                    FileName = ResimDosyaAdi.FileName
+                }
+            }
+                });
+
+                using (var client = new HttpClient())
+                {
+                    var response = await client.PostAsync("https://localhost:7188/api/File/upload", content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        var filePath = JsonConvert.DeserializeAnonymousType(result, new { filePath = "" });
+                        return filePath?.filePath;
+                    }
+                }
+            }
+
+            return null;
+        }
+        [HttpGet]
 		public async Task<ActionResult> UpdateBlogs(int id)
 		{
 			// İlgili blogun bilgilerini almak için id kullanın
@@ -87,8 +121,10 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 				Id = id,
 				Title = dto.Title,
 				Description = dto.Description,
-				BlogCategoryId = dto.BlogCategoryId
-			};
+				BlogCategoryId = dto.BlogCategoryId,
+
+                  ResimDosyaAdi = await UploadPhoto(dto.ResimDosyaAdi)
+            };
 
 			// Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin
 			var response = await _httpClient.PutAsJsonAsync($"{_apiBlog}/{id}", blogEntity);

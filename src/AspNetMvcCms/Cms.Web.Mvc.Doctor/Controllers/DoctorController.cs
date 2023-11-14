@@ -1,7 +1,9 @@
 ﻿using Cms.Data.Models.Entities;
 using Cms.Web.Mvc.Doctor.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 using System.Numerics;
 using System.Security.Claims;
 
@@ -90,6 +92,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
                 Phone = doctorvm.Phone,
                 Email = doctorvm.Email,
                 Password = doctorvm.Password,
+                ResimDosyaAdi = await UploadPhoto(doctorvm.ResimDosyaAdi)
             };
 
             // Güncelleme işlemi için HTTP PUT veya PATCH isteği gönderin
@@ -102,8 +105,38 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 
             return View(doctorvm);
         }
-        
 
+        private async Task<string> UploadPhoto(IFormFile ResimDosyaAdi)
+        {
+            using (var content = new MultipartFormDataContent())
+            {
+                content.Add(new StreamContent(ResimDosyaAdi.OpenReadStream())
+                {
+                    Headers =
+            {
+                ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    Name = "file",
+                    FileName = ResimDosyaAdi.FileName
+                }
+            }
+                });
+
+                using (var client = new HttpClient())
+                {
+                    var response = await client.PostAsync("https://localhost:7188/api/File/upload", content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+                        var filePath = JsonConvert.DeserializeAnonymousType(result, new { filePath = "" });
+                        return filePath?.filePath;
+                    }
+                }
+            }
+
+            return null;
+        }
 
     }
 

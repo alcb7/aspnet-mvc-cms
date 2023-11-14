@@ -15,5 +15,6 @@ namespace Cms.Web.Mvc.Doctor.Models
 
 		[Required]
 		public int BlogCategoryId { get; set; }
-	}
+        public IFormFile ResimDosyaAdi { get; set; }
+    }
 }

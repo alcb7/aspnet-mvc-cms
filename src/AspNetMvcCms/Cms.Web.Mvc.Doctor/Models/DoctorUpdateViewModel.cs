@@ -46,5 +46,6 @@ namespace Cms.Web.Mvc.Doctor.Models
         
         public string? Cv { get; set; } = string.Empty;
 
+        public IFormFile ResimDosyaAdi { get; set; }
     }
 }
