@@ -212,7 +212,7 @@ namespace Cms.Data.Context
 			modelBuilder.Entity<PatientCommentEntity>().HasData(
 		   new PatientCommentEntity { Id = 1, Title = "çok güzel ", Description = "I recently had an experience at the hospital that exceeded my expectations. The staff was incredibly attentive and caring, making sure I felt comfortable throughout my stay. The facilities were clean and well-maintained, and I was impressed by the modern equipment they used", PatientId = 1 },
 		   
-			new PatientCommentEntity { Id = 3, Title = "bok gibi", Description = "My recent visit to the hospital was a mixed experience. On the positive side, the facility was clean, and the waiting times were reasonable. The nursing staff was generally attentive, although I did feel that communication could have been better.", PatientId = 1 }
+			new PatientCommentEntity { Id = 3, Title = "mükemmel", Description = "My recent visit to the hospital was a mixed experience. On the positive side, the facility was clean, and the waiting times were reasonable. The nursing staff was generally attentive, although I did feel that communication could have been better.", PatientId = 1 }
 
 
 			);

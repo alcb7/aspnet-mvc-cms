@@ -118,7 +118,12 @@
                     
                 </div>
             </div>
-
+            @if (!User.Identity.IsAuthenticated)
+            {
+              <a asp-action="Login" asp-controller="Auth"></a>
+            }
+            else
+            {
             <form asp-controller="Blog" asp-action="Detail" method="post">
                 <input type="hidden" asp-for="Comment.BlogId" value="@Model?.Blogs?.Id" />
 
@@ -129,6 +134,8 @@
 
                 <button type="submit" class="btn btn-primary">Submit Comment</button>
             </form>
+            }
+          
           
         </div>
     </div>
