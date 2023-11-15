@@ -25,7 +25,7 @@
                     <h1 class="text-center">Welcome Doctor</h1>
                     <form asp-controller="Auth" asp-action="Login" method="post" class="form-signin">
                         <div class="account-logo">
-                            <a href="index-2.html"><img src="assets/img/logo-dark.png" alt=""></a>
+                            <a><img src="assets/img/logo-dark.png" alt=""></a>
                         </div>
                         @if (!string.IsNullOrWhiteSpace(ViewBag.Error))
                         {
@@ -43,15 +43,11 @@
                             <input asp-for="Password" type="password" class="form-control">
                             <span asp-validation-for="Password" class="error-text"></span>
                         </div>
-                        <div class="form-group text-right">
-                            <a href="forgot-password.html">Forgot your password?</a>
-                        </div>
-                        <div class="form-group text-center">
+                      
+                        <div class="form-group text-center mt-4">
                             <button type="submit" class="btn btn-primary account-btn">Login</button>
                         </div>
-                        <div class="text-center register-link">
-                            Don’t have an account? <a asp-action="Register" asp-controller="Auth">Register Now</a>
-                        </div>
+                       
                     </form>
                 </div>
             </div>

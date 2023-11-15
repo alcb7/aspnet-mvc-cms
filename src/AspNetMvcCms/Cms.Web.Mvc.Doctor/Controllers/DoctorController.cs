@@ -101,6 +101,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
             if (response.IsSuccessStatusCode)
             {
                 ViewBag.Message = "Blog Başarıyla güncellendi.";
+                return RedirectToAction("GetDoctor");
             }
 
             return View(doctorvm);
