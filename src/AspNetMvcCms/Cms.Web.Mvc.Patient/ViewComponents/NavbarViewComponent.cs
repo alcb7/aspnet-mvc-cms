@@ -7,7 +7,7 @@ namespace Cms.Web.Mvc.Patient.ViewComponents
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiUrl = "https://localhost:7188/api/Navbar";
+        private readonly string _apiUrl = "https://api.canbulanhospital.com/api/Navbar";
         public NavbarViewComponent(HttpClient httpClient)
         {
             _httpClient = httpClient;
