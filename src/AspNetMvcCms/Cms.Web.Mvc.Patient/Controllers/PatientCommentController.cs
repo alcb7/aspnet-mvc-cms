@@ -14,7 +14,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
 
         private readonly HttpClient _httpClient;
 
-        private readonly string _apipComments = "https://localhost:7188/api/PatientComment";
+        private readonly string _apipComments = "http://api.canbulanhospital.com/api/PatientComment";
 
         public PatientCommentController(HttpClient httpClient)
         {

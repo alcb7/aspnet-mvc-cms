@@ -9,12 +9,12 @@ namespace Cms.Web.Mvc.Patient.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiDComment = "https://localhost:7188/api/DoctorComment";
+        private readonly string _apiDComment = "http://api.canbulanhospital.com/api/DoctorComment";
 
-        private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
-        private readonly string _apiBlog = "https://localhost:7188/api/Blogs";
-        private readonly string _apiDepartments = "https://localhost:7188/api/Departments";
-        private readonly string _apiPatient = "https://localhost:7188/api/Patients";
+        private readonly string _apiDoctor = "http://api.canbulanhospital.com/api/Doctors";
+        private readonly string _apiBlog = "http://api.canbulanhospital.com/api/Blogs";
+        private readonly string _apiDepartments = "http://api.canbulanhospital.com/api/Departments";
+        private readonly string _apiPatient = "http://api.canbulanhospital.com/api/Patients";
 	
 
 

@@ -8,7 +8,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
         private readonly HttpClient _httpClient;
 
 
-        private readonly string _apiSBlogs = "https://localhost:7188/api/ServiceBlog/";
+        private readonly string _apiSBlogs = "http://api.canbulanhospital.com/api/ServiceBlog/";
 
 
 

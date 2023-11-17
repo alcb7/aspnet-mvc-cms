@@ -9,9 +9,9 @@ public class AppointmentController : Controller
 {
     private readonly HttpClient _httpClient;
 
-    private readonly string _apiDoctorCategory = "https://localhost:7188/api/DoctorCategory";
-    private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
-    private readonly string _apiAppointment = "https://localhost:7188/api/Appointment";
+    private readonly string _apiDoctorCategory = "http://api.canbulanhospital.com/api/DoctorCategory";
+    private readonly string _apiDoctor = "http://api.canbulanhospital.com/api/Doctors";
+    private readonly string _apiAppointment = "http://api.canbulanhospital.com/api/Appointment";
 
     public AppointmentController(HttpClient httpClient)
     {
