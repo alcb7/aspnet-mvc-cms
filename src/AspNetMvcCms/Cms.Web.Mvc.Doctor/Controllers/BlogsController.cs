@@ -10,7 +10,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 	{
 		private readonly HttpClient _httpClient;
 
-		private readonly string _apiBlog = "https://localhost:7188/api/Blogs";
+		private readonly string _apiBlog = "https://api.canbulanhospital.com/api/Blogs";
 
 		public BlogsController(HttpClient httpClient)
 		{
@@ -73,7 +73,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 
                 using (var client = new HttpClient())
                 {
-                    var response = await client.PostAsync("https://localhost:7188/api/File/upload", content);
+                    var response = await client.PostAsync("https://api.canbulanhospital.com/api/File/upload", content);
 
                     if (response.IsSuccessStatusCode)
                     {

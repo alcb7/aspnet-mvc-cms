@@ -16,8 +16,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiBlog = "https://localhost:7188/api/Blogs";
-        private readonly string _apibCategories = "https://localhost:7188/api/BlogCategories";
+        private readonly string _apiBlog = "https://api.canbulanhospital.com/api/Blogs";
+        private readonly string _apibCategories = "https://api.canbulanhospital.com/api/BlogCategories";
         private readonly string _yourFileStoragePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads", "files");
 
         public BlogsController(HttpClient httpClient)
@@ -99,7 +99,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
                 using (var client = new HttpClient())
                 {
-                    var response = await client.PostAsync("https://localhost:7188/api/File/upload", content);
+                    var response = await client.PostAsync("https://api.canbulanhospital.com/api/File/upload", content);
 
                     if (response.IsSuccessStatusCode)
                     {

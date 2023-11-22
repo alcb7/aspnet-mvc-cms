@@ -9,8 +9,8 @@ namespace Cms.Web.Mvc.Patient.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiBlog = "http://api.canbulanhospital.com/api/Blogs/";
-        private readonly string _apiComment = "http://api.canbulanhospital.com/api/Comment/";
+        private readonly string _apiBlog = "https://api.canbulanhospital.com/api/Blogs/";
+        private readonly string _apiComment = "https://api.canbulanhospital.com/api/Comment/";
         public BlogController(HttpClient httpClient)
         {
             _httpClient = httpClient;

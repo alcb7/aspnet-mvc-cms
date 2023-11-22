@@ -8,7 +8,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiPComment = "https://localhost:7188/api/PatientComment";
+        private readonly string _apiPComment = "https://api.canbulanhospital.com/api/PatientComment";
 
         public PatientCommentController(HttpClient httpClient)
         {

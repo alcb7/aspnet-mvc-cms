@@ -12,8 +12,8 @@ namespace Cms.Web.Mvc.Admin.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiDoctor = "https://localhost:7188/api/Doctors";
-        private readonly string _apiCategories = "https://localhost:7188/api/DoctorCategory";
+        private readonly string _apiDoctor = "https://api.canbulanhospital.com/api/Doctors";
+        private readonly string _apiCategories = "https://api.canbulanhospital.com/api/DoctorCategory";
         private readonly string _yourFileStoragePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads", "files");
 
 
@@ -108,7 +108,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
                 using (var client = new HttpClient())
                 {
-                    var response = await client.PostAsync("https://localhost:7188/api/File/upload", content);
+                    var response = await client.PostAsync("https://api.canbulanhospital.com/api/File/upload", content);
 
                     if (response.IsSuccessStatusCode)
                     {

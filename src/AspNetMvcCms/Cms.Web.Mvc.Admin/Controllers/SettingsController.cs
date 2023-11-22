@@ -10,7 +10,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiAdmin = "https://localhost:7188/api/Admins";
+        private readonly string _apiAdmin = "https://api.canbulanhospital.com/api/Admins";
 
         public SettingsController(HttpClient httpClient)
         {

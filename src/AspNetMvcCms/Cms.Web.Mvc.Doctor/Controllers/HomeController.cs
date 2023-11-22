@@ -11,7 +11,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiDoctor = "https://localhost:7188/api/Doctors/";
+        private readonly string _apiDoctor = "https://api.canbulanhospital.com/api/Doctors/";
 
         public HomeController(HttpClient httpClient)
         {
@@ -22,7 +22,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
             var userId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.PrimarySid));
             if (userId == null || userId == 0 ) 
             {
-                string otherMvcProjectUrl = "https://localhost:7010/login";
+                string otherMvcProjectUrl = "https://doctor.canbulanhospital.com/login";
                 return Redirect(otherMvcProjectUrl);
             }
             // Doktorun randevularını API'den çekmek için gerekli isteği yapın.

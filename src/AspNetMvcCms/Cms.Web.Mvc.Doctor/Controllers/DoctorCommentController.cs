@@ -12,7 +12,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 	{
 		private readonly HttpClient _httpClient;
 
-		private readonly string _apiDComment = "https://localhost:7188/api/DoctorComment";
+		private readonly string _apiDComment = "https://api.canbulanhospital.com/api/DoctorComment";
 
 		public DoctorCommentController(HttpClient httpClient)
 		{

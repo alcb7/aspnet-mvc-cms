@@ -16,7 +16,7 @@ namespace Cms.Web.Mvc.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly string _apiUrl = "http://api.canbulanhospital.com/api/Patients";
+        private readonly string _apiUrl = "https://api.canbulanhospital.com/api/Patients";
         private readonly HttpClient _httpClient; // Client
 
         public AuthController(HttpClient httpClient) // Dependency injection ile HttpClient ekleyin

@@ -11,7 +11,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 	{
 		private readonly HttpClient _httpClient;
 
-		private readonly string _apiDepartment = "https://localhost:7188/api/Departments";
+		private readonly string _apiDepartment = "https://api.canbulanhospital.com/api/Departments";
 
 		public DepartmentsController(HttpClient httpClient)
 		{
@@ -74,7 +74,7 @@ namespace Cms.Web.Mvc.Admin.Controllers
 
                 using (var client = new HttpClient())
                 {
-                    var response = await client.PostAsync("https://localhost:7188/api/File/upload", content);
+                    var response = await client.PostAsync("https://api.canbulanhospital.com/api/File/upload", content);
 
                     if (response.IsSuccessStatusCode)
                     {

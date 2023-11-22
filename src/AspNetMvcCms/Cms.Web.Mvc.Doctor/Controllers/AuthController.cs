@@ -9,7 +9,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 {
 	public class AuthController : Controller
 	{
-		private readonly string _apiUrl = "https://localhost:7188/api/Doctors";
+		private readonly string _apiUrl = "https://api.canbulanhospital.com/api/Doctors";
 		private readonly HttpClient _httpClient; // Client
 
 		public AuthController(HttpClient httpClient) // Dependency injection ile HttpClient ekleyin
@@ -90,7 +90,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 		public async Task<IActionResult> Logout()
 		{
 			await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            string otherMvcProjectUrl = "https://localhost:7010/login";
+            string otherMvcProjectUrl = "https://doctor.canbulanhospital.com/login";
             return Redirect(otherMvcProjectUrl);
         }
 

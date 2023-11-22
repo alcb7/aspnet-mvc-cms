@@ -7,7 +7,7 @@ namespace Cms.Web.Mvc.Patient.ViewComponents
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiUrl = "http://api.canbulanhospital.com/api/Doctors";
+        private readonly string _apiUrl = "https://api.canbulanhospital.com/api/Doctors";
         public DoctorListViewComponent(HttpClient httpClient)
         {
             _httpClient = httpClient;

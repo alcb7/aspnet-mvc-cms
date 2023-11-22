@@ -7,7 +7,7 @@ namespace Cms.Web.Mvc.Patient.Controllers
     {
         private readonly HttpClient _httpClient;
 
-        private readonly string _apiDoctor = "http://api.canbulanhospital.com/api/Doctors/";
+        private readonly string _apiDoctor = "https://api.canbulanhospital.com/api/Doctors/";
         public DoctorsController(HttpClient httpClient)
         {
             _httpClient = httpClient;

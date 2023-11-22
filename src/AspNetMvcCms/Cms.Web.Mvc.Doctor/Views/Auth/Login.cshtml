@@ -23,10 +23,13 @@
             <div class="account-center">
                 <div class="account-box">
                     <h1 class="text-center">Welcome Doctor</h1>
+                    <div class="account-logo">
+                        <a href="https://canbulanhospital.com/login">
+                            <img src="assets/img/logo-dark.png" alt="Hospital Logo">
+                        </a>
+                    </div>
                     <form asp-controller="Auth" asp-action="Login" method="post" class="form-signin">
-                        <div class="account-logo">
-                            <a><img src="assets/img/logo-dark.png" alt=""></a>
-                        </div>
+                      
                         @if (!string.IsNullOrWhiteSpace(ViewBag.Error))
                         {
                             <div class="alert alert-danger" role="alert">

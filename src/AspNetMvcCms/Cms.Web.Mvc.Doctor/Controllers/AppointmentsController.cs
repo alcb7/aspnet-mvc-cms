@@ -12,7 +12,7 @@ namespace Cms.Web.Mvc.Doctor.Controllers
 		private readonly HttpClient _httpClient;
 
 
-		private readonly string _apiAppointment = "https://localhost:7188/api/Appointment";
+		private readonly string _apiAppointment = "https://api.canbulanhospital.com/api/Appointment";
 		public AppointmentsController(HttpClient httpClient)
 		{
 			_httpClient = httpClient;
